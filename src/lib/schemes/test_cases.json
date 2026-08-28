@@ -1,0 +1,124 @@
+{
+  "version": "1.0.0",
+  "test_cases": [
+    {
+      "input": "mu duck farm start karibaku chahunchhi",
+      "expected_intent": {
+        "goal": "start_new_activity",
+        "activity": "duck_farming",
+        "need": "subsidy_or_business_support"
+      },
+      "expected_rank": [
+        "scdf",
+        "smbdlp",
+        "kalia"
+      ],
+      "reason": "SCDF is directly duck-specific; NLM is broader livestock entrepreneurship; KALIA mentions duckery as an allied livelihood activity."
+    },
+    {
+      "input": "mo business pain loan darkar",
+      "expected_intent": {
+        "goal": "access_credit",
+        "activity": null,
+        "need": "loan"
+      },
+      "expected_question": "What kind of business do you run or want to start?",
+      "expected_rank": []
+    },
+    {
+      "input": "mu machha chasa karibaku chahunchhi",
+      "expected_intent": {
+        "goal": "start_new_activity",
+        "activity": "fish_farming"
+      },
+      "expected_question": "Do you already have a pond, or do you want help creating one?",
+      "expected_rank": [
+        "piatibft",
+        "mpy-mcpnpky",
+        "pfmeiiao"
+      ]
+    },
+    {
+      "input": "drip irrigation pain subsidy darkar",
+      "expected_intent": {
+        "goal": "reduce_cost_or_improve_productivity",
+        "activity": "irrigation",
+        "need": "subsidy"
+      },
+      "expected_rank": [
+        "pmksypdmc"
+      ]
+    },
+    {
+      "input": "I want to sell my crops at a better price",
+      "expected_intent": {
+        "goal": "sell_or_market",
+        "activity": "farm_produce_marketing",
+        "need": "market_access"
+      },
+      "expected_rank": [
+        "e-nam",
+        "ami"
+      ]
+    },
+    {
+      "input": "I am a woman in Odisha and want to start a duck business",
+      "expected_intent": {
+        "goal": "start_new_activity",
+        "activity": "duck_farming",
+        "beneficiary": "woman",
+        "state": "Odisha"
+      },
+      "expected_rank": [
+        "scdf",
+        "kalia",
+        "smbdlp"
+      ]
+    },
+    {
+      "input": "I want a farmer pension",
+      "expected_intent": {
+        "goal": "protect_income",
+        "need": "pension",
+        "activity": "farming"
+      },
+      "expected_rank": [
+        "pmkmdy"
+      ]
+    },
+    {
+      "input": "I need crop insurance because my crop may be damaged",
+      "expected_intent": {
+        "goal": "protect_income",
+        "need": "insurance",
+        "activity": "notified_crop_farming"
+      },
+      "expected_rank": [
+        "pmfby"
+      ]
+    },
+    {
+      "input": "I want to buy a farm machine",
+      "expected_intent": {
+        "goal": "improve_productivity",
+        "need": "equipment",
+        "activity": "farm_mechanization"
+      },
+      "expected_rank": [
+        "smam",
+        "acandabc"
+      ]
+    },
+    {
+      "input": "I am an artisan and need a toolkit and loan",
+      "expected_intent": {
+        "goal": "grow_existing_activity",
+        "beneficiary": "artisan",
+        "need": "toolkit_and_credit"
+      },
+      "expected_rank": [
+        "pmv"
+      ]
+    }
+  ]
+}

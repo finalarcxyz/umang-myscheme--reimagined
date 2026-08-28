@@ -1,0 +1,2159 @@
+{
+  "schema_version": "1.0.0",
+  "source_file": "Schemes - Sheet1.pdf",
+  "source_note": "This catalog is derived from the supplied scheme database. It intentionally does not add external eligibility facts.",
+  "schemes": [
+    {
+      "id": "kcc",
+      "name": "Kisan Credit Card (KCC)",
+      "scope": [
+        "India"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/kcc",
+      "intents_high": [
+        "farm_financing",
+        "crop_financing",
+        "farm_working_capital",
+        "agricultural_investment"
+      ],
+      "intents_medium": [
+        "post_harvest_financing",
+        "produce_marketing_finance",
+        "allied_activity_financing"
+      ],
+      "activities": [
+        "crop_farming",
+        "agriculture",
+        "allied_agriculture"
+      ],
+      "need_types": [
+        "credit",
+        "loan",
+        "working_capital",
+        "investment"
+      ],
+      "keywords": [
+        "kcc",
+        "kisan credit card",
+        "farm loan",
+        "crop loan",
+        "chasa pain loan",
+        "kheti loan",
+        "farming loan"
+      ],
+      "eligibility_facts": [
+        "owner cultivator",
+        "tenant farmer",
+        "oral lessee",
+        "sharecropper",
+        "farmer SHG/JLG"
+      ],
+      "hard_exclusions": [
+        "not a farmer / no agricultural activity"
+      ],
+      "questions": [
+        "Are you farming yourself, and are you an owner, tenant, sharecropper, or part of a farmer SHG/JLG?"
+      ],
+      "application_route": "online_or_offline_bank",
+      "temporal_note": null
+    },
+    {
+      "id": "nfsmcss",
+      "name": "National Food Security Mission (NFSMCSS)",
+      "scope": [
+        "India"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/nfsmcss",
+      "intents_high": [
+        "improve_crop_productivity",
+        "quality_seed",
+        "crop_inputs",
+        "farm_technology"
+      ],
+      "intents_medium": [
+        "farm_equipment",
+        "nutrient_management",
+        "pest_management",
+        "post_harvest_technology"
+      ],
+      "activities": [
+        "crop_farming",
+        "rice",
+        "wheat",
+        "pulses",
+        "nutri_cereals",
+        "maize",
+        "barley",
+        "jowar",
+        "bajra",
+        "ragi",
+        "small_millets"
+      ],
+      "need_types": [
+        "subsidy",
+        "inputs",
+        "training",
+        "technology"
+      ],
+      "keywords": [
+        "nfsm",
+        "seed",
+        "mini kit",
+        "quality seed",
+        "crop productivity",
+        "pulses",
+        "millets",
+        "rice",
+        "wheat",
+        "nutrient management"
+      ],
+      "eligibility_facts": [
+        "farmer",
+        "benefits limited to 5 hectares per season",
+        "small/marginal and women farmers receive earmarked allocations"
+      ],
+      "hard_exclusions": [
+        "none stated as universal; district/crop targeting applies"
+      ],
+      "questions": [
+        "Which crop are you growing or planning to grow?",
+        "Which district are you in?"
+      ],
+      "application_route": "offline_district_or_block_agriculture_agency",
+      "temporal_note": "Area/district and intervention eligibility is program-specific."
+    },
+    {
+      "id": "rkvyshfshc",
+      "name": "Soil Health Card / Soil Health Management",
+      "scope": [
+        "India"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/rkvyshfshc",
+      "intents_high": [
+        "soil_testing",
+        "fertilizer_advice",
+        "soil_health"
+      ],
+      "intents_medium": [
+        "reduce_farm_input_costs",
+        "improve_farming"
+      ],
+      "activities": [
+        "crop_farming",
+        "agriculture"
+      ],
+      "need_types": [
+        "testing",
+        "advice",
+        "farm_support"
+      ],
+      "keywords": [
+        "soil test",
+        "soil health card",
+        "soil testing",
+        "fertilizer recommendation",
+        "mati test",
+        "soil report"
+      ],
+      "eligibility_facts": [
+        "all farmers in India"
+      ],
+      "hard_exclusions": [],
+      "questions": [
+        "Do you want a soil test/Soil Health Card for your farm?"
+      ],
+      "application_route": "offline_district_or_block_agriculture_office",
+      "temporal_note": null
+    },
+    {
+      "id": "acandabc",
+      "name": "Agri-Clinics & Agri-Business Centres (AC&ABC)",
+      "scope": [
+        "India"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/acandabc",
+      "intents_high": [
+        "agri_entrepreneurship",
+        "start_agri_business",
+        "agri_consulting_business"
+      ],
+      "intents_medium": [
+        "agri_training",
+        "business_financing",
+        "farm_services_business"
+      ],
+      "activities": [
+        "agri_services",
+        "horticulture",
+        "sericulture",
+        "veterinary",
+        "forestry",
+        "dairy",
+        "poultry",
+        "fisheries",
+        "farm_equipment",
+        "seed_processing",
+        "beekeeping",
+        "livestock_services"
+      ],
+      "need_types": [
+        "training",
+        "loan",
+        "subsidy",
+        "entrepreneurship"
+      ],
+      "keywords": [
+        "agri business",
+        "agri clinic",
+        "agriculture business",
+        "farm service business",
+        "agri entrepreneur",
+        "agri consultancy"
+      ],
+      "eligibility_facts": [
+        "age 18-60",
+        "specified agriculture/allied graduates or diplomas",
+        "some biological science graduates with qualifying agriculture PG",
+        "agriculture-related intermediate with at least 55%"
+      ],
+      "hard_exclusions": [
+        "retired employees receiving pension are not eligible for subsidy"
+      ],
+      "questions": [
+        "What is your highest agriculture/allied educational qualification?",
+        "What agriculture-related business do you want to start?"
+      ],
+      "application_route": "online",
+      "temporal_note": null
+    },
+    {
+      "id": "ksis",
+      "name": "Kera Suraksha Insurance Scheme",
+      "scope": [
+        "India",
+        "coconut-growing states"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/ksis",
+      "intents_high": [
+        "coconut_climber_insurance",
+        "coconut_harvester_insurance",
+        "neera_technician_insurance"
+      ],
+      "intents_medium": [
+        "coconut_worker_training",
+        "accident_cover"
+      ],
+      "activities": [
+        "coconut_tree_climbing",
+        "coconut_harvesting",
+        "neera_technician"
+      ],
+      "need_types": [
+        "insurance",
+        "accident_cover",
+        "training"
+      ],
+      "keywords": [
+        "coconut climber",
+        "coconut harvester",
+        "neera technician",
+        "coconut worker insurance",
+        "coconut climbing"
+      ],
+      "eligibility_facts": [
+        "coconut tree climber/neera technician/coconut harvester/trainee",
+        "age 18-65"
+      ],
+      "hard_exclusions": [
+        "not engaged in qualifying coconut work"
+      ],
+      "questions": [
+        "Are you a coconut tree climber, coconut harvester, Neera technician, or trainee?",
+        "What is your age?"
+      ],
+      "application_route": "offline",
+      "temporal_note": null
+    },
+    {
+      "id": "cpis",
+      "name": "Coconut Palm Insurance Scheme (CPIS)",
+      "scope": [
+        "India",
+        "selected coconut-growing districts"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/cpis",
+      "intents_high": [
+        "coconut_palm_insurance",
+        "protect_coconut_farm"
+      ],
+      "intents_medium": [
+        "coconut_farming_risk_management",
+        "replanting_risk"
+      ],
+      "activities": [
+        "coconut_farming"
+      ],
+      "need_types": [
+        "insurance",
+        "risk_protection"
+      ],
+      "keywords": [
+        "coconut insurance",
+        "coconut palm insurance",
+        "coconut tree insurance",
+        "narial gachha insurance"
+      ],
+      "eligibility_facts": [
+        "individual farmer/grower",
+        "minimum 5 healthy nut-bearing palms",
+        "specified palm age ranges",
+        "selected implementation districts"
+      ],
+      "hard_exclusions": [
+        "unhealthy/senile palms",
+        "partial insurance of contiguous plantation not allowed",
+        "less than 5 qualifying palms"
+      ],
+      "questions": [
+        "How many healthy, fruit-bearing coconut palms do you have?",
+        "Are they in a selected implementation area?"
+      ],
+      "application_route": "offline",
+      "temporal_note": "Coverage depends on selected districts and scheme implementation."
+    },
+    {
+      "id": "ky-smsp",
+      "name": "Sub Mission on Seed and Planting Material (SMSP)",
+      "scope": [
+        "India"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/ky-smsp",
+      "intents_high": [
+        "quality_seed",
+        "seed_production",
+        "seed_processing",
+        "seed_storage"
+      ],
+      "intents_medium": [
+        "seed_testing",
+        "seed_certification",
+        "seed_infrastructure"
+      ],
+      "activities": [
+        "seed_production",
+        "seed_processing",
+        "seed_storage",
+        "seed_testing",
+        "planting_material"
+      ],
+      "need_types": [
+        "subsidy",
+        "infrastructure",
+        "seed_support"
+      ],
+      "keywords": [
+        "seed",
+        "quality seed",
+        "certified seed",
+        "seed village",
+        "seed processing",
+        "seed storage",
+        "seed testing"
+      ],
+      "eligibility_facts": [
+        "source specifically states small or marginal farmer for the listed beneficiary section"
+      ],
+      "hard_exclusions": [
+        "do not assume every SMSP component is available to an individual farmer"
+      ],
+      "questions": [
+        "Are you seeking seed for your own farm, or do you want to start a seed-related business/infrastructure project?"
+      ],
+      "application_route": "offline_for_farmer_section",
+      "temporal_note": "The source combines multiple components with different beneficiary types; component-level eligibility must be checked."
+    },
+    {
+      "id": "nmnf",
+      "name": "National Mission on Natural Farming",
+      "scope": [
+        "India"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/nmnf",
+      "intents_high": [
+        "natural_farming",
+        "reduce_farm_input_costs",
+        "natural_farming_training"
+      ],
+      "intents_medium": [
+        "improve_farm_income",
+        "soil_health",
+        "integrated_agriculture"
+      ],
+      "activities": [
+        "crop_farming",
+        "natural_farming",
+        "integrated_farming"
+      ],
+      "need_types": [
+        "training",
+        "handholding",
+        "farm_support"
+      ],
+      "keywords": [
+        "natural farming",
+        "organic-like farming",
+        "chemical free farming",
+        "desi cow",
+        "natural kheti",
+        "prakritik kheti"
+      ],
+      "eligibility_facts": [
+        "all farmers in India"
+      ],
+      "hard_exclusions": [],
+      "questions": [
+        "Are you interested in shifting to natural farming or learning the practice?"
+      ],
+      "application_route": "offline_zila_parishad",
+      "temporal_note": null
+    },
+    {
+      "id": "pmkmdy",
+      "name": "Pradhan Mantri Kisan Maandhan Yojana (PM-KMY)",
+      "scope": [
+        "India"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/pmkmdy",
+      "intents_high": [
+        "farmer_pension",
+        "old_age_farmer_security"
+      ],
+      "intents_medium": [
+        "social_security",
+        "farmer_income_security"
+      ],
+      "activities": [
+        "farming"
+      ],
+      "need_types": [
+        "pension",
+        "social_security"
+      ],
+      "keywords": [
+        "farmer pension",
+        "kisan pension",
+        "pm kisan maandhan",
+        "3000 pension",
+        "old age farmer"
+      ],
+      "eligibility_facts": [
+        "small or marginal farmer",
+        "cultivable landholding up to 2 hectares",
+        "age 18-40 at entry",
+        "name in land records as on 01.08.2019",
+        "Aadhaar",
+        "savings bank or PM-KISAN account"
+      ],
+      "hard_exclusions": [
+        "specified higher-economic-status and other social-security exclusions in source",
+        "age outside 18-40 at entry"
+      ],
+      "questions": [
+        "What is your age?",
+        "How much cultivable land do you hold?",
+        "Does your name appear in the relevant land records?"
+      ],
+      "application_route": "online_via_csc",
+      "temporal_note": "Source includes a historical land-record date condition (01.08.2019)."
+    },
+    {
+      "id": "pmksypdmc",
+      "name": "PMKSY – Per Drop More Crop",
+      "scope": [
+        "India"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/pmksypdmc",
+      "intents_high": [
+        "drip_irrigation",
+        "sprinkler_irrigation",
+        "farm_water_management"
+      ],
+      "intents_medium": [
+        "water_harvesting",
+        "precision_irrigation",
+        "improve_farm_productivity"
+      ],
+      "activities": [
+        "crop_farming",
+        "horticulture",
+        "irrigation"
+      ],
+      "need_types": [
+        "subsidy",
+        "irrigation",
+        "water_management"
+      ],
+      "keywords": [
+        "drip",
+        "sprinkler",
+        "irrigation",
+        "water saving",
+        "farm pond",
+        "jal sanchay",
+        "micro irrigation"
+      ],
+      "eligibility_facts": [
+        "farmers in India",
+        "subsidy ceiling 5 hectares per beneficiary",
+        "Aadhaar required for DBT"
+      ],
+      "hard_exclusions": [],
+      "questions": [
+        "Do you need drip/sprinkler irrigation or another farm water-management intervention?",
+        "How much land is involved?"
+      ],
+      "application_route": "offline_block_or_district_agriculture_office",
+      "temporal_note": null
+    },
+    {
+      "id": "ae",
+      "name": "Agricultural Extension / Sub Mission on Agricultural Extension (SMAE)",
+      "scope": [
+        "India"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/ae",
+      "intents_high": [
+        "farming_advice",
+        "agriculture_training",
+        "farm_information"
+      ],
+      "intents_medium": [
+        "agri_entrepreneurship",
+        "rural_youth_skill_training",
+        "input_dealer_training"
+      ],
+      "activities": [
+        "agriculture",
+        "allied_agriculture"
+      ],
+      "need_types": [
+        "advice",
+        "training",
+        "information"
+      ],
+      "keywords": [
+        "farming advice",
+        "agriculture training",
+        "kisan call centre",
+        "farm information",
+        "chasa advice",
+        "krushi training"
+      ],
+      "eligibility_facts": [
+        "varies by component; source includes farmers, rural youth, farm women, extension functionaries, input dealers and agriculture graduates"
+      ],
+      "hard_exclusions": [],
+      "questions": [
+        "What kind of farming information or training do you need?"
+      ],
+      "application_route": "varies_by_component",
+      "temporal_note": "Umbrella/component scheme; do not treat every component as having identical eligibility."
+    },
+    {
+      "id": "e-nam",
+      "name": "e-National Agriculture Market (e-NAM)",
+      "scope": [
+        "India",
+        "participating APMCs/markets"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/e-nam",
+      "intents_high": [
+        "sell_farm_produce",
+        "better_price_discovery",
+        "market_access"
+      ],
+      "intents_medium": [
+        "quality_assaying",
+        "online_agri_trade",
+        "farmer_market_linkage"
+      ],
+      "activities": [
+        "farm_produce_marketing",
+        "APMC_trade",
+        "FPO_marketing"
+      ],
+      "need_types": [
+        "market_access",
+        "price_discovery",
+        "online_trade"
+      ],
+      "keywords": [
+        "sell crops",
+        "sell produce",
+        "mandi price",
+        "better price",
+        "e nam",
+        "enam",
+        "market access",
+        "farmer market"
+      ],
+      "eligibility_facts": [
+        "farmer registration requires selected APMC and KYC; FPO/FPCs can register",
+        "state/market reforms govern market-level participation"
+      ],
+      "hard_exclusions": [
+        "not a generic cash subsidy for farmers"
+      ],
+      "questions": [
+        "Do you want help selling your farm produce or finding better market prices?",
+        "What produce do you want to sell?"
+      ],
+      "application_route": "online",
+      "temporal_note": null
+    },
+    {
+      "id": "pmfby",
+      "name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+      "scope": [
+        "India",
+        "notified areas/crops"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/pmfby",
+      "intents_high": [
+        "crop_insurance",
+        "crop_loss_protection"
+      ],
+      "intents_medium": [
+        "farm_risk_management",
+        "post_harvest_loss_protection"
+      ],
+      "activities": [
+        "notified_crop_farming"
+      ],
+      "need_types": [
+        "insurance",
+        "risk_protection"
+      ],
+      "keywords": [
+        "crop insurance",
+        "fasal bima",
+        "crop loss",
+        "drought insurance",
+        "flood crop insurance",
+        "pest crop insurance"
+      ],
+      "eligibility_facts": [
+        "farmer including tenant/sharecropper growing notified crop in notified area",
+        "insurable interest",
+        "valid land ownership/tenure evidence",
+        "apply within prescribed timeframe"
+      ],
+      "hard_exclusions": [
+        "non-notified areas/crops",
+        "loss outside specified crop cycle",
+        "non-payment of required premium"
+      ],
+      "questions": [
+        "Which crop are you growing, and in which district?",
+        "Has the crop already been damaged, or do you want insurance before loss?"
+      ],
+      "application_route": "online_offline_or_csc",
+      "temporal_note": "Crop/area notification and enrolment windows are time-sensitive."
+    },
+    {
+      "id": "rad",
+      "name": "Rainfed Area Development (RAD)",
+      "scope": [
+        "India",
+        "eligible rainfed clusters"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/rad",
+      "intents_high": [
+        "rainfed_farming",
+        "integrated_farming",
+        "climate_resilient_farming"
+      ],
+      "intents_medium": [
+        "livelihood_diversification",
+        "livestock_farming",
+        "horticulture",
+        "fisheries"
+      ],
+      "activities": [
+        "rainfed_agriculture",
+        "horticulture",
+        "livestock",
+        "fishery",
+        "agroforestry",
+        "beekeeping",
+        "mushroom"
+      ],
+      "need_types": [
+        "farm_support",
+        "climate_risk_management",
+        "integrated_farming"
+      ],
+      "keywords": [
+        "rainfed",
+        "integrated farming",
+        "drought farming",
+        "climate resilient farming",
+        "farm diversification"
+      ],
+      "eligibility_facts": [
+        "all farmers stated as eligible",
+        "implementation is cluster/project based",
+        "cluster generally 100 hectares or more"
+      ],
+      "hard_exclusions": [
+        "individual eligibility alone does not guarantee scheme rollout; village/cluster eligibility matters"
+      ],
+      "questions": [
+        "Is your farm in a rainfed area, and are you looking for an integrated farming setup?",
+        "Which village/block are you in?"
+      ],
+      "application_route": "offline_block_or_district_agriculture_office",
+      "temporal_note": "Cluster/project approval is material to access."
+    },
+    {
+      "id": "ami",
+      "name": "Agricultural Marketing Infrastructure (AMI)",
+      "scope": [
+        "India"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/ami",
+      "intents_high": [
+        "farm_storage",
+        "post_harvest_infrastructure",
+        "agri_processing",
+        "market_infrastructure"
+      ],
+      "intents_medium": [
+        "cold_storage",
+        "direct_marketing",
+        "FPO_infrastructure"
+      ],
+      "activities": [
+        "storage",
+        "cold_storage",
+        "post_harvest",
+        "processing",
+        "rural_haat",
+        "FPO_infrastructure"
+      ],
+      "need_types": [
+        "capital_subsidy",
+        "infrastructure",
+        "market_access"
+      ],
+      "keywords": [
+        "warehouse",
+        "storage",
+        "cold storage",
+        "post harvest",
+        "processing unit",
+        "market infrastructure",
+        "rural haat"
+      ],
+      "eligibility_facts": [
+        "individuals, agri-preneurs, farmers, FPOs, cooperatives, state agencies and others listed in source",
+        "credit-linked back-ended subsidy"
+      ],
+      "hard_exclusions": [],
+      "questions": [
+        "What infrastructure do you want to create—storage, cold storage, processing, or market infrastructure?",
+        "Are you applying as an individual, farmer group/FPO, cooperative, or business?"
+      ],
+      "application_route": "offline_through_financial_institution",
+      "temporal_note": "Source says the sub-scheme continued till 31.03.2026; as of the current date this source is stale for current availability. Refresh before showing as open."
+    },
+    {
+      "id": "midh",
+      "name": "Mission for Integrated Development of Horticulture (MIDH)",
+      "scope": [
+        "India"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/midh",
+      "intents_high": [
+        "horticulture",
+        "fruit_farming",
+        "vegetable_farming",
+        "mushroom_farming",
+        "nursery"
+      ],
+      "intents_medium": [
+        "protected_cultivation",
+        "beekeeping",
+        "post_harvest_horticulture",
+        "horticulture_mechanization"
+      ],
+      "activities": [
+        "fruits",
+        "vegetables",
+        "root_tuber",
+        "mushroom",
+        "spices",
+        "flowers",
+        "aromatic_plants",
+        "coconut",
+        "cashew",
+        "cocoa",
+        "bamboo",
+        "nursery",
+        "protected_cultivation"
+      ],
+      "need_types": [
+        "subsidy",
+        "farm_support",
+        "infrastructure",
+        "training"
+      ],
+      "keywords": [
+        "horticulture",
+        "fruit farming",
+        "vegetable farming",
+        "mushroom",
+        "nursery",
+        "polyhouse",
+        "greenhouse",
+        "flower farming"
+      ],
+      "eligibility_facts": [
+        "all farmers / registered societies / state governments stated as eligible",
+        "component-specific implementation through horticulture missions"
+      ],
+      "hard_exclusions": [],
+      "questions": [
+        "What horticulture activity do you want to start or expand?",
+        "Which crop/activity are you interested in?"
+      ],
+      "application_route": "offline_district_or_block_horticulture_office",
+      "temporal_note": null
+    },
+    {
+      "id": "nbm",
+      "name": "National Bamboo Mission (NBM)",
+      "scope": [
+        "India",
+        "24 States/UTs per source"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/nbm",
+      "intents_high": [
+        "bamboo_farming",
+        "bamboo_business",
+        "bamboo_processing"
+      ],
+      "intents_medium": [
+        "bamboo_nursery",
+        "bamboo_product_manufacturing",
+        "bamboo_market_linkage"
+      ],
+      "activities": [
+        "bamboo_plantation",
+        "bamboo_nursery",
+        "bamboo_processing",
+        "bamboo_product_manufacturing"
+      ],
+      "need_types": [
+        "subsidy",
+        "credit",
+        "entrepreneurship",
+        "skill_training"
+      ],
+      "keywords": [
+        "bamboo",
+        "bamboo farming",
+        "bamboo plantation",
+        "bamboo business",
+        "bamboo processing"
+      ],
+      "eligibility_facts": [
+        "all farmers in India stated as eligible",
+        "implementation in 24 States/UTs per source",
+        "entrepreneurs/private agencies/FPOs etc. also listed as beneficiaries"
+      ],
+      "hard_exclusions": [
+        "state/UT must be within implementation coverage"
+      ],
+      "questions": [
+        "Do you want to grow bamboo, set up a nursery, or build a bamboo processing/product business?",
+        "Which state are you in?"
+      ],
+      "application_route": "online_or_offline_state_bamboo_mission",
+      "temporal_note": "Source says NBM was merged with MIDH during 2022-23; treat this as a scheme component/portal mapping issue and verify current state implementation."
+    },
+    {
+      "id": "nmeo-op",
+      "name": "National Mission on Edible Oils – Oil Palm (NMEO-OP)",
+      "scope": [
+        "India",
+        "participating states"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/nmeo-op",
+      "intents_high": [
+        "oil_palm_farming",
+        "oil_palm_plantation"
+      ],
+      "intents_medium": [
+        "drip_irrigation",
+        "planting_material",
+        "farm_mechanization",
+        "oil_palm_processing"
+      ],
+      "activities": [
+        "oil_palm",
+        "intercropping",
+        "oil_palm_processing"
+      ],
+      "need_types": [
+        "subsidy",
+        "planting_material",
+        "irrigation",
+        "farm_support"
+      ],
+      "keywords": [
+        "oil palm",
+        "palm plantation",
+        "edible oil farming",
+        "oil palm farming"
+      ],
+      "eligibility_facts": [
+        "source states anyone is eligible to apply; state implementation and area expansion determine actual access"
+      ],
+      "hard_exclusions": [],
+      "questions": [
+        "Are you planning to grow oil palm or work on an oil-palm-related processing/business activity?",
+        "Which state and district are you in?"
+      ],
+      "application_route": "offline_district_or_block_agriculture_office",
+      "temporal_note": "State-level implementation is material."
+    },
+    {
+      "id": "smam",
+      "name": "Sub-Mission on Agricultural Mechanization (SMAM)",
+      "scope": [
+        "India"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/smam",
+      "intents_high": [
+        "farm_equipment",
+        "farm_mechanization",
+        "buy_agricultural_machinery"
+      ],
+      "intents_medium": [
+        "custom_hiring",
+        "reduce_farm_labor",
+        "post_harvest_machinery"
+      ],
+      "activities": [
+        "farm_mechanization",
+        "agricultural_machinery",
+        "custom_hiring"
+      ],
+      "need_types": [
+        "subsidy",
+        "equipment",
+        "custom_hiring"
+      ],
+      "keywords": [
+        "tractor",
+        "farm machine",
+        "agriculture machine",
+        "farm equipment",
+        "mechanization",
+        "custom hiring centre",
+        "machine subsidy"
+      ],
+      "eligibility_facts": [
+        "landholding farmer families, SHGs, user groups, cooperatives, FPOs, entrepreneurs",
+        "women farmers given priority in source"
+      ],
+      "hard_exclusions": [
+        "source says benefit to those who have not taken subsidy from another central scheme earlier"
+      ],
+      "questions": [
+        "What agricultural machine or equipment do you need?",
+        "Are you buying it for your own farm or setting up a custom-hiring service?"
+      ],
+      "application_route": "online",
+      "temporal_note": null
+    },
+    {
+      "id": "ndd",
+      "name": "Namo Drone Didi",
+      "scope": [
+        "India"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/ndd",
+      "intents_high": [
+        "drone_agriculture",
+        "women_shg_agri_services",
+        "precision_agriculture_services"
+      ],
+      "intents_medium": [
+        "farm_technology",
+        "women_livelihood",
+        "drone_training"
+      ],
+      "activities": [
+        "drone_services",
+        "precision_farming",
+        "fertilizer_pesticide_application"
+      ],
+      "need_types": [
+        "subsidy",
+        "loan",
+        "training",
+        "livelihood"
+      ],
+      "keywords": [
+        "drone farming",
+        "agri drone",
+        "drone didi",
+        "drone service",
+        "women shg drone"
+      ],
+      "eligibility_facts": [
+        "female SHG member",
+        "over 18",
+        "Class 10 pass",
+        "SHG registered under DAY-NRLM"
+      ],
+      "hard_exclusions": [
+        "not a female SHG member",
+        "not enrolled in qualifying SHG"
+      ],
+      "questions": [
+        "Are you a woman member of a DAY-NRLM Self-Help Group?",
+        "Have you passed Class 10?"
+      ],
+      "application_route": "offline_selection_and_portal_process",
+      "temporal_note": null
+    },
+    {
+      "id": "kvny",
+      "name": "Krishi Vidya Nidhi Yojana",
+      "scope": [
+        "Odisha"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/kvny",
+      "intents_high": [
+        "higher_education_support",
+        "professional_education",
+        "student_scholarship"
+      ],
+      "intents_medium": [
+        "technical_education",
+        "agriculture_family_education_support"
+      ],
+      "activities": [
+        "higher_education",
+        "professional_courses",
+        "technical_courses",
+        "diploma",
+        "phd"
+      ],
+      "need_types": [
+        "scholarship",
+        "education_financing"
+      ],
+      "keywords": [
+        "scholarship",
+        "college fees",
+        "education support",
+        "engineering scholarship",
+        "medical scholarship",
+        "krishi vidya nidhi"
+      ],
+      "eligibility_facts": [
+        "Odisha resident/domicile",
+        "child of eligible CM-KISAN beneficiary",
+        "merit-based admission in qualifying institution/course",
+        "only one scholarship"
+      ],
+      "hard_exclusions": [
+        "private institution outside Odisha",
+        "simultaneous multiple scholarships"
+      ],
+      "questions": [
+        "Are you a child of an eligible CM-KISAN beneficiary?",
+        "What course and institution have you been admitted to?"
+      ],
+      "application_route": "online_odisha_scholarship_portal",
+      "temporal_note": "Source says application window opens twice yearly, July/August and November/December."
+    },
+    {
+      "id": "beds",
+      "name": "Buffalo Entrepreneurship Development Scheme",
+      "scope": [
+        "Odisha"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/beds",
+      "intents_high": [
+        "start_dairy",
+        "buffalo_farming",
+        "livestock_business"
+      ],
+      "intents_medium": [
+        "milk_income",
+        "livestock_subsidy"
+      ],
+      "activities": [
+        "dairy",
+        "buffalo_rearing",
+        "livestock"
+      ],
+      "need_types": [
+        "subsidy",
+        "livestock_business"
+      ],
+      "keywords": [
+        "buffalo",
+        "dairy farm",
+        "milk business",
+        "murrah buffalo",
+        "buffalo farming"
+      ],
+      "eligibility_facts": [
+        "Odisha farmer/entrepreneur/SHG member",
+        "qualifying category listed in source",
+        "purchase two graded Murrah she buffaloes",
+        "PwD disability >40% if applicable"
+      ],
+      "hard_exclusions": [
+        "family limited to one beneficiary",
+        "must meet buffalo purchase/yield conditions"
+      ],
+      "questions": [
+        "Do you want to start a dairy/buffalo unit?",
+        "Are you planning to purchase two graded Murrah she-buffaloes?"
+      ],
+      "application_route": "online_go_sugam",
+      "temporal_note": null
+    },
+    {
+      "id": "piatibft",
+      "name": "Subsidy for Bio-floc Technology based Intensive Shrimp & Fish Farming",
+      "scope": [
+        "Odisha"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/piatibft",
+      "intents_high": [
+        "biofloc_farming",
+        "start_fish_farming",
+        "intensive_aquaculture"
+      ],
+      "intents_medium": [
+        "shrimp_farming",
+        "small_area_fish_farming",
+        "aquaculture_business"
+      ],
+      "activities": [
+        "fish_farming",
+        "shrimp_farming",
+        "biofloc",
+        "hatchery",
+        "nursery"
+      ],
+      "need_types": [
+        "subsidy",
+        "training",
+        "aquaculture_business"
+      ],
+      "keywords": [
+        "biofloc",
+        "bio floc",
+        "fish farming",
+        "shrimp farming",
+        "fish tank",
+        "aquaculture"
+      ],
+      "eligibility_facts": [
+        "farmers interested in grow-out/nursery/seed tanks",
+        "hatchery operators",
+        "private entrepreneurs",
+        "unemployed youth",
+        "brackish-water beneficiaries need relevant CAA licence"
+      ],
+      "hard_exclusions": [
+        "must follow tank/design requirements",
+        "minimum 2 and maximum 6 tanks for stated special package"
+      ],
+      "questions": [
+        "Do you want fish/shrimp farming using bio-floc technology?",
+        "How many tanks are you planning?",
+        "Is it freshwater or brackish water?"
+      ],
+      "application_route": "online_or_designated_submission",
+      "temporal_note": "Source labels the underlying scheme as 2020-21; verify current availability before surfacing."
+    },
+    {
+      "id": "mpy-mcpnpky",
+      "name": "Machha Chasa Pain Nua Pokhari Khola Yojana (Matsya Pokhari Yojana)",
+      "scope": [
+        "Odisha"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/mpy-mcpnpky",
+      "intents_high": [
+        "build_fish_pond",
+        "start_freshwater_aquaculture",
+        "fish_pond_subsidy"
+      ],
+      "intents_medium": [
+        "fish_farming",
+        "aquaculture_income"
+      ],
+      "activities": [
+        "freshwater_fish_farming",
+        "pond_excavation",
+        "aquaculture"
+      ],
+      "need_types": [
+        "subsidy",
+        "pond_creation",
+        "aquaculture"
+      ],
+      "keywords": [
+        "fish pond",
+        "pond digging",
+        "machha chasa",
+        "fish farming",
+        "new pond",
+        "pokhari",
+        "matsya pokhari"
+      ],
+      "eligibility_facts": [
+        "permanent Odisha resident",
+        "bank account in own name in Odisha",
+        "land free from encumbrances",
+        "pond area 0.2-2.0 hectares",
+        "minimum water depth 6 feet"
+      ],
+      "hard_exclusions": [
+        "does not fit if user already has no land/site meeting requirements"
+      ],
+      "questions": [
+        "Do you already have a pond, or do you need to create a new pond?",
+        "How much land is available for the pond?"
+      ],
+      "application_route": "offline_district_or_assistant_fisheries_officer",
+      "temporal_note": null
+    },
+    {
+      "id": "ssgsf",
+      "name": "Small Scale Goat / Sheep Farming (10+1 Capacity)",
+      "scope": [
+        "Odisha"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/ssgsf",
+      "intents_high": [
+        "start_goat_farming",
+        "start_sheep_farming",
+        "goat_sheep_unit"
+      ],
+      "intents_medium": [
+        "livestock_business",
+        "rural_livelihood"
+      ],
+      "activities": [
+        "goat_farming",
+        "sheep_farming"
+      ],
+      "need_types": [
+        "subsidy",
+        "livestock_business"
+      ],
+      "keywords": [
+        "goat farming",
+        "sheep farming",
+        "goat unit",
+        "sheep unit",
+        "goat rearing",
+        "bakri palan"
+      ],
+      "eligibility_facts": [
+        "Odisha resident",
+        "small/marginal farmer or landless labourer focus",
+        "new 10+1 unit",
+        "Aadhaar linked",
+        "suitable site",
+        "remaining cost via loan/self-finance"
+      ],
+      "hard_exclusions": [
+        "previous similar subsidy recipient excluded",
+        "not a new project"
+      ],
+      "questions": [
+        "Do you want to start a new goat/sheep unit?",
+        "Would you be able to establish a 10-female + 1-male unit?",
+        "Have you received a similar government subsidy before?"
+      ],
+      "application_route": "online_go_sugam",
+      "temporal_note": null
+    },
+    {
+      "id": "pfmeiiao",
+      "name": "Popularisation of Fishery Machinery/Equipment/Implements for Intensive Aquaculture",
+      "scope": [
+        "Odisha"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/pfmeiiao",
+      "intents_high": [
+        "fishery_equipment",
+        "aquaculture_equipment"
+      ],
+      "intents_medium": [
+        "improve_aquaculture",
+        "farm_mechanization"
+      ],
+      "activities": [
+        "fish_farming",
+        "shrimp_farming",
+        "aquaculture_equipment"
+      ],
+      "need_types": [
+        "subsidy",
+        "equipment"
+      ],
+      "keywords": [
+        "aerator",
+        "air blower",
+        "biosecurity net",
+        "fishing net",
+        "fishery machinery",
+        "aquaculture equipment"
+      ],
+      "eligibility_facts": [
+        "individual fish farmers/fishers",
+        "registered members of Primary Fisherman Cooperative Society",
+        "WSHGs involved in fish/shrimp production",
+        "40% back-ended subsidy per source"
+      ],
+      "hard_exclusions": [
+        "same component subsidy in prior 5 years excludes that component"
+      ],
+      "questions": [
+        "What fishery equipment do you need?",
+        "Have you received subsidy for the same component in the last five years?"
+      ],
+      "application_route": "online_or_designated_submission",
+      "temporal_note": "Source explicitly labels the scheme for FY 2021-22; verify current availability."
+    },
+    {
+      "id": "scdf",
+      "name": "Semi-Commercial Duck Farming",
+      "scope": [
+        "Odisha"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/scdf",
+      "intents_high": [
+        "start_duck_farming",
+        "duck_farm_subsidy"
+      ],
+      "intents_medium": [
+        "poultry_business",
+        "rural_livelihood",
+        "livestock_business"
+      ],
+      "activities": [
+        "duck_farming",
+        "duckery"
+      ],
+      "need_types": [
+        "subsidy",
+        "training",
+        "livestock_business"
+      ],
+      "keywords": [
+        "duck farm",
+        "duck farming",
+        "duckery",
+        "bataka chasa",
+        "bataka palan",
+        "duck unit"
+      ],
+      "eligibility_facts": [
+        "permanent Odisha resident",
+        "individual/farmer/entrepreneur",
+        "Aadhaar linked",
+        "1,000-duck semi-commercial unit per source"
+      ],
+      "hard_exclusions": [
+        "previous similar subsidy recipient excluded"
+      ],
+      "questions": [
+        "Do you want to start a semi-commercial duck farm?",
+        "Are you planning a unit of around 1,000 ducks?",
+        "Have you received a similar subsidy before?"
+      ],
+      "application_route": "online_or_offline_go_sugam",
+      "temporal_note": null
+    },
+    {
+      "id": "kalia",
+      "name": "Krushak Assistance for Livelihood and Income Augmentation (KALIA)",
+      "scope": [
+        "Odisha"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/kalia",
+      "intents_high": [
+        "livelihood_support",
+        "landless_agricultural_household_support",
+        "agri_allied_activity_support"
+      ],
+      "intents_medium": [
+        "goat_rearing",
+        "duckery",
+        "fishery",
+        "mushroom",
+        "beekeeping",
+        "farm_finance"
+      ],
+      "activities": [
+        "agriculture",
+        "horticulture",
+        "animal_husbandry",
+        "goat",
+        "duck",
+        "fishery",
+        "mushroom",
+        "beekeeping"
+      ],
+      "need_types": [
+        "financial_assistance",
+        "livelihood_support",
+        "insurance",
+        "loan"
+      ],
+      "keywords": [
+        "kalia",
+        "landless farmer",
+        "landless labourer",
+        "goat rearing",
+        "duckery",
+        "fishery kit",
+        "mushroom",
+        "beekeeping"
+      ],
+      "eligibility_facts": [
+        "permanent Odisha resident",
+        "engaged in agricultural activities",
+        "household categorized deprived/vulnerable per source",
+        "landowner/tenant/sharecropper",
+        "annual income < ₹2 lakh per source",
+        "Aadhaar-linked bank account"
+      ],
+      "hard_exclusions": [
+        "source includes criminal-record exclusion"
+      ],
+      "questions": [
+        "Are you a farmer, tenant/sharecropper, or landless agricultural household?",
+        "What livelihood activity do you need support for?"
+      ],
+      "application_route": "online_or_offline",
+      "temporal_note": "Treat source eligibility as source-derived; current KALIA status should be refreshed before production use."
+    },
+    {
+      "id": "mtc",
+      "name": "Motorisation of Traditional Crafts",
+      "scope": [
+        "Odisha",
+        "seven maritime districts per source"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/mtc",
+      "intents_high": [
+        "fishing_boat_motorisation",
+        "traditional_fisher_income"
+      ],
+      "intents_medium": [
+        "fishing_equipment",
+        "marine_fishing_support"
+      ],
+      "activities": [
+        "traditional_marine_fishing",
+        "fishing_boat"
+      ],
+      "need_types": [
+        "subsidy",
+        "boat_engine",
+        "fishing_support"
+      ],
+      "keywords": [
+        "boat engine",
+        "fishing boat motor",
+        "traditional fisherman",
+        "boat motorisation",
+        "marine fishing"
+      ],
+      "eligibility_facts": [
+        "permanent Odisha resident",
+        "traditional active marine fisherman",
+        "registered traditional boat/craft",
+        "valid ownership/registration/fishing licence",
+        "no engine subsidy in previous 5 years"
+      ],
+      "hard_exclusions": [
+        "not a traditional marine fisherman",
+        "no qualifying registered boat/craft"
+      ],
+      "questions": [
+        "Are you a traditional marine fisherman?",
+        "Do you have a registered traditional fishing boat/craft?",
+        "Have you received an engine subsidy in the last five years?"
+      ],
+      "application_route": "online_or_offline_go_sugam",
+      "temporal_note": "Source says implementation in seven maritime districts; verify district coverage."
+    },
+    {
+      "id": "pmv",
+      "name": "PM Vishwakarma",
+      "scope": [
+        "India"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/pmv",
+      "intents_high": [
+        "artisan_business",
+        "traditional_trade_support",
+        "artisan_credit"
+      ],
+      "intents_medium": [
+        "toolkit_support",
+        "artisan_training",
+        "digital_transaction_incentive",
+        "market_linkage"
+      ],
+      "activities": [
+        "traditional_artisan_trade"
+      ],
+      "need_types": [
+        "credit",
+        "training",
+        "toolkit",
+        "market_linkage"
+      ],
+      "keywords": [
+        "artisan",
+        "craftsman",
+        "traditional trade",
+        "tool kit",
+        "vishwakarma",
+        "artisan loan",
+        "hand tools"
+      ],
+      "eligibility_facts": [
+        "artisan/craftsperson working with hands/tools",
+        "unorganized self-employed sector",
+        "one of 18 family-based traditional trades",
+        "age >=18",
+        "engaged in trade at registration",
+        "one member per family"
+      ],
+      "hard_exclusions": [
+        "government employee and family members",
+        "specified similar government credit schemes within past 5 years"
+      ],
+      "questions": [
+        "What traditional trade do you work in?",
+        "Are you currently self-employed in that trade?",
+        "Have you taken a similar government business loan in the last five years?"
+      ],
+      "application_route": "online_via_csc",
+      "temporal_note": "Source says scheme initially implemented for five years up to 2027-28."
+    },
+    {
+      "id": "pm-vikas",
+      "name": "Pradhan Mantri Virasat Ka Samvardhan (PM VIKAS)",
+      "scope": [
+        "India",
+        "six notified minority communities"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/pm-vikas",
+      "intents_high": [
+        "minority_skill_training",
+        "minority_education",
+        "minority_women_entrepreneurship"
+      ],
+      "intents_medium": [
+        "traditional_skill_training",
+        "school_dropout_education",
+        "market_linkage"
+      ],
+      "activities": [
+        "skill_training",
+        "education",
+        "traditional_crafts",
+        "women_entrepreneurship"
+      ],
+      "need_types": [
+        "training",
+        "education",
+        "entrepreneurship",
+        "stipend"
+      ],
+      "keywords": [
+        "minority skill training",
+        "minority scholarship",
+        "PM VIKAS",
+        "skill course",
+        "women entrepreneurship minority"
+      ],
+      "eligibility_facts": [
+        "six notified minority communities",
+        "age 14-45 for skilling/education",
+        "18-45 for women leadership/entrepreneurship",
+        "specific women/PwD allocations",
+        "EWS non-minority participation only within stated component limits"
+      ],
+      "hard_exclusions": [
+        "age outside component range",
+        "not meeting applicable community/component rules"
+      ],
+      "questions": [
+        "Which component do you need—skill training, education, or women’s entrepreneurship?",
+        "What is your age?",
+        "Do you belong to one of the six notified minority communities?"
+      ],
+      "application_route": "online_sidh_portal",
+      "temporal_note": null
+    },
+    {
+      "id": "nssw",
+      "name": "New Swarnima Scheme for Women",
+      "scope": [
+        "India",
+        "targeted backward-class women"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/nssw",
+      "intents_high": [
+        "women_business_loan",
+        "women_self_employment_finance"
+      ],
+      "intents_medium": [
+        "women_microenterprise",
+        "business_training"
+      ],
+      "activities": [
+        "small_business",
+        "self_employment"
+      ],
+      "need_types": [
+        "loan",
+        "business_finance"
+      ],
+      "keywords": [
+        "women business loan",
+        "swarnima",
+        "women entrepreneur",
+        "small business loan",
+        "mahila loan"
+      ],
+      "eligibility_facts": [
+        "female",
+        "age 18-55",
+        "entrepreneur",
+        "annual family income < ₹3 lakh per source"
+      ],
+      "hard_exclusions": [
+        "male applicants",
+        "age outside 18-55",
+        "income at/above source threshold"
+      ],
+      "questions": [
+        "Are you a woman?",
+        "What is your age?",
+        "What is your approximate annual family income?",
+        "What business do you want to start or expand?"
+      ],
+      "application_route": "offline_state_channelising_agency",
+      "temporal_note": null
+    },
+    {
+      "id": "visvasi",
+      "name": "Source anomaly: VISVASI URL code",
+      "scope": [
+        "Unknown from source"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/visvasi",
+      "intents_high": [],
+      "intents_medium": [],
+      "activities": [],
+      "need_types": [],
+      "keywords": [],
+      "eligibility_facts": [],
+      "hard_exclusions": [
+        "do not match until source record is corrected"
+      ],
+      "questions": [],
+      "application_route": "unknown",
+      "temporal_note": "CRITICAL DATA QUALITY ISSUE: the supplied record at /visvasi contains the same New Swarnima-for-women content as the /nssw record. Preserve as unresolved rather than inventing a scheme."
+    },
+    {
+      "id": "smbdlp",
+      "name": "National Livestock Mission (NLM)",
+      "scope": [
+        "India"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/smbdlp",
+      "intents_high": [
+        "livestock_business",
+        "poultry_business",
+        "goat_sheep_business",
+        "piggery_business"
+      ],
+      "intents_medium": [
+        "breed_improvement",
+        "fodder_business",
+        "livestock_entrepreneurship"
+      ],
+      "activities": [
+        "poultry",
+        "sheep",
+        "goat",
+        "piggery",
+        "fodder"
+      ],
+      "need_types": [
+        "capital_subsidy",
+        "loan",
+        "entrepreneurship"
+      ],
+      "keywords": [
+        "livestock business",
+        "poultry farm",
+        "goat farm",
+        "sheep farm",
+        "pig farm",
+        "fodder business",
+        "NLM"
+      ],
+      "eligibility_facts": [
+        "individuals, SHGs, FPOs, FCOs, JLGs, Section 8 companies listed",
+        "50% capital subsidy in stated sub-mission, max ₹25 lakh/unit per source",
+        "bank appraisal/financing requirements"
+      ],
+      "hard_exclusions": [
+        "no subsidy for working capital, vehicles, land purchase or lease costs in stated sub-mission"
+      ],
+      "questions": [
+        "Which livestock activity do you want to start—poultry, goat, sheep, piggery, or fodder?",
+        "Are you applying as an individual, SHG, FPO, cooperative, JLG, or company?",
+        "What is the project size?"
+      ],
+      "application_route": "online",
+      "temporal_note": "Source describes a specific sub-mission; component-level eligibility should be preserved."
+    },
+    {
+      "id": "cbssc-msy",
+      "name": "Mahila Samriddhi Yojana (MSY)",
+      "scope": [
+        "India",
+        "targeted women"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/cbssc-msy",
+      "intents_high": [
+        "women_microfinance",
+        "women_business_loan",
+        "women_income_generation"
+      ],
+      "intents_medium": [
+        "women_shg_finance",
+        "craft_business"
+      ],
+      "activities": [
+        "small_business",
+        "craft_activity",
+        "income_generation"
+      ],
+      "need_types": [
+        "microfinance",
+        "training",
+        "loan"
+      ],
+      "keywords": [
+        "mahila samriddhi",
+        "women microfinance",
+        "women loan",
+        "SHG loan",
+        "women business"
+      ],
+      "eligibility_facts": [
+        "women 18-55",
+        "low-income families or SC/ST/OBC categories as notified",
+        "family income < ₹3 lakh per source"
+      ],
+      "hard_exclusions": [
+        "not a qualifying woman applicant"
+      ],
+      "questions": [
+        "Are you a woman aged 18-55?",
+        "What is your annual family income?",
+        "Are you SC/ST/OBC or otherwise in the target group?",
+        "What business/activity do you want to finance?"
+      ],
+      "application_route": "offline_state_channelising_agency_or_channel_partner",
+      "temporal_note": null
+    },
+    {
+      "id": "mcfnsfdc",
+      "name": "Micro Credit Finance (NSFDC)",
+      "scope": [
+        "India",
+        "Scheduled Caste applicants"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/mcfnsfdc",
+      "intents_high": [
+        "sc_business_loan",
+        "sc_microenterprise_finance"
+      ],
+      "intents_medium": [
+        "livelihood_business",
+        "small_business_finance"
+      ],
+      "activities": [
+        "small_business",
+        "goat_rearing",
+        "retail",
+        "repair",
+        "food_business",
+        "animal_rearing"
+      ],
+      "need_types": [
+        "loan",
+        "microfinance"
+      ],
+      "keywords": [
+        "SC business loan",
+        "SC loan",
+        "NSFDC loan",
+        "micro credit",
+        "goat rearing loan",
+        "small shop loan"
+      ],
+      "eligibility_facts": [
+        "Scheduled Caste applicant",
+        "annual family income < ₹3 lakh per source",
+        "partnership/cooperative conditions also specified"
+      ],
+      "hard_exclusions": [
+        "not SC",
+        "income at/above source threshold"
+      ],
+      "questions": [
+        "Do you belong to a Scheduled Caste community?",
+        "What is your annual family income?",
+        "What income-generating business do you want to finance?"
+      ],
+      "application_route": "offline_state_channelising_agency_or_channelizing_agency",
+      "temporal_note": null
+    },
+    {
+      "id": "aksmsy",
+      "name": "Asangathit Karmakaar Silai Machine Sahayata Yojana",
+      "scope": [
+        "Chhattisgarh"
+      ],
+      "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/aksmsy",
+      "intents_high": [
+        "sewing_machine_support",
+        "women_tailoring_support"
+      ],
+      "intents_medium": [
+        "tailoring_business",
+        "unorganized_worker_support"
+      ],
+      "activities": [
+        "tailoring",
+        "sewing",
+        "embroidery",
+        "weaving"
+      ],
+      "need_types": [
+        "in_kind_support",
+        "livelihood_support"
+      ],
+      "keywords": [
+        "sewing machine",
+        "silai machine",
+        "tailoring",
+        "stitching",
+        "unorganized worker"
+      ],
+      "eligibility_facts": [
+        "permanent resident of Chhattisgarh",
+        "registered construction worker/labour board",
+        "woman 18-50",
+        "sews/embroiders/weaves and earns livelihood"
+      ],
+      "hard_exclusions": [
+        "not Chhattisgarh",
+        "already received sewing machine/equivalent value under another state scheme",
+        "received Chief Minister Cycle Assistance Scheme"
+      ],
+      "questions": [
+        "Are you a registered worker in Chhattisgarh?",
+        "Do you earn through tailoring/sewing/embroidery/weaving?"
+      ],
+      "application_route": "online_chhattisgarh_labour_portal",
+      "temporal_note": "Exclude from Odisha-specific ranking."
+    }
+  ],
+  "taxonomy": {
+    "version": "1.0.0",
+    "source_basis": "Schemes - Sheet1.pdf supplied in conversation",
+    "source_scheme_count": 37,
+    "production_principles": [
+      "Interpret citizen language into structured intent before matching schemes.",
+      "Apply hard eligibility/exclusion rules before relevance ranking whenever the required facts are known.",
+      "Do not equate relevance with eligibility.",
+      "If a hard eligibility fact is unknown, keep the scheme provisional and ask only the smallest useful follow-up question.",
+      "Suppress low-relevance schemes rather than showing a long generic list.",
+      "Preserve source anomalies and stale temporal notes instead of silently correcting them."
+    ],
+    "intent_schema": {
+      "goal": [
+        "start_new_activity",
+        "grow_existing_activity",
+        "protect_income",
+        "reduce_cost",
+        "access_credit",
+        "access_subsidy",
+        "access_insurance",
+        "access_training",
+        "access_education",
+        "sell_or_market",
+        "improve_productivity",
+        "get_advice"
+      ],
+      "need": [
+        "loan",
+        "subsidy",
+        "insurance",
+        "pension",
+        "scholarship",
+        "training",
+        "equipment",
+        "infrastructure",
+        "market_access",
+        "advice",
+        "working_capital",
+        "livelihood_support"
+      ],
+      "activity": [
+        "crop_farming",
+        "horticulture",
+        "irrigation",
+        "livestock",
+        "poultry",
+        "duck_farming",
+        "goat_farming",
+        "sheep_farming",
+        "piggery",
+        "dairy",
+        "fish_farming",
+        "shrimp_farming",
+        "traditional_fishing",
+        "artisan_trade",
+        "small_business",
+        "seed",
+        "bamboo",
+        "oil_palm",
+        "coconut",
+        "agri_services"
+      ],
+      "beneficiary": [
+        "farmer",
+        "tenant_farmer",
+        "sharecropper",
+        "landless_household",
+        "woman",
+        "women_shg_member",
+        "artisan",
+        "fisher",
+        "student",
+        "agri_graduate",
+        "entrepreneur",
+        "fpo",
+        "shg",
+        "cooperative"
+      ],
+      "context": [
+        "state",
+        "district",
+        "age",
+        "gender",
+        "caste",
+        "minority_status",
+        "income",
+        "land_area",
+        "land_status",
+        "existing_activity",
+        "new_activity",
+        "education",
+        "shg_membership",
+        "prior_subsidy",
+        "prior_loan",
+        "crop",
+        "pond_status",
+        "project_size"
+      ]
+    },
+    "ranking": {
+      "hard_eligibility": "eliminate if definitely excluded; otherwise continue",
+      "weights": {
+        "intent_match": 40,
+        "activity_match": 25,
+        "need_match": 15,
+        "location_match": 10,
+        "known_context_match": 10
+      },
+      "bands": {
+        "HIGH": [
+          80,
+          100
+        ],
+        "MEDIUM": [
+          60,
+          79
+        ],
+        "LOW": [
+          40,
+          59
+        ],
+        "SUPPRESS": [
+          0,
+          39
+        ]
+      },
+      "rules": [
+        "Exact activity-specific match should outrank generic livelihood schemes.",
+        "A scheme with a known hard exclusion must score 0.",
+        "A scheme requiring unknown eligibility should be labeled 'eligibility not yet confirmed', not 'eligible'.",
+        "State-specific schemes outrank national generic schemes when the user's activity and state match exactly.",
+        "Component-specific schemes should not be surfaced merely because a broad category word matches."
+      ]
+    },
+    "question_policy": {
+      "max_questions_per_turn": 2,
+      "ask_only_if_material": true,
+      "priority": [
+        "hard_exclusion_fact",
+        "location",
+        "activity",
+        "beneficiary_type",
+        "age",
+        "income",
+        "caste_or_minority",
+        "land_or_project_requirement",
+        "prior_benefit"
+      ],
+      "examples": [
+        {
+          "user": "mo business pain loan darkar",
+          "ask": "What kind of business do you run or want to start?"
+        },
+        {
+          "user": "mu machha chasa karibaku chahunchhi",
+          "ask": "Do you already have a pond, or do you want help creating one?"
+        },
+        {
+          "user": "mu duck farm start karibaku chahunchhi",
+          "ask": "Are you planning a semi-commercial duck unit of around 1,000 ducks?"
+        },
+        {
+          "user": "mu chasa bhala karibaku chahunchhi",
+          "ask": "What would help most: irrigation, farm equipment, seeds/inputs, reducing costs, selling produce, or crop protection?"
+        }
+      ]
+    },
+    "language_layer": {
+      "supported_input": "English + Romanized Odia/Hinglish-style mixed language",
+      "normalization": [
+        "lowercase",
+        "unicode_normalization",
+        "punctuation_cleanup",
+        "common spelling variants",
+        "Romanized Odia synonym expansion"
+      ],
+      "starter_lexicon": {
+        "farming": [
+          "chasa",
+          "chasha",
+          "kheti",
+          "kheti kariba",
+          "chasa kariba"
+        ],
+        "business": [
+          "business",
+          "byabasa",
+          "byabasaya",
+          "dokan",
+          "dukana"
+        ],
+        "loan": [
+          "loan",
+          "lon",
+          "rin",
+          "rina",
+          "paisa darkar",
+          "taka darkar"
+        ],
+        "subsidy": [
+          "subsidy",
+          "sahajya",
+          "sarkari sahajya"
+        ],
+        "duck": [
+          "duck",
+          "duck farm",
+          "duck farming",
+          "bataka",
+          "bataka palana",
+          "bataka chasa"
+        ],
+        "fish": [
+          "fish",
+          "fish farming",
+          "machha",
+          "machha chasa",
+          "matsya"
+        ],
+        "goat": [
+          "goat",
+          "goat farming",
+          "goat rearing",
+          "chaga",
+          "chhag",
+          "bakri palan"
+        ],
+        "sheep": [
+          "sheep",
+          "sheep farming",
+          "menda",
+          "sheep palan"
+        ],
+        "irrigation": [
+          "irrigation",
+          "drip",
+          "sprinkler",
+          "pani",
+          "jala",
+          "jalasechana"
+        ],
+        "coconut": [
+          "coconut",
+          "narial",
+          "nariyal",
+          "nadia",
+          "coconut tree"
+        ],
+        "artisan": [
+          "artisan",
+          "craft",
+          "karigar",
+          "silpi",
+          "traditional trade"
+        ]
+      }
+    }
+  }
+}

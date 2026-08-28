@@ -1,0 +1,35 @@
+// Districts of Odisha
+export const ODISHA_DISTRICTS = [
+  'Angul',
+  'Balasore',
+  'Bargarh',
+  'Bhadrak',
+  'Bolangir',
+  'Boudh',
+  'Cuttack',
+  'Deogarh',
+  'Dhenkanal',
+  'Gajapati',
+  'Ganjam',
+  'Jagatsinghpur',
+  'Jajpur',
+  'Jharsuguda',
+  'Kalahandi',
+  'Kandhamal',
+  'Kendrapara',
+  'Keonjhar',
+  'Khordha',
+  'Koraput',
+  'Malkangiri',
+  'Mayurbhanj',
+  'Nabarangpur',
+  'Nayagarh',
+  'Nuapada',
+  'Puri',
+  'Rayagada',
+  'Sambalpur',
+  'Subarnapur',
+  'Sundargarh'
+] as const;
+
+export type OdishaDistrict = typeof ODISHA_DISTRICTS[number];

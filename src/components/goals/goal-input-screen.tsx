@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, type ComponentType } from 'react';
+import { useEffect, useState, type ComponentType } from 'react';
+import Link from 'next/link';
 import {
   goalInputTranslations,
   LANGUAGE_LABELS,
@@ -117,6 +118,14 @@ const goalOptions: GoalOption[] = [
   { id: 'insurance', translationKey: 'insurance', icon: FinancialIcon },
 ];
 
+const rotatingGoalPlaceholders = [
+  'e.g. "I want to protect my crop from bad weather"',
+  'e.g. "I need a tractor for my field"',
+  'e.g. "I want to sell my vegetables at a better price"',
+  'e.g. "I am a woman and want to start a small dairy"',
+  'e.g. "I want to start fish farming in a pond"',
+];
+
 
 interface GoalInputScreenProps {
   language: LanguageCode;
@@ -183,6 +192,9 @@ export default function GoalInputScreen({
   location,
 }: GoalInputScreenProps) {
   const [goalText, setGoalText] = useState('');
+  const [placeholderIndex, setPlaceholderIndex] = useState(0);
+  const [isPlaceholderVisible, setIsPlaceholderVisible] = useState(true);
+  const [isPlaceholderRotationStopped, setIsPlaceholderRotationStopped] = useState(false);
   const [selectedGoalId, setSelectedGoalId] = useState<string | null>(null);
   const [actionNotice, setActionNotice] = useState('');
   const [conversationText, setConversationText] = useState('');
@@ -192,6 +204,25 @@ export default function GoalInputScreen({
   const [showOtherAnswer, setShowOtherAnswer] = useState(false);
   const [finalResult, setFinalResult] = useState<MatcherResult | null>(null);
   const copy = goalInputTranslations[language];
+
+  useEffect(() => {
+    if (language !== 'en' || isPlaceholderRotationStopped) return;
+
+    let fadeTimeout: number | undefined;
+    const interval = window.setInterval(() => {
+      setIsPlaceholderVisible(false);
+      fadeTimeout = window.setTimeout(() => {
+        setPlaceholderIndex((currentIndex) => (currentIndex + 1) % rotatingGoalPlaceholders.length);
+        setIsPlaceholderVisible(true);
+      }, 200);
+    }, 3000);
+
+    return () => {
+      window.clearInterval(interval);
+      if (fadeTimeout) window.clearTimeout(fadeTimeout);
+    };
+  }, [isPlaceholderRotationStopped, language]);
+
   function runIntelligence(text: string, context: QuestionSelectorContext) {
     const nextContext: QuestionSelectorContext = {
       ...context,
@@ -275,18 +306,23 @@ export default function GoalInputScreen({
             <MenuIcon />
           </button>
           <span className="text-[20px] font-bold tracking-[0.06em] lg:text-[22px]">UMANG</span>
-          <div className="flex items-center justify-self-end text-[#222]">
-            <GlobeIcon />
-            <select
-              aria-label="Language"
-              className="h-9 appearance-none bg-white pl-1.5 pr-4 text-xs font-medium text-[#222] outline-none"
-              onChange={(event) => onLanguageChange(event.target.value as LanguageCode)}
-              value={language}
-            >
-              <option value="en">{LANGUAGE_LABELS.en}</option>
-              <option value="or">{LANGUAGE_LABELS.or}</option>
-            </select>
-            <DownIcon className="-ml-3 h-3.5 w-3.5 pointer-events-none" />
+          <div className="flex items-center justify-self-end gap-2 text-[#222]">
+            <Link className="text-xs font-semibold text-[#2458a6] underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2458a6]" href="/schemes">
+              Browse schemes
+            </Link>
+            <div className="flex items-center">
+              <GlobeIcon />
+              <select
+                aria-label="Language"
+                className="h-9 appearance-none bg-white pl-1.5 pr-4 text-xs font-medium text-[#222] outline-none"
+                onChange={(event) => onLanguageChange(event.target.value as LanguageCode)}
+                value={language}
+              >
+                <option value="en">{LANGUAGE_LABELS.en}</option>
+                <option value="or">{LANGUAGE_LABELS.or}</option>
+              </select>
+              <DownIcon className="-ml-3 h-3.5 w-3.5 pointer-events-none" />
+            </div>
           </div>
         </header>
 
@@ -303,9 +339,16 @@ export default function GoalInputScreen({
           <div className="relative mx-auto mt-4 max-w-[900px] lg:mt-4">
             <textarea
               aria-label="Describe what you are trying to achieve"
-              className="h-[86px] w-full resize-none rounded-[14px] border border-[#333] bg-white px-4 py-3 text-[15px] leading-6 text-[#161616] outline-none transition placeholder:text-[#666] focus:border-[#205aa5] focus:ring-2 focus:ring-[#dce9f8] lg:h-[94px] lg:px-5 lg:py-3 lg:text-base"
-              onChange={(event) => setGoalText(event.target.value)}
-              placeholder={copy.placeholder}
+              className={`h-[86px] w-full resize-none rounded-[14px] border border-[#333] bg-white px-4 py-3 text-[15px] leading-6 text-[#161616] outline-none transition placeholder:text-[#666] placeholder:transition-opacity placeholder:duration-200 focus:border-[#205aa5] focus:ring-2 focus:ring-[#dce9f8] lg:h-[94px] lg:px-5 lg:py-3 lg:text-base ${
+                isPlaceholderVisible ? 'placeholder:opacity-100' : 'placeholder:opacity-0'
+              }`}
+              onChange={(event) => {
+                if (event.target.value && !isPlaceholderRotationStopped) {
+                  setIsPlaceholderRotationStopped(true);
+                }
+                setGoalText(event.target.value);
+              }}
+              placeholder={language === 'en' ? rotatingGoalPlaceholders[placeholderIndex] : copy.placeholder}
               value={goalText}
             />
           </div>

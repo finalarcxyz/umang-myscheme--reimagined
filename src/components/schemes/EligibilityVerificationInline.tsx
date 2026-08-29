@@ -50,7 +50,7 @@ interface EligibilityQuestion {
 }
 
 function inputDefaultValue(value: SchemeEligibilityAnswer | undefined): string | number {
-  return typeof value === 'boolean' ? '' : value ?? '';
+  return typeof value === 'number' && Number.isNaN(value) ? '' : typeof value === 'boolean' ? '' : value ?? '';
 }
 
 export default function EligibilityVerificationInline({
@@ -68,6 +68,7 @@ export default function EligibilityVerificationInline({
   const [answers, setAnswers] = useState<SchemeEligibilityAnswers>({});
   const [answeredFields, setAnsweredFields] = useState<Set<string>>(() => new Set());
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [numericAnswer, setNumericAnswer] = useState('');
   const [eligibilityResult, setEligibilityResult] = useState<{
     status: EligibilityStatus;
     reasons: string[];
@@ -146,6 +147,7 @@ export default function EligibilityVerificationInline({
       next.add(currentQuestion.field);
       return next;
     });
+    setNumericAnswer('');
 
     if (currentQuestionIndex < requiredQuestions.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1);
@@ -153,6 +155,12 @@ export default function EligibilityVerificationInline({
       // All questions answered, evaluate eligibility
       evaluateEligibilityForScheme();
     }
+  };
+
+  const submitNumericAnswer = () => {
+    const value = Number(numericAnswer);
+    if (!currentQuestion || !numericAnswer.trim() || Number.isNaN(value)) return;
+    handleAnswer(value);
   };
 
   // Evaluate eligibility using the matcher's logic
@@ -225,7 +233,14 @@ export default function EligibilityVerificationInline({
 
   // Handle going back to questions
   const handleBackToQuestions = () => {
-    setCurrentQuestionIndex((previous) => Math.max(0, previous - 1));
+    const previousQuestionIndex = Math.max(0, currentQuestionIndex - 1);
+    const previousQuestion = requiredQuestions[previousQuestionIndex];
+    setNumericAnswer(
+      previousQuestion?.inputType === 'number'
+        ? String(inputDefaultValue(answers[previousQuestion.field]))
+        : ''
+    );
+    setCurrentQuestionIndex(previousQuestionIndex);
   };
 
   // Render loading state
@@ -278,18 +293,18 @@ export default function EligibilityVerificationInline({
                   <input
                     key={currentQuestion.id}
                     type={currentQuestion.inputType === 'number' ? 'number' : 'text'}
-                    defaultValue={inputDefaultValue(answers[currentQuestion.field])}
+                    value={numericAnswer}
                     placeholder={currentQuestion.placeholder || (language === 'or' ? 'ତଥ୍ୟ ଧାରଣ କରନ୍ତୁ' : 'Enter your answer')}
                     className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     min={currentQuestion.min}
                     max={currentQuestion.max}
                     step={currentQuestion.step}
-                    onChange={(e) => {
-                      let value: SchemeEligibilityAnswer = e.target.value;
-                      if (currentQuestion.inputType === 'number') {
-                        value = parseFloat(e.target.value);
+                    onChange={(event) => setNumericAnswer(event.target.value)}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter') {
+                        event.preventDefault();
+                        submitNumericAnswer();
                       }
-                      handleAnswer(value);
                     }}
                   />
                   {currentQuestion.unit && (
@@ -308,8 +323,8 @@ export default function EligibilityVerificationInline({
                 </button>
 
                 <button
-                  onClick={() => handleAnswer('')}
-                  disabled={!(currentQuestion.inputType === 'number' || currentQuestion.options)}
+                  onClick={currentQuestion.inputType === 'number' ? submitNumericAnswer : () => handleAnswer('')}
+                  disabled={currentQuestion.inputType === 'number' ? !numericAnswer.trim() || Number.isNaN(Number(numericAnswer)) : !currentQuestion.options}
                   className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                 >
                   {language === 'or' ? 'ସମାଧାନ' : 'Submit'}

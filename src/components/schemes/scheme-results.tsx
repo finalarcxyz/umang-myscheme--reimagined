@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import SchemeDetail from '@/components/schemes/scheme-detail';
 import type { LanguageCode } from '@/lib/language/language';
 import catalog from '@/lib/schemes/scheme_catalog.json' with { type: 'json' };
@@ -180,6 +181,7 @@ export default function SchemeResults({ goal, language, location, onEditGoal, re
         location={location}
         match={selectedScheme}
         onBack={() => setSelectedSchemeId(null)}
+        onDashboard={onEditGoal}
         schemeId={selectedSchemeId}
       />
     );
@@ -189,8 +191,11 @@ export default function SchemeResults({ goal, language, location, onEditGoal, re
     <main className="min-h-screen bg-[#f5f8fc] text-[#111]">
       <header className="border-b border-[#dce3eb] bg-white">
         <div className="mx-auto flex min-h-16 max-w-[1180px] items-center justify-between gap-4 px-5 sm:px-8 lg:px-10">
-          <span className="text-xl font-bold tracking-[0.08em] text-[#123f76]">UMANG</span>
+          <button aria-label="Go to dashboard" className="text-xl font-bold tracking-[0.08em] text-[#123f76] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2458a6]" onClick={onEditGoal} type="button">UMANG</button>
           <div className="flex items-center gap-4">
+            <Link className="text-sm font-semibold text-[#2458a6] underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2458a6]" href="/schemes">
+              Browse schemes
+            </Link>
             {location ? (
               <span className="hidden text-sm text-[#536579] sm:inline">
                 {location.district}, {location.state}

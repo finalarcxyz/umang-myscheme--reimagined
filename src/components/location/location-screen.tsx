@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import GoalInputScreen from '@/components/goals/goal-input-screen';
 import {
   getLanguageForState,
@@ -473,25 +474,30 @@ export default function LocationScreen() {
     <main className="min-h-screen flex-1 bg-white px-4 py-4 sm:px-8">
       <header className="mx-auto flex h-11 w-full max-w-[1080px] items-center justify-between">
         <UmangLogo />
-        <div className="relative flex h-9 items-center rounded-lg border border-[#c9d5e4] bg-white pl-3 pr-2 text-[#24466e] shadow-sm">
-          <GlobeIcon />
-          <select
-            aria-label="Language"
-            className="h-full appearance-none bg-transparent pl-2 pr-5 text-xs font-semibold text-[#24466e] outline-none"
-            onChange={(event) => setLanguage(event.target.value as LanguageCode)}
-            value={language}
-          >
-            <option value="en">{LANGUAGE_LABELS.en}</option>
-            <option value="or">{LANGUAGE_LABELS.or}</option>
-          </select>
-          <svg
-            aria-hidden="true"
-            className="pointer-events-none absolute right-2 h-3 w-3"
-            fill="none"
-            viewBox="0 0 12 12"
-          >
-            <path d="m3 4.5 3 3 3-3" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+        <div className="flex items-center gap-3">
+          <Link className="text-sm font-semibold text-[#2458a6] underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2458a6]" href="/schemes">
+            Browse schemes
+          </Link>
+          <div className="relative flex h-9 items-center rounded-lg border border-[#c9d5e4] bg-white pl-3 pr-2 text-[#24466e] shadow-sm">
+            <GlobeIcon />
+            <select
+              aria-label="Language"
+              className="h-full appearance-none bg-transparent pl-2 pr-5 text-xs font-semibold text-[#24466e] outline-none"
+              onChange={(event) => setLanguage(event.target.value as LanguageCode)}
+              value={language}
+            >
+              <option value="en">{LANGUAGE_LABELS.en}</option>
+              <option value="or">{LANGUAGE_LABELS.or}</option>
+            </select>
+            <svg
+              aria-hidden="true"
+              className="pointer-events-none absolute right-2 h-3 w-3"
+              fill="none"
+              viewBox="0 0 12 12"
+            >
+              <path d="m3 4.5 3 3 3-3" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
         </div>
       </header>
 

@@ -220,12 +220,16 @@ export default function SchemeResults({ goal, language, location, onEditGoal, re
           <>
             <section className="mt-7">
               <h2 className="text-xl font-bold text-[#14283f] sm:text-2xl">
-                {strongest.relevance === 'HIGH'
+                {result.matchTier === 'closest'
+                  ? 'Closest available schemes'
+                  : strongest.relevance === 'HIGH'
                   ? 'We found highly relevant support for you'
                   : 'We found relevant support for you'}
               </h2>
               <p className="mt-1.5 text-sm leading-6 text-[#5a6878]">
-                These schemes are ranked from the goal and context you provided.
+                {result.matchTier === 'closest' && result.rawActivityHint
+                  ? `We do not have a scheme specifically for ${result.rawActivityHint} yet. These are the closest options based on your goal and context. This does not mean government support does not exist; this prototype catalogue is intentionally limited.`
+                  : 'These schemes are ranked from the goal and context you provided.'}
               </p>
               <div className="mt-4">
                 <SchemeCard featured onSelect={setSelectedSchemeId} scheme={strongest} viewLabel={language === 'or' ? 'ଯୋଜନା ଦେଖନ୍ତୁ' : 'View scheme'} />
@@ -247,8 +251,19 @@ export default function SchemeResults({ goal, language, location, onEditGoal, re
           <section className="mt-7 rounded-2xl border border-[#d8e0e8] bg-white px-6 py-10 text-center">
             <h2 className="text-xl font-bold text-[#263b52]">We couldn’t find a strong match yet.</h2>
             <p className="mx-auto mt-2 max-w-[580px] text-sm leading-6 text-[#5a6878]">
-              Try describing what you want to start, improve, finance, or protect.
+              There is no relevant match in our current catalogue. This does not mean government support does not exist; this prototype&apos;s catalogue is intentionally limited, and more schemes and use cases can be added over time.
             </p>
+            <p className="mx-auto mt-3 max-w-[580px] text-sm leading-6 text-[#536579]">
+              This V1 focuses on selected livestock, farming, crop-protection, farmer-support, and small-business needs.
+            </p>
+            <div className="mx-auto mt-5 max-w-[580px] rounded-xl border border-[#d8e3ef] bg-[#f8fbff] px-4 py-3 text-left">
+              <p className="text-sm font-bold text-[#263b52]">Try a supported goal next</p>
+              <ul className="mt-1.5 space-y-1 text-sm leading-6 text-[#536579]">
+                <li>Try: “I want to start goat farming”</li>
+                <li>Or: “I want to start duck farming”</li>
+                <li>Or: “I want to improve my farming”</li>
+              </ul>
+            </div>
             <button className="mt-5 rounded-lg bg-[#0b438f] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#073975]" onClick={onEditGoal} type="button">
               Edit your goal
             </button>

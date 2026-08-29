@@ -1,1 +1,4 @@
 @AGENTS.md
+Never write a claim about what code does without the exact command output next to it in the same message. If you don't have that output in front of you right now, write "unverified," not an assertion.
+Before writing any claim, check it against what you already found earlier in this session. If it conflicts, say so explicitly and quote both — don't silently overwrite the earlier finding.
+Distinguish "value is read" from "value is actually evaluated against a requirement" — you've collapsed these twice now (landStatus is read for an undefined-check, not evaluated against the scheme's actual land requirement; that's not the same as "used").

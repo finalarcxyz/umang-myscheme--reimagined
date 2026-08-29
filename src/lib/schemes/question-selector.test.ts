@@ -15,6 +15,39 @@ test('broad business loan asks for the business activity', () => {
   if (result.shouldAsk) assert.equal(result.field, 'business/activity');
 });
 
+test('every catalogue-backed common goal starts a supported discovery journey', () => {
+  const commonGoals = [
+    'Start a business',
+    'Improve my farming',
+    'Start goat farming',
+    'Start duck farming',
+    'Get farmer pension',
+    'Get crop insurance',
+  ];
+
+  for (const text of commonGoals) {
+    const result = matchSchemes({ text, state: 'Odisha' });
+    const next = selectNextQuestion(result, { text, state: 'Odisha' });
+    assert.ok(result.rankedSchemes.length > 0 || next.shouldAsk, text);
+    if (text === 'Start a business') {
+      assert.equal(next.shouldAsk, true, text);
+      if (next.shouldAsk) assert.equal(next.field, 'business/activity');
+    }
+  }
+});
+
+test('unsupported follow-up activity is not asked again', () => {
+  const result = selectNextQuestion(
+    matchSchemes({
+      text: 'I want to start a toothpaste business toothpaste',
+      existingActivity: 'toothpaste',
+      state: 'Odisha',
+    }),
+    { text: 'I want to start a toothpaste business toothpaste', existingActivity: 'toothpaste', state: 'Odisha' }
+  );
+  assert.deepEqual(result, { shouldAsk: false });
+});
+
 test('fish farming asks whether a pond exists or must be created', () => {
   const result = select('mu machha chasa karibaku chahunchhi');
   assert.equal(result.shouldAsk, true);

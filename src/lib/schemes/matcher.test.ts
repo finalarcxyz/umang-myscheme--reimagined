@@ -1,7 +1,9 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import catalog from './scheme_catalog.json' with { type: 'json' };
+import eligibilityCatalog from './scheme_eligibility.json' with { type: 'json' };
 // @ts-expect-error Node's type-stripping test runner requires the explicit TypeScript extension.
-import { matchSchemes } from './matcher.ts';
+import { evaluateEligibility, matchSchemes, resolveActivity, type Scheme } from './matcher.ts';
 
 interface Scenario {
   text: string;
@@ -93,9 +95,123 @@ test('broad business credit request asks for activity instead of guessing', () =
   assert.deepEqual(result.rankedSchemes, []);
 });
 
+test('unsupported toothpaste follow-up stays unresolved and never becomes small business', () => {
+  const initial = matchSchemes({ text: 'I want to start a toothpaste business' });
+  assert.equal(initial.intent.activity, undefined);
+  assert.ok(initial.missingContext.includes('business_activity'));
+
+  const answered = matchSchemes({
+    text: 'I want to start a toothpaste business toothpaste',
+    existingActivity: 'toothpaste',
+    state: 'Odisha',
+  });
+  assert.equal(answered.intent.activity, undefined);
+  assert.equal(answered.intent.rawActivityHint, 'toothpaste');
+  assert.equal(answered.matchTier, answered.rankedSchemes.length > 0 ? 'closest' : 'none');
+  assert.ok(!answered.rankedSchemes.some((scheme) => ['msy', 'nssw', 'mcfnsfdc'].includes(scheme.id) && scheme.relevance !== 'LOW'));
+});
+
+test('unsupported street-food shop does not surface an unrelated livestock scheme', () => {
+  const result = matchSchemes({
+    text: 'I want to start street food shop',
+    existingActivity: 'street food',
+    state: 'Odisha',
+  });
+  assert.equal(result.intent.activity, undefined);
+  assert.equal(result.intent.rawActivityHint, 'street food');
+  assert.equal(result.matchTier, 'none');
+  assert.deepEqual(result.rankedSchemes, []);
+});
+
+test('unsupported farming activity remains unresolved', () => {
+  const result = matchSchemes({ text: 'I want to start an ostrich farm', state: 'Odisha' });
+  assert.equal(result.intent.activity, undefined);
+  assert.equal(result.intent.rawActivityHint, 'ostrich');
+  assert.notEqual(result.matchTier, 'exact');
+});
+
+test('out-of-scope rent request produces an honest no-match tier', () => {
+  const result = matchSchemes({ text: 'I need help paying rent' });
+  assert.equal(result.matchTier, 'none');
+  assert.deepEqual(result.rankedSchemes, []);
+});
+
+test('activity resolver only returns catalogue-backed activities', () => {
+  assert.deepEqual(resolveActivity('goat farming'), { activity: 'goat_farming' });
+  assert.deepEqual(resolveActivity('toothpaste business'), { rawActivityHint: 'toothpaste' });
+});
+
 test('known hard age exclusion is applied independently from relevance', () => {
   const result = matchSchemes({ text: 'I want a farmer pension', age: 50 });
   assert.ok(!result.rankedSchemes.some((scheme) => scheme.id === 'pmkmdy'));
+});
+
+test('structured eligibility excludes prior subsidy recipients from ssgsf', () => {
+  const scheme = catalog.schemes.find((candidate) => candidate.id === 'ssgsf') as Scheme | undefined;
+  assert.ok(scheme);
+
+  const result = evaluateEligibility(
+    { text: 'I want to start goat farming', state: 'Odisha' },
+    { goal: 'start_new_activity', activity: 'goat_farming' },
+    scheme,
+    { priorSubsidy: true }
+  );
+
+  assert.equal(result.status, 'EXCLUDED');
+  assert.match(result.reasons[0] ?? '', /previous similar subsidy recipient/i);
+});
+
+test('structured eligibility enforces the Aadhaar requirement', () => {
+  const scheme = catalog.schemes.find((candidate) => candidate.id === 'ssgsf') as Scheme | undefined;
+  assert.ok(scheme);
+
+  const result = evaluateEligibility(
+    { text: 'I want to start goat farming', state: 'Odisha' },
+    {},
+    scheme,
+    { aadhaar: false }
+  );
+
+  assert.equal(result.status, 'EXCLUDED');
+  assert.match(result.reasons[0] ?? '', /aadhaar linked/i);
+});
+
+test('ssgsf walkthrough keeps question order stable when revising an answer', () => {
+  const scheme = catalog.schemes.find((candidate) => candidate.id === 'ssgsf') as Scheme | undefined;
+  assert.ok(scheme);
+
+  const criteria = (eligibilityCatalog as { ssgsf: { criteria: Array<{ field?: string; question?: object }> } }).ssgsf.criteria;
+  const questionFields = criteria
+    .filter((criterion) => criterion.field && criterion.question)
+    .map((criterion) => criterion.field as string);
+  assert.deepEqual(questionFields, [
+    'newProject10Plus1',
+    'aadhaar',
+    'canArrangeRemainingProjectCost',
+    'priorSubsidy',
+  ]);
+
+  const answers = {
+    newProject10Plus1: true,
+    aadhaar: true,
+    canArrangeRemainingProjectCost: true,
+    priorSubsidy: false,
+  } as const;
+  let currentQuestionIndex = questionFields.length - 1;
+
+  currentQuestionIndex = Math.max(0, currentQuestionIndex - 2);
+  assert.equal(questionFields[currentQuestionIndex], 'aadhaar');
+
+  const revisedAnswers = { ...answers, aadhaar: false };
+  const result = evaluateEligibility(
+    { text: 'I want to start goat farming', state: 'Odisha' },
+    {},
+    scheme,
+    revisedAnswers
+  );
+
+  assert.equal(result.status, 'EXCLUDED');
+  assert.match(result.reasons[0] ?? '', /aadhaar linked/i);
 });
 
 test('explicit poultry, goat, and duck activities are recognized', () => {
@@ -105,6 +221,7 @@ test('explicit poultry, goat, and duck activities are recognized', () => {
 
   const goat = matchSchemes({ text: 'I want to start goat farming' });
   assert.equal(goat.intent.activity, 'goat_farming');
+  assert.equal(goat.matchTier, 'exact');
   assert.equal(goat.rankedSchemes[0]?.id, 'ssgsf');
 
   const duck = matchSchemes({ text: 'I want to start duck farming' });

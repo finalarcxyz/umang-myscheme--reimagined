@@ -1,4 +1,6 @@
 import catalog from './scheme_catalog.json' with { type: 'json' };
+import eligibilityCatalog from './scheme_eligibility.json' with { type: 'json' };
+import schemeDetails from './scheme_details.json' with { type: 'json' };
 // @ts-expect-error Node's type-stripping test runner requires the explicit TypeScript extension.
 import { analyzeVocabulary, normalizeUserText, type VocabularyAnalysis } from './vocabulary.ts';
 
@@ -15,6 +17,13 @@ export interface MatcherInput {
   caste?: string;
   minorityStatus?: boolean;
   existingActivity?: string;
+  priorSubsidy?: boolean;
+  priorLoan?: boolean;
+  pondStatus?: string;
+  projectSize?: number;
+  aadhaar?: boolean;
+  /** @deprecated Structured eligibility uses scheme-specific answers instead. */
+  education?: string;
 }
 
 /** Common stopwords to ignore when guessing a business type */
@@ -31,37 +40,16 @@ const STOPWORDS = new Set([
 
 /** Generic words that should not be considered as business type hints */
 const GENERIC_WORDS = new Set([
-  'mo', 'new', 'nua', 'some', 'any', 'each', 'every', 'all', 'no', 'none', 'many', 'much', 'few', 'several'
+  'mo', 'new', 'nua', 'some', 'any', 'each', 'every', 'all', 'no', 'none', 'many', 'much', 'few', 'several',
+  'start', 'improve', 'grow', 'want', 'need', 'help', 'support'
 ]);
-
-/**
- * Attempts to guess a specific business type from the text.
- * Returns a business type noun if a pattern like "<word> business" is found
- * and the word is not a stopword and not a generic word.
- * Returns undefined if no clear business type is detectable.
- */
-function guessBusinessType(text: string): string | undefined {
-  const words = text.split(/\s+/);
-  for (let i = 0; i < words.length - 1; i++) {
-    if (words[i + 1] !== 'business') continue;
-    const candidate = words[i];
-    if (candidate.length === 0) return undefined;
-    // Ignore stopwords
-    if (STOPWORDS.has(candidate)) continue;
-    // Ignore generic words
-    if (GENERIC_WORDS.has(candidate)) continue;
-    // TODO: optionally ignore known concepts (e.g., 'goat', 'fish') to avoid overriding explicit detections
-    // For simplicity, we accept any non-stopword as a business type hint.
-    return candidate;
-  }
-  return undefined;
-}
 
 export interface ExtractedIntent {
   goal?: string;
   need?: string;
   activity?: string;
   beneficiary?: string;
+  rawActivityHint?: string;
 }
 
 export type Relevance = 'HIGH' | 'MEDIUM' | 'LOW';
@@ -87,9 +75,13 @@ export interface MatcherResult {
   intent: ExtractedIntent;
   missingContext: string[];
   rankedSchemes: RankedScheme[];
+  matchTier: MatchTier;
+  rawActivityHint?: string;
 }
 
-interface Scheme {
+export type MatchTier = 'exact' | 'closest' | 'none';
+
+export interface Scheme {
   id: string;
   name: string;
   scope: string[];
@@ -103,13 +95,57 @@ interface Scheme {
   questions: string[];
 }
 
-interface EligibilityEvaluation {
+export interface EligibilityEvaluation {
   status: EligibilityStatus;
   contextScore: number;
   reasons: string[];
 }
 
+export type SchemeEligibilityAnswer = string | number | boolean;
+
+/** Answers collected for one scheme-verification session. Reset this record when the scheme changes. */
+export type SchemeEligibilityAnswers = Record<string, SchemeEligibilityAnswer>;
+
+type EligibilityCriterionType =
+  | 'range'
+  | 'threshold'
+  | 'enum'
+  | 'exclusion'
+  | 'boolean_required'
+  | 'info_only'
+  | 'manual_verification_note';
+
+interface EligibilityCriterion {
+  source_text: string;
+  type: EligibilityCriterionType;
+  field?: string;
+  derived_from?: 'location.state' | 'scheme_details.sourceStatus';
+  min?: number | null;
+  max?: number | null;
+  min_inclusive?: boolean;
+  max_inclusive?: boolean;
+  allowed?: SchemeEligibilityAnswer[];
+  required?: boolean;
+  operator?: 'equals' | 'in';
+  value?: SchemeEligibilityAnswer;
+  values?: SchemeEligibilityAnswer[];
+}
+
+interface StructuredEligibilityRecord {
+  id: string;
+  criteria: EligibilityCriterion[];
+}
+
+interface SchemeDetailStatus {
+  id: string;
+  sourceStatus: string;
+}
+
 const schemes = catalog.schemes as Scheme[];
+const structuredEligibilityById = eligibilityCatalog as unknown as Record<string, StructuredEligibilityRecord>;
+const schemeDetailStatusById = new Map(
+  (schemeDetails.schemes as SchemeDetailStatus[]).map((scheme) => [scheme.id, scheme.sourceStatus])
+);
 const weights = catalog.taxonomy.ranking.weights;
 const ACTIVITY_RELATIONS: Record<string, string[]> = {
   duck_farming: ['duck_farming', 'duckery', 'duck', 'poultry', 'animal_husbandry', 'livestock'],
@@ -156,9 +192,59 @@ const ACTIVITY_RELATIONS: Record<string, string[]> = {
   education: ['education', 'student', 'skill_training'],
 };
 
-function hasPhrase(text: string, phrase: string): boolean {
-  const normalizedPhrase = normalizeText(phrase);
-  return normalizedPhrase.length > 1 && ` ${text} `.includes(` ${normalizedPhrase} `);
+function normalizeActivityTerm(value: string): string {
+  return normalizeUserText(value).replaceAll(' ', '_');
+}
+
+const supportedActivityTerms = new Set([
+  ...Object.keys(ACTIVITY_RELATIONS),
+  ...schemes.flatMap((scheme) => scheme.activities),
+].map(normalizeActivityTerm));
+
+const activityAliases = new Map<string, string>();
+for (const [canonical, aliases] of Object.entries(ACTIVITY_RELATIONS)) {
+  const normalizedCanonical = normalizeActivityTerm(canonical);
+  if (!supportedActivityTerms.has(normalizedCanonical)) continue;
+  activityAliases.set(normalizedCanonical, normalizedCanonical);
+  for (const alias of aliases) {
+    const normalizedAlias = normalizeActivityTerm(alias);
+    if (!activityAliases.has(normalizedAlias)) activityAliases.set(normalizedAlias, normalizedCanonical);
+  }
+}
+for (const term of supportedActivityTerms) {
+  if (!activityAliases.has(term)) activityAliases.set(term, term);
+}
+
+const ACTIVITY_MARKERS = new Set(['business', 'farm', 'farming', 'activity', 'enterprise', 'shop', 'store']);
+
+/** Resolve only catalogue-backed activity terms; unknown terms remain a raw hint. */
+export function resolveActivity(candidateTerm: string): { activity?: string; rawActivityHint?: string } {
+  const normalized = normalizeActivityTerm(candidateTerm);
+  if (!normalized) return {};
+  const resolved = activityAliases.get(normalized);
+  if (resolved) return { activity: resolved };
+
+  const stripped = normalized.split('_').filter((word) => !ACTIVITY_MARKERS.has(word) && !GENERIC_WORDS.has(word));
+  const strippedTerm = stripped.join('_');
+  const strippedResolved = activityAliases.get(strippedTerm);
+  if (strippedResolved) return { activity: strippedResolved };
+
+  return { rawActivityHint: strippedTerm.replaceAll('_', ' ') || normalized.replaceAll('_', ' ') };
+}
+
+function activityHintFromText(text: string): string | undefined {
+  const words = normalizeActivityTerm(text).split('_');
+  for (let index = 1; index < words.length; index += 1) {
+    if (!ACTIVITY_MARKERS.has(words[index])) continue;
+    const candidateWords: string[] = [];
+    for (let candidateIndex = index - 1; candidateIndex >= 0; candidateIndex -= 1) {
+      const candidate = words[candidateIndex];
+      if (GENERIC_WORDS.has(candidate) || STOPWORDS.has(candidate)) break;
+      candidateWords.unshift(candidate);
+    }
+    if (candidateWords.length > 0) return candidateWords.join('_');
+  }
+  return undefined;
 }
 
 export const normalizeText = normalizeUserText;
@@ -191,25 +277,37 @@ function extractIntent(text: string, input: MatcherInput, vocabulary: Vocabulary
   const hasToolkit = /\b(toolkit|tools|hand tools)\b/.test(text);
   const isWoman = /\b(woman|women|female|mahila)\b/.test(text) || normalizeText(input.gender ?? '') === 'female';
 
+  const directCandidates = [
+    isDuck && 'duck',
+    isPoultry && 'poultry_farming',
+    isFish && 'fish_farming',
+    isGoat && 'goat_farming',
+    isSheep && 'sheep_farming',
+    isIrrigation && 'irrigation',
+    isSell && isCrop && 'farm_produce_marketing',
+    (isInsurance || isCropProtection) && isCrop && 'notified_crop_farming',
+    isMachine && 'farm_mechanization',
+    isTailoring && 'tailoring',
+    isArtisan && 'artisan_trade',
+    concepts.has('dairy') && 'dairy',
+    concepts.has('education') && 'education',
+    isCrop && !isBusiness && (!activityHintFromText(text) || !isStart) && 'crop_farming',
+  ].filter((candidate): candidate is string => Boolean(candidate));
+
   let activity: string | undefined;
-  if (isDuck) activity = 'duck_farming';
-  else if (isPoultry) activity = 'poultry_farming';
-  else if (isFish) activity = 'fish_farming';
-  else if (isGoat) activity = 'goat_farming';
-  else if (isSheep) activity = 'sheep_farming';
-  else if (isIrrigation) activity = 'irrigation';
-  else if (isSell && isCrop) activity = 'farm_produce_marketing';
-  else if ((isInsurance || isCropProtection) && isCrop) activity = 'notified_crop_farming';
-  else if (isMachine) activity = 'farm_mechanization';
-  else if (isTailoring) activity = 'tailoring';
-  else if (isArtisan) activity = 'artisan_trade';
-  else if (concepts.has('dairy')) activity = 'dairy';
-  else if (concepts.has('education')) activity = 'education';
-  else if (isBusiness && !activity) {
-    const guessed = guessBusinessType(vocabulary.normalizedText);
-    if (guessed) activity = 'small_business';
+  for (const candidate of directCandidates) {
+    const resolved = resolveActivity(candidate).activity;
+    if (resolved) {
+      activity = resolved;
+      break;
+    }
   }
-  else if (isCrop && !isBusiness) activity = 'crop_farming';
+
+  let rawActivityHint: string | undefined;
+  if (!activity) {
+    const candidate = input.existingActivity?.trim() || activityHintFromText(text);
+    if (candidate) rawActivityHint = resolveActivity(candidate).rawActivityHint;
+  }
 
   let need: string | undefined;
   if (hasToolkit && hasLoan) need = 'toolkit_and_credit';
@@ -245,7 +343,7 @@ function extractIntent(text: string, input: MatcherInput, vocabulary: Vocabulary
   else if (/\b(farmer|kisan)\b/.test(text) || activity === 'crop_farming') beneficiary = 'farmer';
   else if (/\b(shg|self help group)\b/.test(text) || input.shgMember) beneficiary = 'shg';
 
-  return { goal, need, activity, beneficiary };
+  return { goal, need, activity, beneficiary, rawActivityHint };
 }
 
 function termsFor(scheme: Scheme): string[] {
@@ -463,9 +561,85 @@ function buildReasons(
   return reasons;
 }
 
-function evaluateEligibility(input: MatcherInput, intent: ExtractedIntent, scheme: Scheme): EligibilityEvaluation {
+function eligibilityValuesEqual(left: SchemeEligibilityAnswer, right: SchemeEligibilityAnswer): boolean {
+  if (typeof left === 'string' && typeof right === 'string') {
+    return normalizeText(left) === normalizeText(right);
+  }
+  return left === right;
+}
+
+function resolveCriterionValue(
+  criterion: EligibilityCriterion,
+  input: MatcherInput,
+  scheme: Scheme,
+  answers: SchemeEligibilityAnswers
+): SchemeEligibilityAnswer | undefined {
+  if (criterion.derived_from === 'location.state') return input.state;
+  if (criterion.derived_from === 'scheme_details.sourceStatus') return schemeDetailStatusById.get(scheme.id);
+  if (!criterion.field) return undefined;
+  if (Object.prototype.hasOwnProperty.call(answers, criterion.field)) return answers[criterion.field];
+
+  const sharedValue = (input as unknown as Record<string, unknown>)[criterion.field];
+  return typeof sharedValue === 'string' || typeof sharedValue === 'number' || typeof sharedValue === 'boolean'
+    ? sharedValue
+    : undefined;
+}
+
+function numericBoundPasses(
+  value: number,
+  bound: number | null | undefined,
+  inclusive: boolean | undefined,
+  side: 'min' | 'max'
+): boolean {
+  if (bound === undefined || bound === null) return true;
+  if (side === 'min') return inclusive === false ? value > bound : value >= bound;
+  return inclusive === false ? value < bound : value <= bound;
+}
+
+function criterionPasses(criterion: EligibilityCriterion, value: SchemeEligibilityAnswer): boolean | undefined {
+  if (criterion.type === 'range' || criterion.type === 'threshold') {
+    if (typeof value !== 'number') return undefined;
+    return numericBoundPasses(value, criterion.min, criterion.min_inclusive, 'min')
+      && numericBoundPasses(value, criterion.max, criterion.max_inclusive, 'max');
+  }
+
+  if (criterion.type === 'enum') {
+    if (!criterion.allowed) return undefined;
+    return criterion.allowed.some((allowed) => eligibilityValuesEqual(value, allowed));
+  }
+
+  if (criterion.type === 'boolean_required') {
+    if (typeof value !== 'boolean' || criterion.required === undefined) return undefined;
+    return value === criterion.required;
+  }
+
+  if (criterion.type === 'exclusion') {
+    if (criterion.operator === 'equals' && criterion.value !== undefined) {
+      return !eligibilityValuesEqual(value, criterion.value);
+    }
+    if (criterion.operator === 'in' && criterion.values) {
+      return !criterion.values.some((excluded) => eligibilityValuesEqual(value, excluded));
+    }
+  }
+
+  return undefined;
+}
+
+function criterionFailureReason(criterion: EligibilityCriterion): string {
+  const label = criterion.source_text.replace(/^\[EXCLUSION\]\s*/i, '');
+  return criterion.type === 'exclusion'
+    ? `Catalog exclusion applies: ${label}.`
+    : `Catalog eligibility requirement not met: ${label}.`;
+}
+
+export function evaluateEligibility(
+  input: MatcherInput,
+  intent: ExtractedIntent,
+  scheme: Scheme,
+  answers: SchemeEligibilityAnswers = {}
+): EligibilityEvaluation {
   const location = locationScore(input, scheme);
-  if (location.excluded || scheme.id === 'visvasi') {
+  if (location.excluded) {
     return {
       status: 'EXCLUDED',
       contextScore: 0,
@@ -473,10 +647,18 @@ function evaluateEligibility(input: MatcherInput, intent: ExtractedIntent, schem
     };
   }
 
-  const facts = [...scheme.eligibility_facts, ...scheme.hard_exclusions].map(normalizeText);
+  const eligibilityRecord = structuredEligibilityById[scheme.id];
+  if (!eligibilityRecord) {
+    return {
+      status: 'UNKNOWN',
+      contextScore: 0,
+      reasons: ['Structured eligibility criteria are unavailable for this scheme.'],
+    };
+  }
+
   const reasons: string[] = [];
-  let knownChecks = 0;
   let matchedChecks = 0;
+  let unresolvedChecks = 0;
 
   const exclude = (reason: string): EligibilityEvaluation => ({
     status: 'EXCLUDED',
@@ -484,70 +666,27 @@ function evaluateEligibility(input: MatcherInput, intent: ExtractedIntent, schem
     reasons: [reason],
   });
 
-  if (input.age !== undefined) {
-    const ranges = facts.flatMap((fact) => [...fact.matchAll(/age\s*(\d+)\s+(?:to\s+)?(\d+)/g)]);
-    for (const match of ranges) {
-      knownChecks += 1;
-      const minimum = Number(match[1]);
-      const maximum = Number(match[2]);
-      if (input.age < minimum || input.age > maximum) return exclude(`Age is outside the cataloged ${minimum}–${maximum} range.`);
-      matchedChecks += 1;
+  for (const criterion of eligibilityRecord.criteria) {
+    if (criterion.type === 'info_only') continue;
+    if (criterion.type === 'manual_verification_note') {
+      unresolvedChecks += 1;
+      continue;
     }
-    const minimumAges = facts.flatMap((fact) => [...fact.matchAll(/age\s*>?=\s*(\d+)/g)]);
-    for (const match of minimumAges) {
-      knownChecks += 1;
-      const minimum = Number(match[1]);
-      if (input.age < minimum) return exclude(`Age is below the cataloged minimum of ${minimum}.`);
-      matchedChecks += 1;
-    }
-  }
 
-  if (input.income !== undefined) {
-    const thresholds = facts.flatMap((fact) => [...fact.matchAll(/income\s*(?:<|below)\s*₹?\s*(\d+(?:\.\d+)?)\s*(lakh)?/g)]);
-    for (const match of thresholds) {
-      knownChecks += 1;
-      const threshold = Number(match[1]) * (match[2] ? 100_000 : 1);
-      if (input.income >= threshold) return exclude(`Income is at or above the cataloged threshold of ₹${threshold}.`);
-      matchedChecks += 1;
+    const value = resolveCriterionValue(criterion, input, scheme, answers);
+    if (value === undefined) {
+      unresolvedChecks += 1;
+      continue;
     }
-  }
 
-  const gender = normalizeText(input.gender ?? '');
-  if (gender) {
-    if (facts.some((fact) => /female|women|woman/.test(fact))) {
-      knownChecks += 1;
-      if (gender === 'male' && facts.some((fact) => /male applicants|qualifying woman|targeted women/.test(fact))) {
-        return exclude('Catalog restricts this scheme to women applicants.');
-      }
-      if (gender === 'female') matchedChecks += 1;
+    const passed = criterionPasses(criterion, value);
+    if (passed === undefined) {
+      unresolvedChecks += 1;
+      continue;
     }
-  }
 
-  if (input.caste) {
-    const caste = normalizeText(input.caste);
-    if (facts.some((fact) => /scheduled caste|\bsc\b/.test(fact))) {
-      knownChecks += 1;
-      if (!/scheduled caste|\bsc\b/.test(caste)) return exclude('Catalog restricts this scheme to Scheduled Caste applicants.');
-      matchedChecks += 1;
-    }
-  }
-
-  if (input.minorityStatus !== undefined && facts.some((fact) => /minority communit/.test(fact))) {
-    knownChecks += 1;
-    if (!input.minorityStatus && facts.some((fact) => /not meeting applicable community|six notified minority/.test(fact))) {
-      return exclude('Catalog requires membership in a notified minority community for this component.');
-    }
-    if (input.minorityStatus) matchedChecks += 1;
-  }
-
-  if (input.landArea !== undefined) {
-    const ceilings = facts.flatMap((fact) => [...fact.matchAll(/(?:up to|ceiling)\s*(\d+(?:\.\d+)?)\s*hectare/g)]);
-    for (const match of ceilings) {
-      knownChecks += 1;
-      const maximum = Number(match[1]);
-      if (input.landArea > maximum) return exclude(`Land area exceeds the cataloged ${maximum}-hectare limit.`);
-      matchedChecks += 1;
-    }
+    if (!passed) return exclude(criterionFailureReason(criterion));
+    matchedChecks += 1;
   }
 
   if (intent.beneficiary && termsFor(scheme).some((term) => term.includes(intent.beneficiary!.replaceAll('_', ' ')))) {
@@ -556,7 +695,7 @@ function evaluateEligibility(input: MatcherInput, intent: ExtractedIntent, schem
   }
 
   const contextScore = Math.min(weights.known_context_match, matchedChecks * 2);
-  const hasUnresolvedEligibility = scheme.eligibility_facts.length > knownChecks || scheme.hard_exclusions.length > 0;
+  const hasUnresolvedEligibility = unresolvedChecks > 0;
   return {
     status: hasUnresolvedEligibility ? (matchedChecks > 0 ? 'POTENTIALLY_ELIGIBLE' : 'UNKNOWN') : 'ELIGIBLE',
     contextScore,
@@ -571,14 +710,15 @@ function relevanceFor(score: number): Relevance | undefined {
   return undefined;
 }
 
-function missingContextFor(intent: ExtractedIntent): string[] {
+function missingContextFor(intent: ExtractedIntent, input: MatcherInput): string[] {
   const missing: string[] = [];
   if (
     !intent.activity &&
+    (!intent.rawActivityHint || !input.existingActivity?.trim()) &&
     ['access_credit', 'start_new_business', 'grow_existing_business'].includes(intent.goal ?? '')
   ) {
     missing.push('business_activity');
-  } else if (!intent.activity) {
+  } else if (!intent.activity && !intent.rawActivityHint) {
     missing.push('activity');
   }
   if (!intent.goal) missing.push('goal');
@@ -589,19 +729,16 @@ export function matchSchemes(input: MatcherInput): MatcherResult {
   const vocabulary = analyzeVocabulary(input.text);
   const text = vocabulary.normalizedText;
   const intent = extractIntent(text, input, vocabulary);
-  const missingContext = missingContextFor(intent);
+  const missingContext = missingContextFor(intent, input);
 
   if (!text) {
-    return { intent, missingContext, rankedSchemes: [] };
+    return { intent, missingContext, rankedSchemes: [], matchTier: 'none' };
   }
 
   // If activity is missing for certain goals, we cannot match any scheme meaningfully.
   // Ask for the specific missing context (business activity) instead of showing irrelevant matches.
-  if (
-    !intent.activity &&
-    ['access_credit', 'start_new_business', 'grow_existing_business'].includes(intent.goal ?? '')
-  ) {
-    return { intent, missingContext, rankedSchemes: [] };
+  if (missingContext.includes('business_activity')) {
+    return { intent, missingContext, rankedSchemes: [], matchTier: 'none' };
   }
 
   const scored = schemes.flatMap((scheme) => {
@@ -614,11 +751,17 @@ export function matchSchemes(input: MatcherInput): MatcherResult {
 
     if (eligibility.status === 'EXCLUDED') return [];
 
+    const baseScore = intentPoints + activity.score + needPoints + location.score;
+    const hasMeaningfulClosestSignal = needPoints > 0;
+    if (!intent.activity && (!intent.rawActivityHint || !hasMeaningfulClosestSignal || baseScore === 0)) return [];
+
     const score = Math.min(
       100,
       intentPoints + activity.score + needPoints + location.score + eligibility.contextScore
     );
-    const relevance = relevanceFor(score);
+    const isClosestMatch = !intent.activity;
+    const cappedScore = isClosestMatch ? Math.min(score, 39) : score;
+    const relevance = isClosestMatch ? 'LOW' : relevanceFor(cappedScore);
     if (!relevance) return [];
 
     const reasons = buildReasons(
@@ -642,7 +785,11 @@ export function matchSchemes(input: MatcherInput): MatcherResult {
     );
     const unknownCriteria = buildUnknownCriteria(input, scheme);
 
-    return [{ scheme, score, relevance, reasons, matchedCriteria, unknownCriteria, eligibility, specificity: activity.specificity }];
+    if (isClosestMatch && intent.rawActivityHint) {
+      reasons.unshift(`No catalogue scheme is specific to ${intent.rawActivityHint} yet; this is the closest available support.`);
+    }
+
+    return [{ scheme, score: cappedScore, relevance, reasons, matchedCriteria, unknownCriteria, eligibility, specificity: activity.specificity }];
   });
 
   scored.sort(
@@ -655,6 +802,7 @@ export function matchSchemes(input: MatcherInput): MatcherResult {
   );
 
   let questionsRemaining = 2;
+  const matchTier: MatchTier = intent.activity ? 'exact' : scored.length > 0 ? 'closest' : 'none';
   const rankedSchemes = scored.slice(0, 5).map(
     ({ scheme, score, relevance, reasons, matchedCriteria, unknownCriteria, eligibility }) => {
     const followUpQuestions = scheme.questions.slice(0, questionsRemaining);
@@ -673,5 +821,5 @@ export function matchSchemes(input: MatcherInput): MatcherResult {
     }
   );
 
-  return { intent, missingContext, rankedSchemes };
+  return { intent, missingContext, rankedSchemes, matchTier, rawActivityHint: intent.rawActivityHint };
 }

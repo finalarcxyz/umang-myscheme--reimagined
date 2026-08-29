@@ -3,7 +3,9 @@
 import catalog from '@/lib/schemes/scheme_catalog.json' with { type: 'json' };
 import details from '@/lib/schemes/scheme_details.json' with { type: 'json' };
 import type { LanguageCode } from '@/lib/language/language';
-import type { EligibilityStatus, RankedScheme } from '@/lib/schemes/matcher';
+import type { EligibilityStatus, RankedScheme, MatcherInput, ExtractedIntent } from '@/lib/schemes/matcher';
+import { useState } from 'react';
+import EligibilityVerificationInline from '@/components/schemes/EligibilityVerificationInline';
 
 interface SchemeDetailProps {
   language: LanguageCode;
@@ -129,6 +131,20 @@ export default function SchemeDetail({ language, location, match, onBack, scheme
         <Section title={copy.benefit}><SourceList empty={copy.missing} items={benefits} /></Section>
         <Section title={copy.eligibility}><SourceList empty={copy.missing} items={eligibility} />
           {exclusions.length > 0 ? <div className="mt-5 border-t border-[#e3e8ee] pt-4"><h3 className="font-bold text-[#8b3434]">{copy.exclusions}</h3><div className="mt-2"><SourceList empty={copy.missing} items={exclusions} /></div></div> : null}
+
+          {/* Eligibility Verification Section */}
+          <EligibilityVerificationInline
+            schemeId={schemeId}
+            language={language}
+            location={location}
+            matcherInput={{
+              text: match.name,
+              state: location?.state,
+              district: location?.district
+              // Note: Other fields like age, income, etc. would come from user's journey
+              // For now, but we'll start with what we have and ask for missing info
+            }}
+          />
         </Section>
         <Section title={copy.documents}><SourceList empty={copy.missing} items={documents} /></Section>
         <Section title={copy.howToApply}><SourceList empty={copy.missing} items={application} /></Section>

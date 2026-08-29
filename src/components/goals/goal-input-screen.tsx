@@ -24,7 +24,7 @@ interface IconProps {
 
 interface GoalOption {
   id: string;
-  translationKey: 'business' | 'farming' | 'livestock' | 'education' | 'financial' | 'other';
+  translationKey: 'startBusiness' | 'farming' | 'goat' | 'duck' | 'pension' | 'insurance';
   icon: ComponentType<IconProps>;
 }
 
@@ -61,15 +61,6 @@ function DownIcon({ className = 'h-4 w-4' }: IconProps) {
   );
 }
 
-function MicrophoneIcon({ className = 'h-7 w-7' }: IconProps) {
-  return (
-    <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 24 24">
-      <rect x="8.5" y="3" width="7" height="12" rx="3.5" fill="currentColor" />
-      <path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3M8.5 21h7" stroke="currentColor" strokeLinecap="round" strokeWidth="1.7" />
-    </svg>
-  );
-}
-
 function BusinessIcon({ className = 'h-10 w-10' }: IconProps) {
   return (
     <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 48 48">
@@ -98,33 +89,12 @@ function LivestockIcon({ className = 'h-10 w-10' }: IconProps) {
   );
 }
 
-function EducationIcon({ className = 'h-10 w-10' }: IconProps) {
-  return (
-    <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 48 48">
-      <path d="m6 19 18-9 18 9-18 9-18-9Z" fill="currentColor" />
-      <path d="M14 24v9c7 5 13 5 20 0v-9M40 20v13" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
-      <circle cx="40" cy="35.5" r="1.8" fill="currentColor" />
-    </svg>
-  );
-}
-
 function FinancialIcon({ className = 'h-10 w-10' }: IconProps) {
   return (
     <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 48 48">
       <path d="M8 29h6v11H8zM14 31l7-5h9c3 0 4 4 1 5h-6M14 39h17l10-7c2-2 0-5-3-3l-7 4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
       <circle cx="26" cy="15" r="9" stroke="currentColor" strokeWidth="2" />
       <path d="M22 11h8M22 14h8M24 11c5 0 5 6 0 6l6 4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
-    </svg>
-  );
-}
-
-function MoreIcon({ className = 'h-10 w-10' }: IconProps) {
-  return (
-    <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 48 48">
-      <circle cx="24" cy="24" r="17" stroke="currentColor" strokeWidth="2" />
-      <circle cx="17" cy="24" r="2" fill="currentColor" />
-      <circle cx="24" cy="24" r="2" fill="currentColor" />
-      <circle cx="31" cy="24" r="2" fill="currentColor" />
     </svg>
   );
 }
@@ -138,33 +108,13 @@ function BulbIcon({ className = 'h-9 w-9' }: IconProps) {
   );
 }
 
-function HeadsetIcon({ className = 'h-9 w-9' }: IconProps) {
-  return (
-    <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 40 40">
-      <path d="M8 23v-5a12 12 0 0 1 24 0v5M8 22H5v9h6v-8H8ZM32 22h3v9h-6v-8h3ZM29 32c-2 3-5 4-9 4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
-      <circle cx="18" cy="36" r="1.8" fill="currentColor" />
-    </svg>
-  );
-}
-
-function FiltersIcon({ className = 'h-9 w-9' }: IconProps) {
-  return (
-    <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 40 40">
-      <path d="M8 10h24M8 20h24M8 30h24" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
-      <circle cx="15" cy="10" r="3" fill="white" stroke="currentColor" strokeWidth="1.8" />
-      <circle cx="26" cy="20" r="3" fill="white" stroke="currentColor" strokeWidth="1.8" />
-      <circle cx="19" cy="30" r="3" fill="white" stroke="currentColor" strokeWidth="1.8" />
-    </svg>
-  );
-}
-
 const goalOptions: GoalOption[] = [
-  { id: 'business', translationKey: 'business', icon: BusinessIcon },
+  { id: 'goat', translationKey: 'goat', icon: LivestockIcon },
+  { id: 'duck', translationKey: 'duck', icon: LivestockIcon },
+  { id: 'business', translationKey: 'startBusiness', icon: BusinessIcon },
+  { id: 'pension', translationKey: 'pension', icon: FinancialIcon },
   { id: 'farming', translationKey: 'farming', icon: FarmingIcon },
-  { id: 'livestock', translationKey: 'livestock', icon: LivestockIcon },
-  { id: 'education', translationKey: 'education', icon: EducationIcon },
-  { id: 'financial', translationKey: 'financial', icon: FinancialIcon },
-  { id: 'other', translationKey: 'other', icon: MoreIcon },
+  { id: 'insurance', translationKey: 'insurance', icon: FinancialIcon },
 ];
 
 
@@ -242,20 +192,6 @@ export default function GoalInputScreen({
   const [showOtherAnswer, setShowOtherAnswer] = useState(false);
   const [finalResult, setFinalResult] = useState<MatcherResult | null>(null);
   const copy = goalInputTranslations[language];
-  const examplePhrases = language === 'or'
-    ? [
-        'mo business pain loan darkar',
-        'nua business start karibi',
-        'mo chasa ku bhala karibaku chahunchi',
-        'goat farm start karibi',
-      ]
-    : [
-        'I want a loan for my business',
-        'I want to start a new business',
-        'I want to improve my farming',
-        'I want to start goat farming',
-      ];
-
   function runIntelligence(text: string, context: QuestionSelectorContext) {
     const nextContext: QuestionSelectorContext = {
       ...context,
@@ -367,19 +303,11 @@ export default function GoalInputScreen({
           <div className="relative mx-auto mt-4 max-w-[900px] lg:mt-4">
             <textarea
               aria-label="Describe what you are trying to achieve"
-              className="h-[86px] w-full resize-none rounded-[14px] border border-[#333] bg-white px-4 py-3 pr-14 text-[15px] leading-6 text-[#161616] outline-none transition placeholder:text-[#666] focus:border-[#205aa5] focus:ring-2 focus:ring-[#dce9f8] lg:h-[94px] lg:px-5 lg:py-3 lg:text-base"
+              className="h-[86px] w-full resize-none rounded-[14px] border border-[#333] bg-white px-4 py-3 text-[15px] leading-6 text-[#161616] outline-none transition placeholder:text-[#666] focus:border-[#205aa5] focus:ring-2 focus:ring-[#dce9f8] lg:h-[94px] lg:px-5 lg:py-3 lg:text-base"
               onChange={(event) => setGoalText(event.target.value)}
               placeholder={copy.placeholder}
               value={goalText}
             />
-            <button
-              aria-label="Voice input is not available yet"
-              className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-2 text-[#4a4a4a] focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#2458a6]"
-              onClick={() => setActionNotice('Voice input is not available yet.')}
-              type="button"
-            >
-              <MicrophoneIcon />
-            </button>
           </div>
 
           <div className="mx-auto mt-3 flex max-w-[900px] justify-end">
@@ -440,22 +368,6 @@ export default function GoalInputScreen({
             </div>
           ) : null}
 
-          <div className="mx-auto mt-3.5 max-w-[900px] rounded-[13px] border border-dashed border-[#8db4e8] px-2.5 py-2.5 lg:mt-3 lg:px-4 lg:py-2.5">
-            <div className="flex flex-wrap items-center gap-1.5 lg:gap-2">
-              <span className="text-[12px] font-medium text-[#4c4c4c]">{copy.examples}</span>
-              {examplePhrases.map((phrase) => (
-                <button
-                  className="rounded-lg bg-[#f2f2f2] px-2 py-1 text-left text-[11px] leading-4 text-[#1d1d1d] transition hover:bg-[#e7eef8] focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#2458a6] lg:px-2.5 lg:py-1.5 lg:text-xs"
-                  key={phrase}
-                  onClick={() => setGoalText(phrase)}
-                  type="button"
-                >
-                  {phrase}
-                </button>
-              ))}
-            </div>
-          </div>
-
           <div className="mx-auto my-5 flex max-w-[900px] items-center gap-3 text-center text-[13px] text-[#272727] lg:my-5 lg:text-sm">
             <span className="h-px flex-1 bg-[#b9b9b9]" />
             <span>{copy.commonGoal}</span>
@@ -505,6 +417,27 @@ export default function GoalInputScreen({
             })}
           </div>
 
+          <section className="mx-auto mt-5 max-w-[1000px] rounded-xl border border-[#d8e3ef] bg-[#f8fbff] px-4 py-3.5 text-[#263b52] lg:px-5" aria-labelledby="prototype-coverage-title">
+            <h2 id="prototype-coverage-title" className="text-sm font-bold">Limitation</h2>
+            <p className="mt-1 text-xs leading-5 sm:text-sm">
+              A focused V1, designed around real user needs from rural India.
+            </p>
+            <ul className="mt-2 list-disc space-y-1 pl-5 text-xs leading-5 sm:text-sm">
+              <li>37 schemes currently covered</li>
+              <li>Built around real rural user needs—for example, our initial user is a digitally capable woman managing a large goat farm alongside a business.</li>
+              <li>Focused on the needs that emerge from that context: livestock, farming, crop protection, farmer support and selected small-business needs.</li>
+              <li>Deeper eligibility support is available for selected schemes.</li>
+              <li>Adding schemes takes real work—eligibility, documents, requirements and language support all need to be carefully structured and validated.</li>
+              <li>Coverage will expand as more schemes are added and verified.</li>
+            </ul>
+            <p className="mt-2 text-xs font-semibold leading-5 text-[#536579] sm:text-sm">
+              No match here ≠ no government support exists.
+            </p>
+            <p className="text-xs leading-5 text-[#536579] sm:text-sm">
+              It simply means this particular need is not yet covered in our current prototype catalogue.
+            </p>
+          </section>
+
           <div className="mx-auto mt-3.5 flex max-w-[1000px] items-center gap-3 rounded-xl bg-[#eaf3ff] px-3.5 py-3 text-[#171717] lg:mt-3 lg:px-5 lg:py-3">
             <BulbIcon className="h-8 w-8 shrink-0 lg:h-9 lg:w-9" />
             <p className="text-[12px] leading-[1.45] lg:text-sm">
@@ -515,31 +448,6 @@ export default function GoalInputScreen({
           </div>
         </div>
 
-        <div className="grid grid-cols-2 border-t border-[#d0d0d0] bg-white px-3 py-3 lg:px-16 lg:py-2.5">
-          <button
-            className="flex min-h-14 items-center gap-2.5 border-r border-[#d0d0d0] px-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2458a6] lg:justify-center lg:gap-4"
-            onClick={() => setActionNotice('Assistant support is not available yet.')}
-            type="button"
-          >
-            <HeadsetIcon className="h-8 w-8 shrink-0 text-[#333]" />
-            <span className="text-[12px] leading-[1.45]">
-              {copy.needHelp}
-              <strong className="block font-semibold">{copy.assistant}</strong>
-            </span>
-          </button>
-          <button
-            className="flex min-h-14 items-center gap-2.5 px-3 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2458a6] lg:justify-center lg:gap-4"
-            onClick={() => setActionNotice('Scheme filters are not available yet.')}
-            type="button"
-          >
-            <FiltersIcon className="h-8 w-8 shrink-0 text-[#333]" />
-            <span className="flex-1 text-[12px] leading-[1.45]">
-              {copy.findSchemes}
-              <strong className="block font-semibold">{copy.filters}</strong>
-            </span>
-            <ChevronIcon className="h-4 w-4 shrink-0" />
-          </button>
-        </div>
         <p aria-live="polite" className="sr-only">
           {actionNotice}
         </p>

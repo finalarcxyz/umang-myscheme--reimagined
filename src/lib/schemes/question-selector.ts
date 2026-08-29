@@ -205,7 +205,10 @@ export function selectNextQuestion(
     );
   }
 
-  if (missingContext.includes('activity') || !intent.activity) {
+  if (missingContext.includes('activity') || (!intent.activity && !intent.rawActivityHint)) {
+    // An unsupported activity supplied by the citizen is already answered. Do not ask
+    // the generic activity question again; the matcher will classify the result as closest/none.
+    if (!intent.goal) return { shouldAsk: false };
     const originalText = userContext.text?.normalize('NFKC').toLowerCase() ?? '';
     const isBroadFarmingGoal =
       /\b(farming|chasa|chasha|kheti)\b/.test(originalText) &&
@@ -291,4 +294,3 @@ export function selectNextQuestion(
   if (rankedSchemes.length > 0) return { shouldAsk: false };
   return { shouldAsk: false };
 }
-

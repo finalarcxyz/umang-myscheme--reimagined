@@ -1,0 +1,963 @@
+{
+  "kcc": {
+    "id": "kcc",
+    "name": "Kisan Credit Card (KCC)",
+    "criteria": [
+      {
+        "source_text": "owner cultivator",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "tenant farmer",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "oral lessee",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "sharecropper",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "farmer SHG/JLG",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] not a farmer / no agricultural activity",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "nfsmcss": {
+    "id": "nfsmcss",
+    "name": "National Food Security Mission (NFSMCSS)",
+    "criteria": [
+      {
+        "source_text": "farmer",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "benefits limited to 5 hectares per season",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "small/marginal and women farmers receive earmarked allocations",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] none stated as universal; district/crop targeting applies",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "rkvyshfshc": {
+    "id": "rkvyshfshc",
+    "name": "Soil Health Card / Soil Health Management",
+    "criteria": [
+      {
+        "source_text": "all farmers in India",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "acandabc": {
+    "id": "acandabc",
+    "name": "Agri-Clinics & Agri-Business Centres (AC&ABC)",
+    "criteria": [
+      {
+        "source_text": "age 18-60",
+        "type": "range",
+        "field": "age",
+        "min": 18,
+        "max": 60
+      },
+      {
+        "source_text": "specified agriculture/allied graduates or diplomas",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "some biological science graduates with qualifying agriculture PG",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "agriculture-related intermediate with at least 55%",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] retired employees receiving pension are not eligible for subsidy",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "ksis": {
+    "id": "ksis",
+    "name": "Kera Suraksha Insurance Scheme",
+    "criteria": [
+      {
+        "source_text": "coconut tree climber/neera technician/coconut harvester/trainee",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "age 18-65",
+        "type": "range",
+        "field": "age",
+        "min": 18,
+        "max": 65
+      },
+      {
+        "source_text": "[EXCLUSION] not engaged in qualifying coconut work",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "cpis": {
+    "id": "cpis",
+    "name": "Coconut Palm Insurance Scheme (CPIS)",
+    "criteria": [
+      {
+        "source_text": "individual farmer/grower",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "minimum 5 healthy nut-bearing palms",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "specified palm age ranges",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "selected implementation districts",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] unhealthy/senile palms",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] partial insurance of contiguous plantation not allowed",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] less than 5 qualifying palms",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "ky-smsp": {
+    "id": "ky-smsp",
+    "name": "Sub Mission on Seed and Planting Material (SMSP)",
+    "criteria": [
+      {
+        "source_text": "source specifically states small or marginal farmer for the listed beneficiary section",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] do not assume every SMSP component is available to an individual farmer",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "nmnf": {
+    "id": "nmnf",
+    "name": "National Mission on Natural Farming",
+    "criteria": [
+      {
+        "source_text": "all farmers in India",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "pmkmdy": {
+    "id": "pmkmdy",
+    "name": "Pradhan Mantri Kisan Maandhan Yojana (PM-KMY)",
+    "criteria": [
+      {
+        "source_text": "small or marginal farmer",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "cultivable landholding up to 2 hectares",
+        "type": "threshold",
+        "field": "landArea",
+        "max": 2.0
+      },
+      {
+        "source_text": "age 18-40 at entry",
+        "type": "range",
+        "field": "age",
+        "min": 18,
+        "max": 40
+      },
+      {
+        "source_text": "name in land records as on 01.08.2019",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "Aadhaar",
+        "type": "boolean_required",
+        "field": "aadhaar"
+      },
+      {
+        "source_text": "savings bank or PM-KISAN account",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] specified higher-economic-status and other social-security exclusions in source",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] age outside 18-40 at entry",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "pmksypdmc": {
+    "id": "pmksypdmc",
+    "name": "PMKSY \u2013 Per Drop More Crop",
+    "criteria": [
+      {
+        "source_text": "farmers in India",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "subsidy ceiling 5 hectares per beneficiary",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "Aadhaar required for DBT",
+        "type": "boolean_required",
+        "field": "aadhaar"
+      }
+    ]
+  },
+  "ae": {
+    "id": "ae",
+    "name": "Agricultural Extension / Sub Mission on Agricultural Extension (SMAE)",
+    "criteria": [
+      {
+        "source_text": "varies by component; source includes farmers, rural youth, farm women, extension functionaries, input dealers and agriculture graduates",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "e-nam": {
+    "id": "e-nam",
+    "name": "e-National Agriculture Market (e-NAM)",
+    "criteria": [
+      {
+        "source_text": "farmer registration requires selected APMC and KYC; FPO/FPCs can register",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "state/market reforms govern market-level participation",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] not a generic cash subsidy for farmers",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "pmfby": {
+    "id": "pmfby",
+    "name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+    "criteria": [
+      {
+        "source_text": "farmer including tenant/sharecropper growing notified crop in notified area",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "insurable interest",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "valid land ownership/tenure evidence",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "apply within prescribed timeframe",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] non-notified areas/crops",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] loss outside specified crop cycle",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] non-payment of required premium",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "rad": {
+    "id": "rad",
+    "name": "Rainfed Area Development (RAD)",
+    "criteria": [
+      {
+        "source_text": "all farmers stated as eligible",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "implementation is cluster/project based",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "cluster generally 100 hectares or more",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] individual eligibility alone does not guarantee scheme rollout; village/cluster eligibility matters",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "ami": {
+    "id": "ami",
+    "name": "Agricultural Marketing Infrastructure (AMI)",
+    "criteria": [
+      {
+        "source_text": "individuals, agri-preneurs, farmers, FPOs, cooperatives, state agencies and others listed in source",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "credit-linked back-ended subsidy",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "midh": {
+    "id": "midh",
+    "name": "Mission for Integrated Development of Horticulture (MIDH)",
+    "criteria": [
+      {
+        "source_text": "all farmers / registered societies / state governments stated as eligible",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "component-specific implementation through horticulture missions",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "nbm": {
+    "id": "nbm",
+    "name": "National Bamboo Mission (NBM)",
+    "criteria": [
+      {
+        "source_text": "all farmers in India stated as eligible",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "implementation in 24 States/UTs per source",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "entrepreneurs/private agencies/FPOs etc. also listed as beneficiaries",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] state/UT must be within implementation coverage",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "nmeo-op": {
+    "id": "nmeo-op",
+    "name": "National Mission on Edible Oils \u2013 Oil Palm (NMEO-OP)",
+    "criteria": [
+      {
+        "source_text": "source states anyone is eligible to apply; state implementation and area expansion determine actual access",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "smam": {
+    "id": "smam",
+    "name": "Sub-Mission on Agricultural Mechanization (SMAM)",
+    "criteria": [
+      {
+        "source_text": "landholding farmer families, SHGs, user groups, cooperatives, FPOs, entrepreneurs",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "women farmers given priority in source",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] source says benefit to those who have not taken subsidy from another central scheme earlier",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "ndd": {
+    "id": "ndd",
+    "name": "Namo Drone Didi",
+    "criteria": [
+      {
+        "source_text": "female SHG member",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "over 18",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "Class 10 pass",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "SHG registered under DAY-NRLM",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] not a female SHG member",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] not enrolled in qualifying SHG",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "kvny": {
+    "id": "kvny",
+    "name": "Krishi Vidya Nidhi Yojana",
+    "criteria": [
+      {
+        "source_text": "Odisha resident/domicile",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "child of eligible CM-KISAN beneficiary",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "merit-based admission in qualifying institution/course",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "only one scholarship",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] private institution outside Odisha",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] simultaneous multiple scholarships",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "beds": {
+    "id": "beds",
+    "name": "Buffalo Entrepreneurship Development Scheme",
+    "criteria": [
+      {
+        "source_text": "Odisha farmer/entrepreneur/SHG member",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "qualifying category listed in source",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "purchase two graded Murrah she buffaloes",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "PwD disability >40% if applicable",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] family limited to one beneficiary",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] must meet buffalo purchase/yield conditions",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "piatibft": {
+    "id": "piatibft",
+    "name": "Subsidy for Bio-floc Technology based Intensive Shrimp & Fish Farming",
+    "criteria": [
+      {
+        "source_text": "farmers interested in grow-out/nursery/seed tanks",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "hatchery operators",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "private entrepreneurs",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "unemployed youth",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "brackish-water beneficiaries need relevant CAA licence",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] must follow tank/design requirements",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] minimum 2 and maximum 6 tanks for stated special package",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "mpy-mcpnpky": {
+    "id": "mpy-mcpnpky",
+    "name": "Machha Chasa Pain Nua Pokhari Khola Yojana (Matsya Pokhari Yojana)",
+    "criteria": [
+      {
+        "source_text": "permanent Odisha resident",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "bank account in own name in Odisha",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "land free from encumbrances",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "pond area 0.2-2.0 hectares",
+        "type": "enum",
+        "field": "pondStatus",
+        "allowed": [
+          "own",
+          "leased"
+        ]
+      },
+      {
+        "source_text": "minimum water depth 6 feet",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] does not fit if user already has no land/site meeting requirements",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "ssgsf": {
+    "id": "ssgsf",
+    "name": "Small Scale Goat / Sheep Farming (10+1 Capacity)",
+    "criteria": [
+      {
+        "source_text": "Odisha resident",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "small/marginal farmer or landless labourer focus",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "new 10+1 unit",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "Aadhaar linked",
+        "type": "boolean_required",
+        "field": "aadhaar"
+      },
+      {
+        "source_text": "suitable site",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "remaining cost via loan/self-finance",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] previous similar subsidy recipient excluded",
+        "type": "exclusion",
+        "field": "priorSubsidy",
+        "excludeIf": true
+      },
+      {
+        "source_text": "[EXCLUSION] not a new project",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "pfmeiiao": {
+    "id": "pfmeiiao",
+    "name": "Popularisation of Fishery Machinery/Equipment/Implements for Intensive Aquaculture",
+    "criteria": [
+      {
+        "source_text": "individual fish farmers/fishers",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "registered members of Primary Fisherman Cooperative Society",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "WSHGs involved in fish/shrimp production",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "40% back-ended subsidy per source",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] same component subsidy in prior 5 years excludes that component",
+        "type": "exclusion",
+        "field": "priorSubsidy",
+        "excludeIf": true
+      }
+    ]
+  },
+  "scdf": {
+    "id": "scdf",
+    "name": "Semi-Commercial Duck Farming",
+    "criteria": [
+      {
+        "source_text": "permanent Odisha resident",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "individual/farmer/entrepreneur",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "Aadhaar linked",
+        "type": "boolean_required",
+        "field": "aadhaar"
+      },
+      {
+        "source_text": "1,000-duck semi-commercial unit per source",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] previous similar subsidy recipient excluded",
+        "type": "exclusion",
+        "field": "priorSubsidy",
+        "excludeIf": true
+      }
+    ]
+  },
+  "kalia": {
+    "id": "kalia",
+    "name": "Krushak Assistance for Livelihood and Income Augmentation (KALIA)",
+    "criteria": [
+      {
+        "source_text": "permanent Odisha resident",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "engaged in agricultural activities",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "household categorized deprived/vulnerable per source",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "landowner/tenant/sharecropper",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "annual income < \u20b92 lakh per source",
+        "type": "threshold",
+        "field": "income",
+        "max": 200000.0
+      },
+      {
+        "source_text": "Aadhaar-linked bank account",
+        "type": "boolean_required",
+        "field": "aadhaar"
+      },
+      {
+        "source_text": "[EXCLUSION] source includes criminal-record exclusion",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "mtc": {
+    "id": "mtc",
+    "name": "Motorisation of Traditional Crafts",
+    "criteria": [
+      {
+        "source_text": "permanent Odisha resident",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "traditional active marine fisherman",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "registered traditional boat/craft",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "valid ownership/registration/fishing licence",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "no engine subsidy in previous 5 years",
+        "type": "exclusion",
+        "field": "priorSubsidy",
+        "excludeIf": true
+      },
+      {
+        "source_text": "[EXCLUSION] not a traditional marine fisherman",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] no qualifying registered boat/craft",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "pmv": {
+    "id": "pmv",
+    "name": "PM Vishwakarma",
+    "criteria": [
+      {
+        "source_text": "artisan/craftsperson working with hands/tools",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "unorganized self-employed sector",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "one of 18 family-based traditional trades",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "age >=18",
+        "type": "range",
+        "field": "age",
+        "min": 18,
+        "max": null
+      },
+      {
+        "source_text": "engaged in trade at registration",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "one member per family",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] government employee and family members",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] specified similar government credit schemes within past 5 years",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "pm-vikas": {
+    "id": "pm-vikas",
+    "name": "Pradhan Mantri Virasat Ka Samvardhan (PM VIKAS)",
+    "criteria": [
+      {
+        "source_text": "six notified minority communities",
+        "type": "boolean_required",
+        "field": "minorityStatus"
+      },
+      {
+        "source_text": "age 14-45 for skilling/education",
+        "type": "range",
+        "field": "age",
+        "min": 14,
+        "max": 45
+      },
+      {
+        "source_text": "18-45 for women leadership/entrepreneurship",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "specific women/PwD allocations",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "EWS non-minority participation only within stated component limits",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] age outside component range",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] not meeting applicable community/component rules",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "nssw": {
+    "id": "nssw",
+    "name": "New Swarnima Scheme for Women",
+    "criteria": [
+      {
+        "source_text": "female",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "age 18-55",
+        "type": "range",
+        "field": "age",
+        "min": 18,
+        "max": 55
+      },
+      {
+        "source_text": "entrepreneur",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "annual family income < \u20b93 lakh per source",
+        "type": "threshold",
+        "field": "income",
+        "max": 300000.0
+      },
+      {
+        "source_text": "[EXCLUSION] male applicants",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] age outside 18-55",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] income at/above source threshold",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "visvasi": {
+    "id": "visvasi",
+    "name": "Source anomaly: VISVASI URL code",
+    "criteria": [
+      {
+        "source_text": "[EXCLUSION] do not match until source record is corrected",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "smbdlp": {
+    "id": "smbdlp",
+    "name": "National Livestock Mission (NLM)",
+    "criteria": [
+      {
+        "source_text": "individuals, SHGs, FPOs, FCOs, JLGs, Section 8 companies listed",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "50% capital subsidy in stated sub-mission, max \u20b925 lakh/unit per source",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "bank appraisal/financing requirements",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] no subsidy for working capital, vehicles, land purchase or lease costs in stated sub-mission",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "cbssc-msy": {
+    "id": "cbssc-msy",
+    "name": "Mahila Samriddhi Yojana (MSY)",
+    "criteria": [
+      {
+        "source_text": "women 18-55",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "low-income families or SC/ST/OBC categories as notified",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "family income < \u20b93 lakh per source",
+        "type": "threshold",
+        "field": "income",
+        "max": 300000.0
+      },
+      {
+        "source_text": "[EXCLUSION] not a qualifying woman applicant",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "mcfnsfdc": {
+    "id": "mcfnsfdc",
+    "name": "Micro Credit Finance (NSFDC)",
+    "criteria": [
+      {
+        "source_text": "Scheduled Caste applicant",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "annual family income < \u20b93 lakh per source",
+        "type": "threshold",
+        "field": "income",
+        "max": 300000.0
+      },
+      {
+        "source_text": "partnership/cooperative conditions also specified",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] not SC",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] income at/above source threshold",
+        "needs_manual_review": true
+      }
+    ]
+  },
+  "aksmsy": {
+    "id": "aksmsy",
+    "name": "Asangathit Karmakaar Silai Machine Sahayata Yojana",
+    "criteria": [
+      {
+        "source_text": "permanent resident of Chhattisgarh",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "registered construction worker/labour board",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "woman 18-50",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "sews/embroiders/weaves and earns livelihood",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] not Chhattisgarh",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] already received sewing machine/equivalent value under another state scheme",
+        "needs_manual_review": true
+      },
+      {
+        "source_text": "[EXCLUSION] received Chief Minister Cycle Assistance Scheme",
+        "needs_manual_review": true
+      }
+    ]
+  }
+}

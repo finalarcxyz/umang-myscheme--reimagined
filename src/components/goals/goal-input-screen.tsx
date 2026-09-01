@@ -435,7 +435,7 @@ export default function GoalInputScreen({
                     setSelectedGoalId(option.id);
                     setGoalText(copy[option.translationKey]);
                     // Submit the goal automatically when clicking common goal
-                    const text = copy[option.translationKey];
+                    const text = goalInputTranslations.en[option.translationKey];
                     if (text) {
                       setActionNotice('');
                       setConversationText(text);

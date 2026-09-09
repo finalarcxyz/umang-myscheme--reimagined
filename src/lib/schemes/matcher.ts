@@ -115,7 +115,8 @@ type EligibilityCriterionType =
   | 'exclusion'
   | 'boolean_required'
   | 'info_only'
-  | 'manual_verification_note';
+  | 'manual_verification_note'
+  | 'fact_check';
 
 interface EligibilityCriterion {
   source_text: string;
@@ -129,6 +130,8 @@ interface EligibilityCriterion {
   allowed?: SchemeEligibilityAnswer[];
   required?: boolean;
   operator?: 'equals' | 'in';
+  fact?: string;
+  expected_values?: string[];
   value?: SchemeEligibilityAnswer;
   values?: SchemeEligibilityAnswer[];
 }
@@ -672,6 +675,18 @@ export function evaluateEligibility(
     if (criterion.type === 'info_only') continue;
     if (criterion.type === 'manual_verification_note') {
       unresolvedChecks += 1;
+      continue;
+    }
+    if (criterion.type === 'fact_check' && criterion.fact) {
+      const factVal = answers[criterion.fact];
+      if (!factVal) {
+        unresolvedChecks += 1;
+        continue;
+      }
+      if (criterion.expected_values && !criterion.expected_values.includes(factVal as string)) {
+        return exclude(criterion.fact as string);
+      }
+      matchedChecks += 1;
       continue;
     }
 

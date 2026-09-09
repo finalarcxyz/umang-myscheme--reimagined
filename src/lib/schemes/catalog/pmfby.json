@@ -52,13 +52,12 @@
       "source_text_aliases": [
         "[EXCLUSION] non-notified areas/crops"
       ],
-      "type": "boolean_required",
-      "field": "growsNotifiedCropInNotifiedArea",
-      "required": true,
-      "question": {
-        "en": "Are you a farmer, tenant farmer, or sharecropper growing a notified crop in a notified area?",
-        "or": "ଆପଣ ଅଧିସୂଚିତ ଅଞ୍ଚଳରେ ଅଧିସୂଚିତ ଫସଲ ଚାଷ କରୁଥିବା ଚାଷୀ, ଭଡ଼ାଟିଆ ଚାଷୀ କିମ୍ବା ଭାଗଚାଷୀ କି?"
-      }
+      "type": "fact_check",
+      "fact": "land_tenure",
+      "expected_values": [
+        "own",
+        "bhaga_sharecropper"
+      ]
     },
     {
       "source_text": "insurable interest",
@@ -70,23 +69,11 @@
     },
     {
       "source_text": "valid land ownership/tenure evidence",
-      "type": "boolean_required",
-      "field": "hasValidLandOwnershipOrTenureEvidence",
-      "required": true,
-      "question": {
-        "en": "Do you have valid, authenticated land-ownership evidence or a valid land-tenure agreement?",
-        "or": "ଆପଣଙ୍କ ପାଖରେ ବୈଧ ଓ ପ୍ରମାଣିତ ଜମି ମାଲିକାନା ଦଲିଲ କିମ୍ବା ବୈଧ ଜମି ଅଧିକାର ଚୁକ୍ତି ଅଛି କି?"
-      }
-    },
-    {
-      "source_text": "apply within prescribed timeframe",
-      "type": "boolean_required",
-      "field": "canApplyWithinPrescribedTimeframe",
-      "required": true,
-      "question": {
-        "en": "Can you apply for insurance within the prescribed timeframe?",
-        "or": "ଆପଣ ନିର୍ଦ୍ଧାରିତ ସମୟସୀମା ମଧ୍ୟରେ ବୀମା ପାଇଁ ଆବେଦନ କରିପାରିବେ କି?"
-      }
+      "type": "fact_check",
+      "fact": "land_record_status",
+      "expected_values": [
+        "valid_records"
+      ]
     },
     {
       "source_text": "[EXCLUSION] loss outside specified crop cycle",

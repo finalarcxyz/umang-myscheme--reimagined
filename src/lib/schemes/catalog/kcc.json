@@ -61,13 +61,13 @@
         "farmer SHG/JLG",
         "[EXCLUSION] not a farmer / no agricultural activity"
       ],
-      "type": "boolean_required",
-      "field": "hasQualifyingFarmingRelationship",
-      "required": true,
-      "question": {
-        "en": "Are you an owner cultivator, tenant farmer, oral lessee, sharecropper, or member of a farmer SHG/JLG?",
-        "or": "ଆପଣ ମାଲିକ ଚାଷୀ, ଭଡ଼ାଟିଆ ଚାଷୀ, ମୌଖିକ ପଟ୍ଟାଧାରୀ, ଭାଗଚାଷୀ କିମ୍ବା ଚାଷୀ SHG/JLGର ସଦସ୍ୟ କି?"
-      }
+      "type": "fact_check",
+      "fact": "land_tenure",
+      "expected_values": [
+        "own",
+        "bhaga_sharecropper",
+        "shg_jlg"
+      ]
     }
   ]
 }

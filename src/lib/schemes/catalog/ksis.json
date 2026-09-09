@@ -1,0 +1,76 @@
+{
+  "id": "ksis",
+  "name": "Kera Suraksha Insurance Scheme",
+  "scope": [
+    "India",
+    "coconut-growing states"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/ksis",
+  "intents_high": [
+    "coconut_climber_insurance",
+    "coconut_harvester_insurance",
+    "neera_technician_insurance"
+  ],
+  "intents_medium": [
+    "coconut_worker_training",
+    "accident_cover"
+  ],
+  "activities": [
+    "coconut_tree_climbing",
+    "coconut_harvesting",
+    "neera_technician"
+  ],
+  "need_types": [
+    "insurance",
+    "accident_cover",
+    "training"
+  ],
+  "keywords": [
+    "coconut climber",
+    "coconut harvester",
+    "neera technician",
+    "coconut worker insurance",
+    "coconut climbing"
+  ],
+  "eligibility_facts": [
+    "coconut tree climber/neera technician/coconut harvester/trainee",
+    "age 18-65"
+  ],
+  "hard_exclusions": [
+    "not engaged in qualifying coconut work"
+  ],
+  "questions": [
+    "Are you a coconut tree climber, coconut harvester, Neera technician, or trainee?",
+    "What is your age?"
+  ],
+  "application_route": "offline",
+  "temporal_note": null,
+  "eligibilityCriteria": [
+    {
+      "source_text": "coconut tree climber/neera technician/coconut harvester/trainee",
+      "source_text_aliases": [
+        "[EXCLUSION] not engaged in qualifying coconut work"
+      ],
+      "type": "boolean_required",
+      "field": "hasQualifyingCoconutOccupation",
+      "required": true,
+      "question": {
+        "en": "Are you a coconut-tree climber, neera technician, coconut harvester, or qualifying trainee?",
+        "or": "ଆପଣ ନଡ଼ିଆ ଗଛ ଚଢ଼ାଳି, ନିରା ଟେକ୍ନିସିଆନ୍, ନଡ଼ିଆ ଅମଳକାରୀ କିମ୍ବା ଯୋଗ୍ୟ ପ୍ରଶିକ୍ଷାର୍ଥୀ କି?"
+      }
+    },
+    {
+      "source_text": "age 18-65",
+      "type": "range",
+      "field": "age",
+      "min": 18,
+      "max": 65,
+      "min_inclusive": true,
+      "max_inclusive": true,
+      "question": {
+        "en": "What is your age?",
+        "or": "ଆପଣଙ୍କ ବୟସ କେତେ?"
+      }
+    }
+  ]
+}

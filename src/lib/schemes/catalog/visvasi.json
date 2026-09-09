@@ -1,0 +1,34 @@
+{
+  "id": "visvasi",
+  "name": "Source anomaly: VISVASI URL code",
+  "scope": [
+    "Unknown from source"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/visvasi",
+  "intents_high": [],
+  "intents_medium": [],
+  "activities": [],
+  "need_types": [],
+  "keywords": [],
+  "eligibility_facts": [],
+  "hard_exclusions": [
+    "do not match until source record is corrected"
+  ],
+  "questions": [],
+  "application_route": "unknown",
+  "temporal_note": "CRITICAL DATA QUALITY ISSUE: the supplied record at /visvasi contains the same New Swarnima-for-women content as the /nssw record. Preserve as unresolved rather than inventing a scheme.",
+  "eligibilityCriteria": [
+    {
+      "source_text": "[EXCLUSION] do not match until source record is corrected",
+      "type": "exclusion",
+      "field": "sourceStatus",
+      "derived_from": "scheme_details.sourceStatus",
+      "operator": "equals",
+      "value": "no_detail_text",
+      "description": {
+        "en": "This scheme cannot be matched until its source record is corrected. No citizen response is required.",
+        "or": "ଉତ୍ସ ରେକର୍ଡ ସଂଶୋଧନ ନହେବା ପର୍ଯ୍ୟନ୍ତ ଏହି ଯୋଜନାକୁ ମେଳ କରାଯାଇପାରିବ ନାହିଁ। ନାଗରିକଙ୍କ ଉତ୍ତର ଆବଶ୍ୟକ ନାହିଁ।"
+      }
+    }
+  ]
+}

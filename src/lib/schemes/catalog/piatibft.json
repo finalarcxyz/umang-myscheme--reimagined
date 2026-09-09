@@ -1,0 +1,103 @@
+{
+  "id": "piatibft",
+  "name": "Subsidy for Bio-floc Technology based Intensive Shrimp & Fish Farming",
+  "scope": [
+    "Odisha"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/piatibft",
+  "intents_high": [
+    "biofloc_farming",
+    "start_fish_farming",
+    "intensive_aquaculture"
+  ],
+  "intents_medium": [
+    "shrimp_farming",
+    "small_area_fish_farming",
+    "aquaculture_business"
+  ],
+  "activities": [
+    "fish_farming",
+    "shrimp_farming",
+    "biofloc",
+    "hatchery",
+    "nursery"
+  ],
+  "need_types": [
+    "subsidy",
+    "training",
+    "aquaculture_business"
+  ],
+  "keywords": [
+    "biofloc",
+    "bio floc",
+    "fish farming",
+    "shrimp farming",
+    "fish tank",
+    "aquaculture"
+  ],
+  "eligibility_facts": [
+    "farmers interested in grow-out/nursery/seed tanks",
+    "hatchery operators",
+    "private entrepreneurs",
+    "unemployed youth",
+    "brackish-water beneficiaries need relevant CAA licence"
+  ],
+  "hard_exclusions": [
+    "must follow tank/design requirements",
+    "minimum 2 and maximum 6 tanks for stated special package"
+  ],
+  "questions": [
+    "Do you want fish/shrimp farming using bio-floc technology?",
+    "How many tanks are you planning?",
+    "Is it freshwater or brackish water?"
+  ],
+  "application_route": "online_or_designated_submission",
+  "temporal_note": "Source labels the underlying scheme as 2020-21; verify current availability before surfacing.",
+  "eligibilityCriteria": [
+    {
+      "source_text": "farmers interested in grow-out/nursery/seed tanks",
+      "source_text_aliases": [
+        "hatchery operators",
+        "private entrepreneurs",
+        "unemployed youth"
+      ],
+      "type": "boolean_required",
+      "field": "hasEligibleBioflocBeneficiaryType",
+      "required": true,
+      "question": {
+        "en": "Are you an interested farmer, hatchery operator, private entrepreneur, or unemployed youth seeking an eligible Bio-floc activity?",
+        "or": "ଆପଣ ଯୋଗ୍ୟ ବାୟୋ-ଫ୍ଲକ୍ କାର୍ଯ୍ୟ ପାଇଁ ଆଗ୍ରହୀ ଚାଷୀ, ହ୍ୟାଚେରୀ ପରିଚାଳକ, ବେସରକାରୀ ଉଦ୍ୟୋଗୀ କିମ୍ବା ବେକାର ଯୁବକ/ଯୁବତୀ କି?"
+      }
+    },
+    {
+      "source_text": "brackish-water beneficiaries need relevant CAA licence",
+      "type": "manual_verification_note",
+      "description": {
+        "en": "For a brackish-water project, the relevant Coastal Aquaculture Authority licence must be confirmed separately.",
+        "or": "ଲୁଣିଆ ପାଣି ପ୍ରକଳ୍ପ ପାଇଁ ସମ୍ପୃକ୍ତ Coastal Aquaculture Authority ଲାଇସେନ୍ସକୁ ଅଲଗା ଭାବେ ଯାଞ୍ଚ କରିବାକୁ ପଡ଼ିବ।"
+      }
+    },
+    {
+      "source_text": "[EXCLUSION] must follow tank/design requirements",
+      "type": "manual_verification_note",
+      "description": {
+        "en": "The proposed Bio-floc tanks and system design must be verified against the scheme specifications.",
+        "or": "ପ୍ରସ୍ତାବିତ ବାୟୋ-ଫ୍ଲକ୍ ଟ୍ୟାଙ୍କ ଏବଂ ସିଷ୍ଟମ୍ ଡିଜାଇନ୍‌କୁ ଯୋଜନାର ନିର୍ଦ୍ଦେଶନାମା ସହ ଯାଞ୍ଚ କରିବାକୁ ପଡ଼ିବ।"
+      }
+    },
+    {
+      "source_text": "[EXCLUSION] minimum 2 and maximum 6 tanks for stated special package",
+      "type": "range",
+      "field": "projectSize",
+      "min": 2,
+      "max": 6,
+      "min_inclusive": true,
+      "max_inclusive": true,
+      "unit": "tanks",
+      "question": {
+        "en": "How many tanks are proposed for the special-package project?",
+        "or": "ବିଶେଷ ପ୍ୟାକେଜ୍ ପ୍ରକଳ୍ପ ପାଇଁ କେତେଟି ଟ୍ୟାଙ୍କ ପ୍ରସ୍ତାବିତ?"
+      }
+    }
+  ]
+}

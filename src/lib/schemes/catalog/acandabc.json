@@ -1,0 +1,105 @@
+{
+  "id": "acandabc",
+  "name": "Agri-Clinics & Agri-Business Centres (AC&ABC)",
+  "scope": [
+    "India"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/acandabc",
+  "intents_high": [
+    "agri_entrepreneurship",
+    "start_agri_business",
+    "agri_consulting_business"
+  ],
+  "intents_medium": [
+    "agri_training",
+    "business_financing",
+    "farm_services_business"
+  ],
+  "activities": [
+    "agri_services",
+    "horticulture",
+    "sericulture",
+    "veterinary",
+    "forestry",
+    "dairy",
+    "poultry",
+    "fisheries",
+    "farm_equipment",
+    "seed_processing",
+    "beekeeping",
+    "livestock_services"
+  ],
+  "need_types": [
+    "training",
+    "loan",
+    "subsidy",
+    "entrepreneurship"
+  ],
+  "keywords": [
+    "agri business",
+    "agri clinic",
+    "agriculture business",
+    "farm service business",
+    "agri entrepreneur",
+    "agri consultancy"
+  ],
+  "eligibility_facts": [
+    "age 18-60",
+    "specified agriculture/allied graduates or diplomas",
+    "some biological science graduates with qualifying agriculture PG",
+    "agriculture-related intermediate with at least 55%"
+  ],
+  "hard_exclusions": [
+    "retired employees receiving pension are not eligible for subsidy"
+  ],
+  "questions": [
+    "What is your highest agriculture/allied educational qualification?",
+    "What agriculture-related business do you want to start?"
+  ],
+  "application_route": "online",
+  "temporal_note": null,
+  "eligibilityCriteria": [
+    {
+      "source_text": "age 18-60",
+      "type": "range",
+      "field": "age",
+      "min": 18,
+      "max": 60,
+      "min_inclusive": true,
+      "max_inclusive": true,
+      "question": {
+        "en": "What is your age?",
+        "or": "ଆପଣଙ୍କ ବୟସ କେତେ?"
+      }
+    },
+    {
+      "source_text": "specified agriculture/allied graduates or diplomas",
+      "source_text_aliases": [
+        "some biological science graduates with qualifying agriculture PG",
+        "agriculture-related intermediate with at least 55%"
+      ],
+      "type": "boolean_required",
+      "field": "hasQualifyingAgricultureEducation",
+      "required": true,
+      "question": {
+        "en": "Do you hold one of the agriculture, allied-subject, biological-science-with-qualifying-PG, diploma, or agriculture-related intermediate qualifications specified by the scheme?",
+        "or": "ଏହି ଯୋଜନାରେ ଉଲ୍ଲେଖିତ କୃଷି, ସହଯୋଗୀ ବିଷୟ, ଯୋଗ୍ୟ PG ସହ ଜୀବବିଜ୍ଞାନ, ଡିପ୍ଲୋମା କିମ୍ବା କୃଷିସମ୍ବନ୍ଧୀୟ ଯୁକ୍ତଦୁଇ ଯୋଗ୍ୟତା ମଧ୍ୟରୁ କୌଣସିଟି ଆପଣଙ୍କ ଅଛି କି?"
+      },
+      "help_text": {
+        "en": "The exact course, institution recognition, subject content, and required marks must match the source rules.",
+        "or": "ନିର୍ଦ୍ଦିଷ୍ଟ ପାଠ୍ୟକ୍ରମ, ସଂସ୍ଥାର ସ୍ୱୀକୃତି, ବିଷୟବସ୍ତୁ ଏବଂ ଆବଶ୍ୟକ ମାର୍କ ଉତ୍ସ ନିୟମ ସହ ମେଳ ହେବା ଦରକାର।"
+      }
+    },
+    {
+      "source_text": "[EXCLUSION] retired employees receiving pension are not eligible for subsidy",
+      "type": "exclusion",
+      "field": "isRetiredEmployeeReceivingPension",
+      "operator": "equals",
+      "value": true,
+      "question": {
+        "en": "Are you a retired employee receiving a pension?",
+        "or": "ଆପଣ ପେନସନ୍ ପାଉଥିବା ଜଣେ ଅବସରପ୍ରାପ୍ତ କର୍ମଚାରୀ କି?"
+      }
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "id": "smam",
+  "name": "Sub-Mission on Agricultural Mechanization (SMAM)",
+  "scope": [
+    "India"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/smam",
+  "intents_high": [
+    "farm_equipment",
+    "farm_mechanization",
+    "buy_agricultural_machinery"
+  ],
+  "intents_medium": [
+    "custom_hiring",
+    "reduce_farm_labor",
+    "post_harvest_machinery"
+  ],
+  "activities": [
+    "farm_mechanization",
+    "agricultural_machinery",
+    "custom_hiring"
+  ],
+  "need_types": [
+    "subsidy",
+    "equipment",
+    "custom_hiring"
+  ],
+  "keywords": [
+    "tractor",
+    "farm machine",
+    "agriculture machine",
+    "farm equipment",
+    "mechanization",
+    "custom hiring centre",
+    "machine subsidy"
+  ],
+  "eligibility_facts": [
+    "landholding farmer families, SHGs, user groups, cooperatives, FPOs, entrepreneurs",
+    "women farmers given priority in source"
+  ],
+  "hard_exclusions": [
+    "source says benefit to those who have not taken subsidy from another central scheme earlier"
+  ],
+  "questions": [
+    "What agricultural machine or equipment do you need?",
+    "Are you buying it for your own farm or setting up a custom-hiring service?"
+  ],
+  "application_route": "online",
+  "temporal_note": null,
+  "eligibilityCriteria": [
+    {
+      "source_text": "landholding farmer families, SHGs, user groups, cooperatives, FPOs, entrepreneurs",
+      "type": "boolean_required",
+      "field": "hasEligibleSmamBeneficiaryType",
+      "required": true,
+      "question": {
+        "en": "Are you part of a landholding farmer family, SHG, user group, cooperative, FPO, or an eligible enterprise?",
+        "or": "ଆପଣ ଜମିଧାରୀ ଚାଷୀ ପରିବାର, SHG, ବ୍ୟବହାରକାରୀ ଗୋଷ୍ଠୀ, ସମବାୟ, FPO କିମ୍ବା ଯୋଗ୍ୟ ଉଦ୍ୟମର ଅଂଶ କି?"
+      }
+    },
+    {
+      "source_text": "women farmers given priority in source",
+      "type": "info_only",
+      "description": {
+        "en": "Women farmers receive priority; this is not a women-only eligibility restriction.",
+        "or": "ମହିଳା ଚାଷୀଙ୍କୁ ପ୍ରାଥମିକତା ମିଳେ; ଏହା କେବଳ ମହିଳାଙ୍କ ପାଇଁ ଯୋଗ୍ୟତା ସୀମା ନୁହେଁ।"
+      }
+    },
+    {
+      "source_text": "[EXCLUSION] source says benefit to those who have not taken subsidy from another central scheme earlier",
+      "type": "exclusion",
+      "field": "priorCentralSchemeSubsidy",
+      "operator": "equals",
+      "value": true,
+      "question": {
+        "en": "Have you previously received a subsidy from another central scheme for this benefit?",
+        "or": "ଏହି ଲାଭ ପାଇଁ ଆପଣ ପୂର୍ବରୁ ଅନ୍ୟ କେନ୍ଦ୍ରୀୟ ଯୋଜନାରୁ ସବସିଡି ପାଇଛନ୍ତି କି?"
+      }
+    }
+  ]
+}

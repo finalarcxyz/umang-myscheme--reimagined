@@ -1,0 +1,109 @@
+{
+  "id": "mtc",
+  "name": "Motorisation of Traditional Crafts",
+  "scope": [
+    "Odisha",
+    "seven maritime districts per source"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/mtc",
+  "intents_high": [
+    "fishing_boat_motorisation",
+    "traditional_fisher_income"
+  ],
+  "intents_medium": [
+    "fishing_equipment",
+    "marine_fishing_support"
+  ],
+  "activities": [
+    "traditional_marine_fishing",
+    "fishing_boat"
+  ],
+  "need_types": [
+    "subsidy",
+    "boat_engine",
+    "fishing_support"
+  ],
+  "keywords": [
+    "boat engine",
+    "fishing boat motor",
+    "traditional fisherman",
+    "boat motorisation",
+    "marine fishing"
+  ],
+  "eligibility_facts": [
+    "permanent Odisha resident",
+    "traditional active marine fisherman",
+    "registered traditional boat/craft",
+    "valid ownership/registration/fishing licence",
+    "no engine subsidy in previous 5 years"
+  ],
+  "hard_exclusions": [
+    "not a traditional marine fisherman",
+    "no qualifying registered boat/craft"
+  ],
+  "questions": [
+    "Are you a traditional marine fisherman?",
+    "Do you have a registered traditional fishing boat/craft?",
+    "Have you received an engine subsidy in the last five years?"
+  ],
+  "application_route": "online_or_offline_go_sugam",
+  "temporal_note": "Source says implementation in seven maritime districts; verify district coverage.",
+  "eligibilityCriteria": [
+    {
+      "source_text": "permanent Odisha resident",
+      "type": "enum",
+      "field": "state",
+      "allowed": [
+        "Odisha"
+      ],
+      "derived_from": "location.state"
+    },
+    {
+      "source_text": "traditional active marine fisherman",
+      "source_text_aliases": [
+        "[EXCLUSION] not a traditional marine fisherman"
+      ],
+      "type": "boolean_required",
+      "field": "isTraditionalActiveMarineFisher",
+      "required": true,
+      "question": {
+        "en": "Are you an active traditional marine fisher?",
+        "or": "ଆପଣ ଜଣେ ସକ୍ରିୟ ପାରମ୍ପରିକ ସାମୁଦ୍ରିକ ମତ୍ସ୍ୟଜୀବୀ କି?"
+      }
+    },
+    {
+      "source_text": "registered traditional boat/craft",
+      "source_text_aliases": [
+        "[EXCLUSION] no qualifying registered boat/craft"
+      ],
+      "type": "boolean_required",
+      "field": "hasRegisteredTraditionalBoatOrCraft",
+      "required": true,
+      "question": {
+        "en": "Do you own a qualifying registered traditional boat or craft?",
+        "or": "ଆପଣଙ୍କ ପାଖରେ ଯୋଗ୍ୟ ପଞ୍ଜିକୃତ ପାରମ୍ପରିକ ଡଙ୍ଗା କିମ୍ବା ନୌକା ଅଛି କି?"
+      }
+    },
+    {
+      "source_text": "valid ownership/registration/fishing licence",
+      "type": "boolean_required",
+      "field": "hasValidBoatAndFishingDocuments",
+      "required": true,
+      "question": {
+        "en": "Do you have valid ownership, registration, and fishing-licence documents?",
+        "or": "ଆପଣଙ୍କ ପାଖରେ ବୈଧ ମାଲିକାନା, ପଞ୍ଜିକରଣ ଏବଂ ମାଛଧରା ଲାଇସେନ୍ସ ଦଲିଲ ଅଛି କି?"
+      }
+    },
+    {
+      "source_text": "no engine subsidy in previous 5 years",
+      "type": "exclusion",
+      "field": "receivedEngineSubsidyWithin5Years",
+      "operator": "equals",
+      "value": true,
+      "question": {
+        "en": "Have you received an engine subsidy during the previous five years?",
+        "or": "ଗତ ପାଞ୍ଚ ବର୍ଷ ମଧ୍ୟରେ ଆପଣ ଇଞ୍ଜିନ୍ ସବସିଡି ପାଇଛନ୍ତି କି?"
+      }
+    }
+  ]
+}

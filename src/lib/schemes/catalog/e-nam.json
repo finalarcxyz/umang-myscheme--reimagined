@@ -1,0 +1,80 @@
+{
+  "id": "e-nam",
+  "name": "e-National Agriculture Market (e-NAM)",
+  "scope": [
+    "India",
+    "participating APMCs/markets"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/e-nam",
+  "intents_high": [
+    "sell_farm_produce",
+    "better_price_discovery",
+    "market_access"
+  ],
+  "intents_medium": [
+    "quality_assaying",
+    "online_agri_trade",
+    "farmer_market_linkage"
+  ],
+  "activities": [
+    "farm_produce_marketing",
+    "APMC_trade",
+    "FPO_marketing"
+  ],
+  "need_types": [
+    "market_access",
+    "price_discovery",
+    "online_trade"
+  ],
+  "keywords": [
+    "sell crops",
+    "sell produce",
+    "mandi price",
+    "better price",
+    "e nam",
+    "enam",
+    "market access",
+    "farmer market"
+  ],
+  "eligibility_facts": [
+    "farmer registration requires selected APMC and KYC; FPO/FPCs can register",
+    "state/market reforms govern market-level participation"
+  ],
+  "hard_exclusions": [
+    "not a generic cash subsidy for farmers"
+  ],
+  "questions": [
+    "Do you want help selling your farm produce or finding better market prices?",
+    "What produce do you want to sell?"
+  ],
+  "application_route": "online",
+  "temporal_note": null,
+  "eligibilityCriteria": [
+    {
+      "source_text": "farmer registration requires selected APMC and KYC; FPO/FPCs can register",
+      "type": "boolean_required",
+      "field": "canMeetEnamRegistrationRequirements",
+      "required": true,
+      "question": {
+        "en": "Can you register through a selected APMC and complete the required KYC, either as a farmer or an eligible FPO/FPC?",
+        "or": "ଆପଣ ଚୟନିତ APMC ମାଧ୍ୟମରେ ପଞ୍ଜିକରଣ କରି ଆବଶ୍ୟକ KYC ସମ୍ପୂର୍ଣ୍ଣ କରିପାରିବେ କି, ଚାଷୀ କିମ୍ବା ଯୋଗ୍ୟ FPO/FPC ଭାବେ?"
+      }
+    },
+    {
+      "source_text": "state/market reforms govern market-level participation",
+      "type": "manual_verification_note",
+      "description": {
+        "en": "Participation by the relevant state and market must be confirmed separately.",
+        "or": "ସମ୍ପୃକ୍ତ ରାଜ୍ୟ ଏବଂ ବଜାରର ଅଂଶଗ୍ରହଣକୁ ଅଲଗା ଭାବେ ଯାଞ୍ଚ କରିବାକୁ ପଡ଼ିବ।"
+      }
+    },
+    {
+      "source_text": "[EXCLUSION] not a generic cash subsidy for farmers",
+      "type": "info_only",
+      "description": {
+        "en": "e-NAM is a market-access platform, not a general cash-subsidy scheme.",
+        "or": "e-NAM ଏକ ବଜାର ପ୍ରବେଶ ପ୍ଲାଟଫର୍ମ; ଏହା ସାଧାରଣ ନଗଦ ସବସିଡି ଯୋଜନା ନୁହେଁ।"
+      }
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "id": "aksmsy",
+  "name": "Asangathit Karmakaar Silai Machine Sahayata Yojana",
+  "scope": [
+    "Chhattisgarh"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/aksmsy",
+  "intents_high": [
+    "sewing_machine_support",
+    "women_tailoring_support"
+  ],
+  "intents_medium": [
+    "tailoring_business",
+    "unorganized_worker_support"
+  ],
+  "activities": [
+    "tailoring",
+    "sewing",
+    "embroidery",
+    "weaving"
+  ],
+  "need_types": [
+    "in_kind_support",
+    "livelihood_support"
+  ],
+  "keywords": [
+    "sewing machine",
+    "silai machine",
+    "tailoring",
+    "stitching",
+    "unorganized worker"
+  ],
+  "eligibility_facts": [
+    "permanent resident of Chhattisgarh",
+    "registered construction worker/labour board",
+    "woman 18-50",
+    "sews/embroiders/weaves and earns livelihood"
+  ],
+  "hard_exclusions": [
+    "not Chhattisgarh",
+    "already received sewing machine/equivalent value under another state scheme",
+    "received Chief Minister Cycle Assistance Scheme"
+  ],
+  "questions": [
+    "Are you a registered worker in Chhattisgarh?",
+    "Do you earn through tailoring/sewing/embroidery/weaving?"
+  ],
+  "application_route": "online_chhattisgarh_labour_portal",
+  "temporal_note": "Exclude from Odisha-specific ranking.",
+  "eligibilityCriteria": [
+    {
+      "source_text": "permanent resident of Chhattisgarh",
+      "source_text_aliases": [
+        "[EXCLUSION] not Chhattisgarh"
+      ],
+      "type": "enum",
+      "field": "state",
+      "allowed": [
+        "Chhattisgarh"
+      ],
+      "derived_from": "location.state"
+    },
+    {
+      "source_text": "registered construction worker/labour board",
+      "type": "boolean_required",
+      "field": "isRegisteredConstructionWorker",
+      "required": true,
+      "question": {
+        "en": "Are you a construction worker registered with the labour board or department?",
+        "or": "ଆପଣ ଶ୍ରମ ବୋର୍ଡ କିମ୍ବା ବିଭାଗରେ ପଞ୍ଜିକୃତ ନିର୍ମାଣ ଶ୍ରମିକ କି?"
+      }
+    },
+    {
+      "source_text": "woman 18-50",
+      "type": "boolean_required",
+      "field": "isWomanAge18To50",
+      "required": true,
+      "question": {
+        "en": "Are you a woman between 18 and 50 years of age?",
+        "or": "ଆପଣ ୧୮ରୁ ୫୦ ବର୍ଷ ବୟସର ଜଣେ ମହିଳା କି?"
+      }
+    },
+    {
+      "source_text": "sews/embroiders/weaves and earns livelihood",
+      "type": "boolean_required",
+      "field": "earnsLivelihoodFromSewingWork",
+      "required": true,
+      "question": {
+        "en": "Do you earn a livelihood by sewing, embroidering, or weaving clothes?",
+        "or": "ଆପଣ ପୋଷାକ ସିଲାଇ, କଢ଼େଇ କିମ୍ବା ବୁଣା କାମରୁ ଜୀବିକା ଅର୍ଜନ କରନ୍ତି କି?"
+      }
+    },
+    {
+      "source_text": "[EXCLUSION] already received sewing machine/equivalent value under another state scheme",
+      "type": "exclusion",
+      "field": "receivedSewingMachineBenefitFromOtherStateScheme",
+      "operator": "equals",
+      "value": true,
+      "question": {
+        "en": "Have you already received a sewing machine or its equivalent value under another state scheme?",
+        "or": "ଆପଣ ଅନ୍ୟ ରାଜ୍ୟ ଯୋଜନାରେ ପୂର୍ବରୁ ସିଲାଇ ମେସିନ୍ କିମ୍ବା ତାହାର ସମମୂଲ୍ୟ ପାଇଛନ୍ତି କି?"
+      }
+    },
+    {
+      "source_text": "[EXCLUSION] received Chief Minister Cycle Assistance Scheme",
+      "type": "exclusion",
+      "field": "receivedChiefMinisterCycleAssistance",
+      "operator": "equals",
+      "value": true,
+      "question": {
+        "en": "Have you received assistance under the Chief Minister Cycle Assistance Scheme?",
+        "or": "ଆପଣ ମୁଖ୍ୟମନ୍ତ୍ରୀ ସାଇକେଲ୍ ସହାୟତା ଯୋଜନାରେ ସହାୟତା ପାଇଛନ୍ତି କି?"
+      }
+    }
+  ]
+}

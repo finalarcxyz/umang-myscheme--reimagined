@@ -1,4 +1,4 @@
-import catalog from './scheme_catalog.json' with { type: 'json' };
+import { catalog } from './loader.ts';
 
 export type VocabularyConcept =
   | 'business'

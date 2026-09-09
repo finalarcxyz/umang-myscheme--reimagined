@@ -1,0 +1,134 @@
+{
+  "id": "pmkmdy",
+  "name": "Pradhan Mantri Kisan Maandhan Yojana (PM-KMY)",
+  "scope": [
+    "India"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/pmkmdy",
+  "intents_high": [
+    "farmer_pension",
+    "old_age_farmer_security"
+  ],
+  "intents_medium": [
+    "social_security",
+    "farmer_income_security"
+  ],
+  "activities": [
+    "farming"
+  ],
+  "need_types": [
+    "pension",
+    "social_security"
+  ],
+  "keywords": [
+    "farmer pension",
+    "kisan pension",
+    "pm kisan maandhan",
+    "3000 pension",
+    "old age farmer"
+  ],
+  "eligibility_facts": [
+    "small or marginal farmer",
+    "cultivable landholding up to 2 hectares",
+    "age 18-40 at entry",
+    "name in land records as on 01.08.2019",
+    "Aadhaar",
+    "savings bank or PM-KISAN account"
+  ],
+  "hard_exclusions": [
+    "specified higher-economic-status and other social-security exclusions in source",
+    "age outside 18-40 at entry"
+  ],
+  "questions": [
+    "What is your age?",
+    "How much cultivable land do you hold?",
+    "Does your name appear in the relevant land records?"
+  ],
+  "application_route": "online_via_csc",
+  "temporal_note": "Source includes a historical land-record date condition (01.08.2019).",
+  "eligibilityCriteria": [
+    {
+      "source_text": "small or marginal farmer",
+      "type": "boolean_required",
+      "field": "isSmallOrMarginalFarmer",
+      "required": true,
+      "question": {
+        "en": "Are you a small or marginal farmer?",
+        "or": "ଆପଣ କ୍ଷୁଦ୍ର କିମ୍ବା ନାମମାତ୍ର ଚାଷୀ କି?"
+      }
+    },
+    {
+      "source_text": "cultivable landholding up to 2 hectares",
+      "type": "threshold",
+      "field": "landArea",
+      "max": 2,
+      "max_inclusive": true,
+      "unit": "hectare",
+      "question": {
+        "en": "How much cultivable land do you hold, in hectares?",
+        "or": "ଆପଣଙ୍କ ପାଖରେ କେତେ ହେକ୍ଟର ଚାଷଯୋଗ୍ୟ ଜମି ଅଛି?"
+      }
+    },
+    {
+      "source_text": "age 18-40 at entry",
+      "source_text_aliases": [
+        "[EXCLUSION] age outside 18-40 at entry"
+      ],
+      "type": "range",
+      "field": "age",
+      "min": 18,
+      "max": 40,
+      "min_inclusive": true,
+      "max_inclusive": true,
+      "question": {
+        "en": "What will your age be when you enter the scheme?",
+        "or": "ଯୋଜନାରେ ଯୋଗଦେବା ସମୟରେ ଆପଣଙ୍କ ବୟସ କେତେ ହେବ?"
+      }
+    },
+    {
+      "source_text": "name in land records as on 01.08.2019",
+      "type": "boolean_required",
+      "field": "nameInLandRecordsOn2019_08_01",
+      "required": true,
+      "question": {
+        "en": "Did your name appear in the land records on 01.08.2019?",
+        "or": "୦୧.୦୮.୨୦୧୯ ତାରିଖରେ ଜମି ରେକର୍ଡରେ ଆପଣଙ୍କ ନାମ ଥିଲା କି?"
+      }
+    },
+    {
+      "source_text": "Aadhaar",
+      "type": "boolean_required",
+      "field": "aadhaar",
+      "required": true,
+      "question": {
+        "en": "Do you have an Aadhaar card?",
+        "or": "ଆପଣଙ୍କ ପାଖରେ ଆଧାର କାର୍ଡ ଅଛି କି?"
+      }
+    },
+    {
+      "source_text": "savings bank or PM-KISAN account",
+      "type": "boolean_required",
+      "field": "hasSavingsOrPmKisanAccount",
+      "required": true,
+      "question": {
+        "en": "Do you have a savings bank account or a PM-KISAN account?",
+        "or": "ଆପଣଙ୍କ ପାଖରେ ସଞ୍ଚୟ ବ୍ୟାଙ୍କ ଖାତା କିମ୍ବା PM-KISAN ଖାତା ଅଛି କି?"
+      }
+    },
+    {
+      "source_text": "[EXCLUSION] specified higher-economic-status and other social-security exclusions in source",
+      "type": "exclusion",
+      "field": "pmKmyListedExclusionApplies",
+      "operator": "equals",
+      "value": true,
+      "question": {
+        "en": "Do any higher-economic-status or other social-security exclusions listed for PM-KMY apply to you?",
+        "or": "PM-KMY ପାଇଁ ଉଲ୍ଲେଖିତ ଉଚ୍ଚ ଆର୍ଥିକ ସ୍ଥିତି କିମ୍ବା ଅନ୍ୟ ସାମାଜିକ ସୁରକ୍ଷା ବହିଷ୍କାର ମଧ୍ୟରୁ କୌଣସିଟି ଆପଣଙ୍କୁ ଲାଗୁ ହୁଏ କି?"
+      },
+      "help_text": {
+        "en": "This includes the listed social-security, institutional-landholding, public-office, government-employment, income-tax, and professional exclusions.",
+        "or": "ଏଥିରେ ତାଲିକାଭୁକ୍ତ ସାମାଜିକ ସୁରକ୍ଷା, ସଂସ୍ଥାଗତ ଜମିଧାରଣ, ସାର୍ବଜନିକ ପଦବୀ, ସରକାରୀ ଚାକିରି, ଆୟକର ଏବଂ ବୃତ୍ତିଗତ ବହିଷ୍କାର ଅନ୍ତର୍ଭୁକ୍ତ।"
+      }
+    }
+  ]
+}

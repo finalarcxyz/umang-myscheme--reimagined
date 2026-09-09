@@ -1,0 +1,72 @@
+{
+  "id": "ami",
+  "name": "Agricultural Marketing Infrastructure (AMI)",
+  "scope": [
+    "India"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/ami",
+  "intents_high": [
+    "farm_storage",
+    "post_harvest_infrastructure",
+    "agri_processing",
+    "market_infrastructure"
+  ],
+  "intents_medium": [
+    "cold_storage",
+    "direct_marketing",
+    "FPO_infrastructure"
+  ],
+  "activities": [
+    "storage",
+    "cold_storage",
+    "post_harvest",
+    "processing",
+    "rural_haat",
+    "FPO_infrastructure"
+  ],
+  "need_types": [
+    "capital_subsidy",
+    "infrastructure",
+    "market_access"
+  ],
+  "keywords": [
+    "warehouse",
+    "storage",
+    "cold storage",
+    "post harvest",
+    "processing unit",
+    "market infrastructure",
+    "rural haat"
+  ],
+  "eligibility_facts": [
+    "individuals, agri-preneurs, farmers, FPOs, cooperatives, state agencies and others listed in source",
+    "credit-linked back-ended subsidy"
+  ],
+  "hard_exclusions": [],
+  "questions": [
+    "What infrastructure do you want to create—storage, cold storage, processing, or market infrastructure?",
+    "Are you applying as an individual, farmer group/FPO, cooperative, or business?"
+  ],
+  "application_route": "offline_through_financial_institution",
+  "temporal_note": "Source says the sub-scheme continued till 31.03.2026; as of the current date this source is stale for current availability. Refresh before showing as open.",
+  "eligibilityCriteria": [
+    {
+      "source_text": "individuals, agri-preneurs, farmers, FPOs, cooperatives, state agencies and others listed in source",
+      "type": "boolean_required",
+      "field": "hasEligibleAmiApplicantType",
+      "required": true,
+      "question": {
+        "en": "Are you an individual, agri-preneur, farmer, FPO, cooperative, state agency, or another applicant type listed by AMI?",
+        "or": "ଆପଣ ବ୍ୟକ୍ତି, କୃଷି ଉଦ୍ୟୋଗୀ, ଚାଷୀ, FPO, ସମବାୟ, ରାଜ୍ୟ ସଂସ୍ଥା କିମ୍ବା AMIରେ ତାଲିକାଭୁକ୍ତ ଅନ୍ୟ ଆବେଦକ ଶ୍ରେଣୀର କି?"
+      }
+    },
+    {
+      "source_text": "credit-linked back-ended subsidy",
+      "type": "manual_verification_note",
+      "description": {
+        "en": "The project requires financing and appraisal for a credit-linked, back-ended subsidy; this must be confirmed with the financing institution.",
+        "or": "ଏହା ଋଣ-ସଂଯୁକ୍ତ ପରବର୍ତ୍ତୀ ସବସିଡି ହେତୁ ପ୍ରକଳ୍ପର ଅର୍ଥାୟନ ଏବଂ ମୂଲ୍ୟାଙ୍କନ ଆବଶ୍ୟକ; ଅର୍ଥାୟନ ସଂସ୍ଥା ସହ ଏହା ଯାଞ୍ଚ କରିବାକୁ ପଡ଼ିବ।"
+      }
+    }
+  ]
+}

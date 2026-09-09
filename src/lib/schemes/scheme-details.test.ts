@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import catalog from './scheme_catalog.json' with { type: 'json' };
+import { catalog } from './loader.ts';
 import details from './scheme_details.json' with { type: 'json' };
 
 test('detail source covers every declared unique scheme with stable slugs', () => {

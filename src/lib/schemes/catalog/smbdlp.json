@@ -1,0 +1,91 @@
+{
+  "id": "smbdlp",
+  "name": "National Livestock Mission (NLM)",
+  "scope": [
+    "India"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/smbdlp",
+  "intents_high": [
+    "livestock_business",
+    "poultry_business",
+    "goat_sheep_business",
+    "piggery_business"
+  ],
+  "intents_medium": [
+    "breed_improvement",
+    "fodder_business",
+    "livestock_entrepreneurship"
+  ],
+  "activities": [
+    "poultry",
+    "sheep",
+    "goat",
+    "piggery",
+    "fodder"
+  ],
+  "need_types": [
+    "capital_subsidy",
+    "loan",
+    "entrepreneurship"
+  ],
+  "keywords": [
+    "livestock business",
+    "poultry farm",
+    "goat farm",
+    "sheep farm",
+    "pig farm",
+    "fodder business",
+    "NLM"
+  ],
+  "eligibility_facts": [
+    "individuals, SHGs, FPOs, FCOs, JLGs, Section 8 companies listed",
+    "50% capital subsidy in stated sub-mission, max ₹25 lakh/unit per source",
+    "bank appraisal/financing requirements"
+  ],
+  "hard_exclusions": [
+    "no subsidy for working capital, vehicles, land purchase or lease costs in stated sub-mission"
+  ],
+  "questions": [
+    "Which livestock activity do you want to start—poultry, goat, sheep, piggery, or fodder?",
+    "Are you applying as an individual, SHG, FPO, cooperative, JLG, or company?",
+    "What is the project size?"
+  ],
+  "application_route": "online",
+  "temporal_note": "Source describes a specific sub-mission; component-level eligibility should be preserved.",
+  "eligibilityCriteria": [
+    {
+      "source_text": "individuals, SHGs, FPOs, FCOs, JLGs, Section 8 companies listed",
+      "type": "boolean_required",
+      "field": "hasEligibleNlmApplicantType",
+      "required": true,
+      "question": {
+        "en": "Are you applying as an individual, SHG, FPO, farmer cooperative, JLG, or Section 8 company?",
+        "or": "ଆପଣ ବ୍ୟକ୍ତି, SHG, FPO, ଚାଷୀ ସମବାୟ, JLG କିମ୍ବା Section 8 କମ୍ପାନୀ ଭାବେ ଆବେଦନ କରୁଛନ୍ତି କି?"
+      }
+    },
+    {
+      "source_text": "50% capital subsidy in stated sub-mission, max ₹25 lakh/unit per source",
+      "type": "info_only",
+      "description": {
+        "en": "The stated sub-mission provides a 50% capital subsidy up to ₹25 lakh per unit; this is benefit information.",
+        "or": "ଉଲ୍ଲେଖିତ ଉପ-ମିଶନରେ ପ୍ରତି ୟୁନିଟ୍ ସର୍ବାଧିକ ₹୨୫ ଲକ୍ଷ ପର୍ଯ୍ୟନ୍ତ ୫୦% ପୁଞ୍ଜି ସବସିଡି ରହିଛି; ଏହା ଲାଭ ସୂଚନା।"
+      }
+    },
+    {
+      "source_text": "bank appraisal/financing requirements",
+      "type": "manual_verification_note",
+      "description": {
+        "en": "Bank appraisal, financing, and the applicant's project contribution must be confirmed separately.",
+        "or": "ବ୍ୟାଙ୍କ ମୂଲ୍ୟାଙ୍କନ, ଅର୍ଥାୟନ ଏବଂ ଆବେଦକଙ୍କ ପ୍ରକଳ୍ପ ଅଂଶଦାନକୁ ଅଲଗା ଭାବେ ଯାଞ୍ଚ କରିବାକୁ ପଡ଼ିବ।"
+      }
+    },
+    {
+      "source_text": "[EXCLUSION] no subsidy for working capital, vehicles, land purchase or lease costs in stated sub-mission",
+      "type": "info_only",
+      "description": {
+        "en": "The stated sub-mission does not subsidize working capital, vehicles, land purchase, or lease costs.",
+        "or": "ଉଲ୍ଲେଖିତ ଉପ-ମିଶନରେ କାର୍ଯ୍ୟକାରୀ ପୁଞ୍ଜି, ଯାନବାହନ, ଜମି କ୍ରୟ କିମ୍ବା ଲିଜ୍ ଖର୍ଚ୍ଚ ପାଇଁ ସବସିଡି ମିଳେ ନାହିଁ।"
+      }
+    }
+  ]
+}

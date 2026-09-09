@@ -1,0 +1,102 @@
+{
+  "id": "ndd",
+  "name": "Namo Drone Didi",
+  "scope": [
+    "India"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/ndd",
+  "intents_high": [
+    "drone_agriculture",
+    "women_shg_agri_services",
+    "precision_agriculture_services"
+  ],
+  "intents_medium": [
+    "farm_technology",
+    "women_livelihood",
+    "drone_training"
+  ],
+  "activities": [
+    "drone_services",
+    "precision_farming",
+    "fertilizer_pesticide_application"
+  ],
+  "need_types": [
+    "subsidy",
+    "loan",
+    "training",
+    "livelihood"
+  ],
+  "keywords": [
+    "drone farming",
+    "agri drone",
+    "drone didi",
+    "drone service",
+    "women shg drone"
+  ],
+  "eligibility_facts": [
+    "female SHG member",
+    "over 18",
+    "Class 10 pass",
+    "SHG registered under DAY-NRLM"
+  ],
+  "hard_exclusions": [
+    "not a female SHG member",
+    "not enrolled in qualifying SHG"
+  ],
+  "questions": [
+    "Are you a woman member of a DAY-NRLM Self-Help Group?",
+    "Have you passed Class 10?"
+  ],
+  "application_route": "offline_selection_and_portal_process",
+  "temporal_note": null,
+  "eligibilityCriteria": [
+    {
+      "source_text": "female SHG member",
+      "source_text_aliases": [
+        "[EXCLUSION] not a female SHG member"
+      ],
+      "type": "boolean_required",
+      "field": "isFemaleShgMember",
+      "required": true,
+      "question": {
+        "en": "Are you a female member of a Self Help Group?",
+        "or": "ଆପଣ କୌଣସି ସ୍ୱୟଂ ସହାୟକ ଗୋଷ୍ଠୀର ମହିଳା ସଦସ୍ୟ କି?"
+      }
+    },
+    {
+      "source_text": "over 18",
+      "type": "range",
+      "field": "age",
+      "min": 18,
+      "max": null,
+      "min_inclusive": false,
+      "question": {
+        "en": "What is your age?",
+        "or": "ଆପଣଙ୍କ ବୟସ କେତେ?"
+      }
+    },
+    {
+      "source_text": "Class 10 pass",
+      "type": "boolean_required",
+      "field": "class10Passed",
+      "required": true,
+      "question": {
+        "en": "Have you passed Class 10?",
+        "or": "ଆପଣ ଦଶମ ଶ୍ରେଣୀ ପାସ୍ କରିଛନ୍ତି କି?"
+      }
+    },
+    {
+      "source_text": "SHG registered under DAY-NRLM",
+      "source_text_aliases": [
+        "[EXCLUSION] not enrolled in qualifying SHG"
+      ],
+      "type": "boolean_required",
+      "field": "shgRegisteredUnderDayNrlm",
+      "required": true,
+      "question": {
+        "en": "Is your Self Help Group registered under DAY-NRLM?",
+        "or": "ଆପଣଙ୍କ ସ୍ୱୟଂ ସହାୟକ ଗୋଷ୍ଠୀ DAY-NRLM ଅଧୀନରେ ପଞ୍ଜିକୃତ କି?"
+      }
+    }
+  ]
+}

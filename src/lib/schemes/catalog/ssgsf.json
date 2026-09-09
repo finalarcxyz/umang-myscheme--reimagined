@@ -1,0 +1,123 @@
+{
+  "id": "ssgsf",
+  "name": "Small Scale Goat / Sheep Farming (10+1 Capacity)",
+  "scope": [
+    "Odisha"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/ssgsf",
+  "intents_high": [
+    "start_goat_farming",
+    "start_sheep_farming",
+    "goat_sheep_unit"
+  ],
+  "intents_medium": [
+    "livestock_business",
+    "rural_livelihood"
+  ],
+  "activities": [
+    "goat_farming",
+    "sheep_farming"
+  ],
+  "need_types": [
+    "subsidy",
+    "livestock_business"
+  ],
+  "keywords": [
+    "goat farming",
+    "sheep farming",
+    "goat unit",
+    "sheep unit",
+    "goat rearing",
+    "bakri palan"
+  ],
+  "eligibility_facts": [
+    "Odisha resident",
+    "small/marginal farmer or landless labourer focus",
+    "new 10+1 unit",
+    "Aadhaar linked",
+    "suitable site",
+    "remaining cost via loan/self-finance"
+  ],
+  "hard_exclusions": [
+    "previous similar subsidy recipient excluded",
+    "not a new project"
+  ],
+  "questions": [
+    "Do you want to start a new goat/sheep unit?",
+    "Would you be able to establish a 10-female + 1-male unit?",
+    "Have you received a similar government subsidy before?"
+  ],
+  "application_route": "online_go_sugam",
+  "temporal_note": null,
+  "eligibilityCriteria": [
+    {
+      "source_text": "Odisha resident",
+      "type": "enum",
+      "field": "state",
+      "allowed": [
+        "Odisha"
+      ],
+      "derived_from": "location.state"
+    },
+    {
+      "source_text": "small/marginal farmer or landless labourer focus",
+      "type": "info_only",
+      "description": {
+        "en": "The scheme is focused on small and marginal farmers and landless labourers.",
+        "or": "ଏହି ଯୋଜନା କ୍ଷୁଦ୍ର ଓ ନାମମାତ୍ର ଚାଷୀ ଏବଂ ଭୂମିହୀନ ଶ୍ରମିକଙ୍କ ଉପରେ କେନ୍ଦ୍ରିତ।"
+      }
+    },
+    {
+      "source_text": "new 10+1 unit",
+      "source_text_aliases": [
+        "[EXCLUSION] not a new project"
+      ],
+      "type": "boolean_required",
+      "field": "newProject10Plus1",
+      "required": true,
+      "question": {
+        "en": "Are you willing to establish a new individual goat or sheep unit with 10 female animals and 1 male animal?",
+        "or": "ଆପଣ ୧୦ଟି ମାଈ ଏବଂ ୧ଟି ଅଣ୍ଡିରା ପଶୁ ସହ ନୂଆ ବ୍ୟକ୍ତିଗତ ଛେଳି କିମ୍ବା ମେଣ୍ଢା ୟୁନିଟ୍ ସ୍ଥାପନ କରିବାକୁ ଇଚ୍ଛୁକ କି?"
+      }
+    },
+    {
+      "source_text": "Aadhaar linked",
+      "type": "boolean_required",
+      "field": "aadhaar",
+      "required": true,
+      "question": {
+        "en": "Will your Aadhaar be linked when you submit the application?",
+        "or": "ଆବେଦନ ଦାଖଲ ସମୟରେ ଆପଣଙ୍କ ଆଧାର ଲିଙ୍କ୍ ହୋଇଥିବ କି?"
+      }
+    },
+    {
+      "source_text": "suitable site",
+      "type": "manual_verification_note",
+      "description": {
+        "en": "The proposed site must be confirmed separately as suitable by the Block Level Inspection Team.",
+        "or": "ପ୍ରସ୍ତାବିତ ସ୍ଥାନଟି ଉପଯୁକ୍ତ କି ନାହିଁ, ତାହା ବ୍ଲକ୍ ସ୍ତରୀୟ ନିରୀକ୍ଷଣ ଦଳ ଦ୍ୱାରା ଅଲଗା ଭାବେ ଯାଞ୍ଚ ହେବ।"
+      }
+    },
+    {
+      "source_text": "remaining cost via loan/self-finance",
+      "type": "boolean_required",
+      "field": "canArrangeRemainingProjectCost",
+      "required": true,
+      "question": {
+        "en": "Can you arrange the remaining project cost through a bank loan or self-financing?",
+        "or": "ଆପଣ ବ୍ୟାଙ୍କ ଋଣ କିମ୍ବା ନିଜସ୍ୱ ଅର୍ଥରେ ପ୍ରକଳ୍ପର ବାକି ଖର୍ଚ୍ଚ ବ୍ୟବସ୍ଥା କରିପାରିବେ କି?"
+      }
+    },
+    {
+      "source_text": "[EXCLUSION] previous similar subsidy recipient excluded",
+      "type": "exclusion",
+      "field": "priorSubsidy",
+      "operator": "equals",
+      "value": true,
+      "question": {
+        "en": "Have you previously received a subsidy under a similar central, state, or Women Self Help Group scheme?",
+        "or": "ଆପଣ ପୂର୍ବରୁ ସମାନ କେନ୍ଦ୍ର, ରାଜ୍ୟ କିମ୍ବା ମହିଳା ସ୍ୱୟଂ ସହାୟକ ଗୋଷ୍ଠୀ ଯୋଜନାରେ ସବସିଡି ପାଇଛନ୍ତି କି?"
+      }
+    }
+  ]
+}

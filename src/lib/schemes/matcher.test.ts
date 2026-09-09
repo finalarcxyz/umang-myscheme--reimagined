@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import catalog from './scheme_catalog.json' with { type: 'json' };
-import eligibilityCatalog from './scheme_eligibility.json' with { type: 'json' };
+import { catalog, eligibilityCatalog } from './loader.ts';
+
 // @ts-expect-error Node's type-stripping test runner requires the explicit TypeScript extension.
 import { evaluateEligibility, matchSchemes, resolveActivity, type Scheme } from './matcher.ts';
 

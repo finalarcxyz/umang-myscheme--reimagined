@@ -1,0 +1,83 @@
+{
+  "id": "pfmeiiao",
+  "name": "Popularisation of Fishery Machinery/Equipment/Implements for Intensive Aquaculture",
+  "scope": [
+    "Odisha"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/pfmeiiao",
+  "intents_high": [
+    "fishery_equipment",
+    "aquaculture_equipment"
+  ],
+  "intents_medium": [
+    "improve_aquaculture",
+    "farm_mechanization"
+  ],
+  "activities": [
+    "fish_farming",
+    "shrimp_farming",
+    "aquaculture_equipment"
+  ],
+  "need_types": [
+    "subsidy",
+    "equipment"
+  ],
+  "keywords": [
+    "aerator",
+    "air blower",
+    "biosecurity net",
+    "fishing net",
+    "fishery machinery",
+    "aquaculture equipment"
+  ],
+  "eligibility_facts": [
+    "individual fish farmers/fishers",
+    "registered members of Primary Fisherman Cooperative Society",
+    "WSHGs involved in fish/shrimp production",
+    "40% back-ended subsidy per source"
+  ],
+  "hard_exclusions": [
+    "same component subsidy in prior 5 years excludes that component"
+  ],
+  "questions": [
+    "What fishery equipment do you need?",
+    "Have you received subsidy for the same component in the last five years?"
+  ],
+  "application_route": "online_or_designated_submission",
+  "temporal_note": "Source explicitly labels the scheme for FY 2021-22; verify current availability.",
+  "eligibilityCriteria": [
+    {
+      "source_text": "individual fish farmers/fishers",
+      "source_text_aliases": [
+        "registered members of Primary Fisherman Cooperative Society",
+        "WSHGs involved in fish/shrimp production"
+      ],
+      "type": "boolean_required",
+      "field": "hasEligibleFisheryBeneficiaryType",
+      "required": true,
+      "question": {
+        "en": "Are you an individual fish farmer or fisher, a registered Primary Fisherman Cooperative Society member, or a WSHG involved in fish or shrimp production?",
+        "or": "ଆପଣ ବ୍ୟକ୍ତିଗତ ମାଛ ଚାଷୀ କିମ୍ବା ମତ୍ସ୍ୟଜୀବୀ, ପଞ୍ଜିକୃତ ପ୍ରାଥମିକ ମତ୍ସ୍ୟଜୀବୀ ସମବାୟ ସଦସ୍ୟ, କିମ୍ବା ମାଛ/ଚିଙ୍ଗୁଡ଼ି ଉତ୍ପାଦନରେ ନିୟୋଜିତ WSHG କି?"
+      }
+    },
+    {
+      "source_text": "40% back-ended subsidy per source",
+      "type": "info_only",
+      "description": {
+        "en": "The source describes a 40% back-ended subsidy; this is benefit information, not an eligibility question.",
+        "or": "ଉତ୍ସରେ ୪୦% ପରବର୍ତ୍ତୀ ସବସିଡି ବର୍ଣ୍ଣିତ; ଏହା ଲାଭ ସୂଚନା, ଯୋଗ୍ୟତା ପ୍ରଶ୍ନ ନୁହେଁ।"
+      }
+    },
+    {
+      "source_text": "[EXCLUSION] same component subsidy in prior 5 years excludes that component",
+      "type": "exclusion",
+      "field": "receivedSameComponentSubsidyWithin5Years",
+      "operator": "equals",
+      "value": true,
+      "question": {
+        "en": "Have you received a subsidy for the same component during the previous five years?",
+        "or": "ଗତ ପାଞ୍ଚ ବର୍ଷ ମଧ୍ୟରେ ଆପଣ ସେହି ଏକେ ଅଂଶ ପାଇଁ ସବସିଡି ପାଇଛନ୍ତି କି?"
+      }
+    }
+  ]
+}

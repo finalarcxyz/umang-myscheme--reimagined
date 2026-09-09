@@ -1,0 +1,107 @@
+{
+  "id": "kvny",
+  "name": "Krishi Vidya Nidhi Yojana",
+  "scope": [
+    "Odisha"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/kvny",
+  "intents_high": [
+    "higher_education_support",
+    "professional_education",
+    "student_scholarship"
+  ],
+  "intents_medium": [
+    "technical_education",
+    "agriculture_family_education_support"
+  ],
+  "activities": [
+    "higher_education",
+    "professional_courses",
+    "technical_courses",
+    "diploma",
+    "phd"
+  ],
+  "need_types": [
+    "scholarship",
+    "education_financing"
+  ],
+  "keywords": [
+    "scholarship",
+    "college fees",
+    "education support",
+    "engineering scholarship",
+    "medical scholarship",
+    "krishi vidya nidhi"
+  ],
+  "eligibility_facts": [
+    "Odisha resident/domicile",
+    "child of eligible CM-KISAN beneficiary",
+    "merit-based admission in qualifying institution/course",
+    "only one scholarship"
+  ],
+  "hard_exclusions": [
+    "private institution outside Odisha",
+    "simultaneous multiple scholarships"
+  ],
+  "questions": [
+    "Are you a child of an eligible CM-KISAN beneficiary?",
+    "What course and institution have you been admitted to?"
+  ],
+  "application_route": "online_odisha_scholarship_portal",
+  "temporal_note": "Source says application window opens twice yearly, July/August and November/December.",
+  "eligibilityCriteria": [
+    {
+      "source_text": "Odisha resident/domicile",
+      "type": "enum",
+      "field": "state",
+      "allowed": [
+        "Odisha"
+      ],
+      "derived_from": "location.state"
+    },
+    {
+      "source_text": "child of eligible CM-KISAN beneficiary",
+      "type": "boolean_required",
+      "field": "isChildOfEligibleCmKisanBeneficiary",
+      "required": true,
+      "question": {
+        "en": "Are you the child of an eligible CM-KISAN beneficiary?",
+        "or": "ଆପଣ ଜଣେ ଯୋଗ୍ୟ CM-KISAN ଲାଭାର୍ଥୀଙ୍କ ସନ୍ତାନ କି?"
+      }
+    },
+    {
+      "source_text": "merit-based admission in qualifying institution/course",
+      "type": "boolean_required",
+      "field": "hasMeritAdmissionInQualifyingCourse",
+      "required": true,
+      "question": {
+        "en": "Have you secured merit-based admission to a qualifying institution and course?",
+        "or": "ଆପଣ ଯୋଗ୍ୟ ସଂସ୍ଥା ଏବଂ ପାଠ୍ୟକ୍ରମରେ ମେରିଟ୍ ଆଧାରିତ ଭର୍ତ୍ତି ପାଇଛନ୍ତି କି?"
+      }
+    },
+    {
+      "source_text": "only one scholarship",
+      "source_text_aliases": [
+        "[EXCLUSION] simultaneous multiple scholarships"
+      ],
+      "type": "boolean_required",
+      "field": "notReceivingAnotherScholarship",
+      "required": true,
+      "question": {
+        "en": "Will this be the only scholarship you receive at the same time?",
+        "or": "ଏକେ ସମୟରେ ଆପଣ ପାଉଥିବା ଏହା ଏକମାତ୍ର ଛାତ୍ରବୃତ୍ତି ହେବ କି?"
+      }
+    },
+    {
+      "source_text": "[EXCLUSION] private institution outside Odisha",
+      "type": "exclusion",
+      "field": "isPrivateInstitutionOutsideOdisha",
+      "operator": "equals",
+      "value": true,
+      "question": {
+        "en": "Is your institution a private institution located outside Odisha?",
+        "or": "ଆପଣଙ୍କ ଶିକ୍ଷା ସଂସ୍ଥା ଓଡ଼ିଶା ବାହାରେ ଥିବା ଏକ ବେସରକାରୀ ସଂସ୍ଥା କି?"
+      }
+    }
+  ]
+}

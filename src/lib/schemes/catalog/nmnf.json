@@ -1,0 +1,57 @@
+{
+  "id": "nmnf",
+  "name": "National Mission on Natural Farming",
+  "scope": [
+    "India"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/nmnf",
+  "intents_high": [
+    "natural_farming",
+    "reduce_farm_input_costs",
+    "natural_farming_training"
+  ],
+  "intents_medium": [
+    "improve_farm_income",
+    "soil_health",
+    "integrated_agriculture"
+  ],
+  "activities": [
+    "crop_farming",
+    "natural_farming",
+    "integrated_farming"
+  ],
+  "need_types": [
+    "training",
+    "handholding",
+    "farm_support"
+  ],
+  "keywords": [
+    "natural farming",
+    "organic-like farming",
+    "chemical free farming",
+    "desi cow",
+    "natural kheti",
+    "prakritik kheti"
+  ],
+  "eligibility_facts": [
+    "all farmers in India"
+  ],
+  "hard_exclusions": [],
+  "questions": [
+    "Are you interested in shifting to natural farming or learning the practice?"
+  ],
+  "application_route": "offline_zila_parishad",
+  "temporal_note": null,
+  "eligibilityCriteria": [
+    {
+      "source_text": "all farmers in India",
+      "type": "boolean_required",
+      "field": "isFarmer",
+      "required": true,
+      "question": {
+        "en": "Are you a farmer?",
+        "or": "ଆପଣ ଜଣେ ଚାଷୀ କି?"
+      }
+    }
+  ]
+}

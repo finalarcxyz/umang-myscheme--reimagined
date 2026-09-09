@@ -3,9 +3,11 @@ import { catalog, eligibilityCatalog } from './loader';
 import schemeDetails from './scheme_details.json' with { type: 'json' };
 // @ts-expect-error Node's type-stripping test runner requires the explicit TypeScript extension.
 import { analyzeVocabulary, normalizeUserText, type VocabularyAnalysis } from './vocabulary.ts';
+import type { IntentResolution } from '../intent/schema.ts';
 
 export interface MatcherInput {
   text: string;
+  serverIntent?: IntentResolution;
   state?: string;
   district?: string;
   age?: number;
@@ -741,10 +743,25 @@ export function matchSchemes(input: MatcherInput): MatcherResult {
     return { intent, missingContext, rankedSchemes: [], matchTier: 'none' };
   }
 
+  // Update intent based on serverIntent if confidence is high enough
+  if (input.serverIntent && input.serverIntent.confidence >= 0.5) {
+    if (!intent.need && input.serverIntent.primaryNeed) {
+      intent.need = input.serverIntent.primaryNeed;
+    }
+    // Could update goal too, but the plan only specified primaryNeed context.
+  }
+
   const scored = schemes.flatMap((scheme) => {
     if (isComponentMismatch(intent.activity, scheme)) return [];
     const activity = activityScore(intent.activity, scheme);
     const intentPoints = intent.activity && activity.score === 0 ? 0 : goalScore(intent.goal, scheme);
+
+    // Server intent boost
+    let serverIntentPoints = 0;
+    if (input.serverIntent && input.serverIntent.suggestedSchemeIds?.includes(scheme.id)) {
+      serverIntentPoints = 15;
+    }
+
     const needPoints = needScore(intent.need, scheme);
     const location = locationScore(input, scheme);
     const eligibility = evaluateEligibility(input, intent, scheme);
@@ -757,7 +774,7 @@ export function matchSchemes(input: MatcherInput): MatcherResult {
 
     const score = Math.min(
       100,
-      intentPoints + activity.score + needPoints + location.score + eligibility.contextScore
+      intentPoints + activity.score + needPoints + serverIntentPoints + location.score + eligibility.contextScore
     );
     const isClosestMatch = !intent.activity;
     const cappedScore = isClosestMatch ? Math.min(score, 39) : score;
@@ -768,7 +785,7 @@ export function matchSchemes(input: MatcherInput): MatcherResult {
       input,
       intent,
       scheme,
-      intentPoints,
+      intentPoints + serverIntentPoints,
       activity.score,
       needPoints,
       location.score
@@ -777,7 +794,7 @@ export function matchSchemes(input: MatcherInput): MatcherResult {
       input,
       intent,
       scheme,
-      intentPoints,
+      intentPoints + serverIntentPoints,
       activity.score,
       needPoints,
       location.score,
@@ -792,14 +809,20 @@ export function matchSchemes(input: MatcherInput): MatcherResult {
     return [{ scheme, score: cappedScore, relevance, reasons, matchedCriteria, unknownCriteria, eligibility, specificity: activity.specificity }];
   });
 
-  scored.sort(
-    (left, right) =>
-      right.score - left.score ||
+  scored.sort((left, right) => {
+    // If the server explicitly suggests one scheme but not the other, prioritize the suggested one
+    const leftSuggested = input.serverIntent?.suggestedSchemeIds?.includes(left.scheme.id) ?? false;
+    const rightSuggested = input.serverIntent?.suggestedSchemeIds?.includes(right.scheme.id) ?? false;
+
+    if (leftSuggested && !rightSuggested) return -1;
+    if (rightSuggested && !leftSuggested) return 1;
+
+    return right.score - left.score ||
       right.specificity - left.specificity ||
       Number(right.scheme.scope.some((scope) => normalizeText(scope) === normalizeText(input.state ?? ''))) -
         Number(left.scheme.scope.some((scope) => normalizeText(scope) === normalizeText(input.state ?? ''))) ||
-      left.scheme.id.localeCompare(right.scheme.id)
-  );
+      left.scheme.id.localeCompare(right.scheme.id);
+  });
 
   let questionsRemaining = 2;
   const matchTier: MatchTier = intent.activity ? 'exact' : scored.length > 0 ? 'closest' : 'none';

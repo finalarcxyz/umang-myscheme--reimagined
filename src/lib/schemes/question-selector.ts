@@ -1,4 +1,4 @@
-import { catalog } from './loader.ts';
+import { catalog } from './loader';
 import type { MatcherInput, MatcherResult } from './matcher';
 
 export type QuestionLanguage = 'en' | 'od' | 'or';

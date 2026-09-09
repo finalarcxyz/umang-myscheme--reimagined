@@ -1,4 +1,4 @@
-import { catalog } from './loader.ts';
+import { catalog } from './loader';
 
 export type VocabularyConcept =
   | 'business'

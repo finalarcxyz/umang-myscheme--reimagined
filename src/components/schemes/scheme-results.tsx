@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import SchemeDetail from '@/components/schemes/scheme-detail';
 import type { LanguageCode } from '@/lib/language/language';
-import catalog from '@/lib/schemes/scheme_catalog.json' with { type: 'json' };
+import { catalog } from '@/lib/schemes/loader';
 import type {
   EligibilityStatus,
   MatcherResult,

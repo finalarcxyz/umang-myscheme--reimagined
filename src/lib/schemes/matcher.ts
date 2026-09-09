@@ -1,4 +1,4 @@
-import { catalog, eligibilityCatalog } from './loader.ts';
+import { catalog, eligibilityCatalog } from './loader';
 
 import schemeDetails from './scheme_details.json' with { type: 'json' };
 // @ts-expect-error Node's type-stripping test runner requires the explicit TypeScript extension.

@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import BrowseSchemeDetail from '@/components/schemes/browse-scheme-detail';
-import catalog from '@/lib/schemes/scheme_catalog.json' with { type: 'json' };
+import { catalog } from '@/lib/schemes/loader';
 
 interface CatalogScheme {
   id: string;

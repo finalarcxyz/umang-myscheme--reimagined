@@ -10,8 +10,7 @@ import {
   type SchemeEligibilityAnswer,
   type SchemeEligibilityAnswers
 } from '@/lib/schemes/matcher';
-import catalog from '@/lib/schemes/scheme_catalog.json' with { type: 'json' };
-import eligibilityCatalog from '@/lib/schemes/scheme_eligibility.json' with { type: 'json' };
+import { catalog, eligibilityCatalog } from '@/lib/schemes/loader';
 
 interface EligibilityVerificationInlineProps {
   schemeId: string;

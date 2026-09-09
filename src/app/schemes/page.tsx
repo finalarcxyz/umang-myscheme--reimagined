@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import catalog from '@/lib/schemes/scheme_catalog.json' with { type: 'json' };
+import { catalog } from '@/lib/schemes/loader';
 import details from '@/lib/schemes/scheme_details.json' with { type: 'json' };
 import { summaryText, type SchemeDetailRecord } from '@/lib/schemes/details';
 

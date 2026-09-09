@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { getAllSchemes, getEligibilityMap } from './loader.ts';
+import { getAllSchemes, getEligibilityMap } from './loader';
 
 test('Validator: check all loaded schemes have required metadata and valid JSON', () => {
   const schemes = getAllSchemes();

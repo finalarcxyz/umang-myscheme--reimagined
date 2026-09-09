@@ -1,6 +1,6 @@
 'use client';
 
-import catalog from '@/lib/schemes/scheme_catalog.json' with { type: 'json' };
+import { catalog } from '@/lib/schemes/loader';
 import details from '@/lib/schemes/scheme_details.json' with { type: 'json' };
 import type { LanguageCode } from '@/lib/language/language';
 import type { EligibilityStatus, RankedScheme, MatcherInput, ExtractedIntent } from '@/lib/schemes/matcher';

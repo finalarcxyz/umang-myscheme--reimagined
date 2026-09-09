@@ -11,6 +11,8 @@ import {
   type SchemeEligibilityAnswers
 } from '@/lib/schemes/matcher';
 import { catalog, eligibilityCatalog } from '@/lib/schemes/loader';
+import { REJECTION_REASONS } from '@/lib/schemes/evaluation-reasons';
+import { CANONICAL_FACTS } from '@/lib/schemes/facts';
 
 interface EligibilityVerificationInlineProps {
   schemeId: string;
@@ -20,7 +22,7 @@ interface EligibilityVerificationInlineProps {
 }
 
 interface StructuredEligibilityCriterion {
-  type: 'range' | 'threshold' | 'enum' | 'exclusion' | 'boolean_required' | 'info_only' | 'manual_verification_note';
+  type: 'range' | 'threshold' | 'enum' | 'exclusion' | 'boolean_required' | 'info_only' | 'manual_verification_note' | 'fact_check';
   field?: string;
   derived_from?: string;
   min?: number | null;
@@ -28,6 +30,8 @@ interface StructuredEligibilityCriterion {
   allowed?: SchemeEligibilityAnswer[];
   unit?: string;
   question?: Record<LanguageCode, string>;
+  fact?: string;
+  expected_values?: string[];
 }
 
 interface StructuredEligibilityRecord {
@@ -96,7 +100,29 @@ export default function EligibilityVerificationInline({
     if (!eligibilityRecord) return [];
 
     const seenFields = new Set<string>();
-    return eligibilityRecord.criteria.flatMap((criterion, index) => {
+    return eligibilityRecord.criteria.flatMap((criterion, index): EligibilityQuestion[] => {
+
+      if (criterion.type === 'fact_check') {
+        if (criterion.fact && seenFields.has(criterion.fact)) return [];
+        if (criterion.fact) seenFields.add(criterion.fact);
+        const factDef = CANONICAL_FACTS[criterion.fact as string];
+        if (!factDef) return [];
+        return [{
+          id: `${scheme.id}-fact-${index}`,
+          field: criterion.fact as string,
+          question: factDef.text[language === 'or' ? 'od' : 'en'],
+          inputType: 'select',
+          options: factDef.options.map((opt: any) => ({
+             value: opt.value,
+             label: opt.labels[language === 'or' ? 'od' : 'en']
+          })),
+          min: undefined,
+          max: undefined,
+          step: 1,
+          unit: undefined,
+          placeholder: ''
+        }];
+      }
       if (!criterion.field || criterion.derived_from || !criterion.question) return [];
       if (criterion.type === 'info_only' || criterion.type === 'manual_verification_note') return [];
       if (seenFields.has(criterion.field)) return [];
@@ -208,7 +234,7 @@ export default function EligibilityVerificationInline({
       reasons: matcherResult.reasons,
       details: {
         satisfied: matcherResult.status === 'ELIGIBLE' ? matcherResult.reasons : [],
-        notSatisfied: matcherResult.status === 'EXCLUDED' ? matcherResult.reasons : [],
+        notSatisfied: matcherResult.status === 'EXCLUDED' ? matcherResult.reasons.map(r => REJECTION_REASONS[r] ? REJECTION_REASONS[r][language === 'or' ? 'od' : 'en'] : r) : [],
         missing: [],
         needsVerification: []
       }
@@ -318,7 +344,7 @@ export default function EligibilityVerificationInline({
                   className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
                   disabled={currentQuestionIndex === 0}
                 >
-                  {language === 'or' ? 'ପିଛି' : 'Back'}
+                  {language === 'or' ? 'ପଛକୁ ଫେରନ୍ତୁ' : 'Back'}
                 </button>
 
                 <button
@@ -326,7 +352,7 @@ export default function EligibilityVerificationInline({
                   disabled={currentQuestion.inputType === 'number' ? !numericAnswer.trim() || Number.isNaN(Number(numericAnswer)) : !currentQuestion.options}
                   className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                 >
-                  {language === 'or' ? 'ସମାଧାନ' : 'Submit'}
+                  {language === 'or' ? 'ଯାଞ୍ଚ କରନ୍ତୁ' : 'Submit'}
                 </button>
               </div>
             </div>
@@ -395,7 +421,7 @@ export default function EligibilityVerificationInline({
               {eligibilityResult.details.satisfied.length > 0 && (
                 <div>
                   <h4 className="font-semibold mb-2 text-green-800">
-                    {language === 'or' ? 'ପୂର୍ଣ୍ଣ କ୍ରିଟେରିଆ' : 'Criteria Met ✅'}
+                    {language === 'or' ? 'ଆପଣଙ୍କ ପାଖରେ କ’ଣ ଅଛି' : 'What you have ✅'}
                   </h4>
                   <ul className="list-disc list-inside space-y-1 text-green-700">
                     {eligibilityResult.details.satisfied.map((item, index) => (
@@ -408,7 +434,7 @@ export default function EligibilityVerificationInline({
               {eligibilityResult.details.notSatisfied.length > 0 && (
                 <div>
                   <h4 className="font-semibold mb-2 text-red-800">
-                    {language === 'or' ? 'ଅପୂର୍ଣ୍ଣ କ୍ରିଟେରିଆ' : 'Criteria Not Met ❌'}
+                    {language === 'or' ? 'ଆଉ କ’ଣ ଆବଶ୍ୟକ' : 'What else is needed ❌'}
                   </h4>
                   <ul className="list-disc list-inside space-y-1 text-red-700">
                     {eligibilityResult.details.notSatisfied.map((item, index) => (

@@ -49,6 +49,22 @@
         "en": "Eligibility depends on the specific extension component and beneficiary category and must be confirmed separately.",
         "or": "ଯୋଗ୍ୟତା ନିର୍ଦ୍ଦିଷ୍ଟ କୃଷି ସମ୍ପ୍ରସାରଣ ଅଂଶ ଏବଂ ଲାଭାର୍ଥୀ ଶ୍ରେଣୀ ଉପରେ ନିର୍ଭର କରେ; ଏହାକୁ ଅଲଗା ଭାବେ ଯାଞ୍ଚ କରିବାକୁ ପଡ଼ିବ।"
       }
+    },
+    {
+      "source_text": "Krushak Odisha ID required",
+      "type": "fact_check",
+      "fact": "krushak_id_status",
+      "expected_values": [
+        "has_id"
+      ]
+    },
+    {
+      "source_text": "No prior machinery subsidy within 5 years",
+      "type": "fact_check",
+      "fact": "prior_machinery_subsidy_5yr",
+      "expected_values": [
+        "no_not_received"
+      ]
     }
   ]
 }

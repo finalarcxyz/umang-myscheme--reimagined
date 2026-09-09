@@ -1,0 +1,101 @@
+{
+  "id": "nfsmcss",
+  "name": "National Food Security Mission (NFSMCSS)",
+  "scope": [
+    "India"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/nfsmcss",
+  "intents_high": [
+    "improve_crop_productivity",
+    "quality_seed",
+    "crop_inputs",
+    "farm_technology"
+  ],
+  "intents_medium": [
+    "farm_equipment",
+    "nutrient_management",
+    "pest_management",
+    "post_harvest_technology"
+  ],
+  "activities": [
+    "crop_farming",
+    "rice",
+    "wheat",
+    "pulses",
+    "nutri_cereals",
+    "maize",
+    "barley",
+    "jowar",
+    "bajra",
+    "ragi",
+    "small_millets"
+  ],
+  "need_types": [
+    "subsidy",
+    "inputs",
+    "training",
+    "technology"
+  ],
+  "keywords": [
+    "nfsm",
+    "seed",
+    "mini kit",
+    "quality seed",
+    "crop productivity",
+    "pulses",
+    "millets",
+    "rice",
+    "wheat",
+    "nutrient management"
+  ],
+  "eligibility_facts": [
+    "farmer",
+    "benefits limited to 5 hectares per season",
+    "small/marginal and women farmers receive earmarked allocations"
+  ],
+  "hard_exclusions": [
+    "none stated as universal; district/crop targeting applies"
+  ],
+  "questions": [
+    "Which crop are you growing or planning to grow?",
+    "Which district are you in?"
+  ],
+  "application_route": "offline_district_or_block_agriculture_agency",
+  "temporal_note": "Area/district and intervention eligibility is program-specific.",
+  "eligibilityCriteria": [
+    {
+      "source_text": "farmer",
+      "type": "boolean_required",
+      "field": "isFarmer",
+      "required": true,
+      "question": {
+        "en": "Are you a farmer?",
+        "or": "ଆପଣ ଜଣେ ଚାଷୀ କି?"
+      }
+    },
+    {
+      "source_text": "benefits limited to 5 hectares per season",
+      "type": "info_only",
+      "description": {
+        "en": "Assistance under mission components is limited to five hectares per farmer in a season.",
+        "or": "ମିଶନର ବିଭିନ୍ନ ଅଂଶରେ ପ୍ରତି ଋତୁରେ ପ୍ରତି ଚାଷୀଙ୍କୁ ସର୍ବାଧିକ ପାଞ୍ଚ ହେକ୍ଟର ପର୍ଯ୍ୟନ୍ତ ସହାୟତା ମିଳେ।"
+      }
+    },
+    {
+      "source_text": "small/marginal and women farmers receive earmarked allocations",
+      "type": "info_only",
+      "description": {
+        "en": "Allocations are earmarked for small, marginal, and women farmers; this is a priority rule, not a universal exclusion.",
+        "or": "କ୍ଷୁଦ୍ର, ନାମମାତ୍ର ଏବଂ ମହିଳା ଚାଷୀଙ୍କ ପାଇଁ ଅର୍ଥ ବରାଦ୍ଦ ରଖାଯାଏ; ଏହା ପ୍ରାଥମିକତା ନିୟମ, ସାର୍ବଜନୀନ ବହିଷ୍କାର ନୁହେଁ।"
+      }
+    },
+    {
+      "source_text": "[EXCLUSION] none stated as universal; district/crop targeting applies",
+      "type": "manual_verification_note",
+      "description": {
+        "en": "Availability for the relevant crop and district must be confirmed separately.",
+        "or": "ସମ୍ପୃକ୍ତ ଫସଲ ଏବଂ ଜିଲ୍ଲା ପାଇଁ ଯୋଜନା ଉପଲବ୍ଧ କି ନାହିଁ, ତାହା ଅଲଗା ଭାବେ ଯାଞ୍ଚ କରିବାକୁ ପଡ଼ିବ।"
+      }
+    }
+  ]
+}

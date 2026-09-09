@@ -1,0 +1,83 @@
+{
+  "id": "midh",
+  "name": "Mission for Integrated Development of Horticulture (MIDH)",
+  "scope": [
+    "India"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/midh",
+  "intents_high": [
+    "horticulture",
+    "fruit_farming",
+    "vegetable_farming",
+    "mushroom_farming",
+    "nursery"
+  ],
+  "intents_medium": [
+    "protected_cultivation",
+    "beekeeping",
+    "post_harvest_horticulture",
+    "horticulture_mechanization"
+  ],
+  "activities": [
+    "fruits",
+    "vegetables",
+    "root_tuber",
+    "mushroom",
+    "spices",
+    "flowers",
+    "aromatic_plants",
+    "coconut",
+    "cashew",
+    "cocoa",
+    "bamboo",
+    "nursery",
+    "protected_cultivation"
+  ],
+  "need_types": [
+    "subsidy",
+    "farm_support",
+    "infrastructure",
+    "training"
+  ],
+  "keywords": [
+    "horticulture",
+    "fruit farming",
+    "vegetable farming",
+    "mushroom",
+    "nursery",
+    "polyhouse",
+    "greenhouse",
+    "flower farming"
+  ],
+  "eligibility_facts": [
+    "all farmers / registered societies / state governments stated as eligible",
+    "component-specific implementation through horticulture missions"
+  ],
+  "hard_exclusions": [],
+  "questions": [
+    "What horticulture activity do you want to start or expand?",
+    "Which crop/activity are you interested in?"
+  ],
+  "application_route": "offline_district_or_block_horticulture_office",
+  "temporal_note": null,
+  "eligibilityCriteria": [
+    {
+      "source_text": "all farmers / registered societies / state governments stated as eligible",
+      "type": "boolean_required",
+      "field": "hasEligibleMidhApplicantType",
+      "required": true,
+      "question": {
+        "en": "Are you a farmer or applying through a registered society or eligible government body?",
+        "or": "ଆପଣ ଜଣେ ଚାଷୀ କିମ୍ବା ପଞ୍ଜିକୃତ ସମିତି ଅଥବା ଯୋଗ୍ୟ ସରକାରୀ ସଂସ୍ଥା ମାଧ୍ୟମରେ ଆବେଦନ କରୁଛନ୍ତି କି?"
+      }
+    },
+    {
+      "source_text": "component-specific implementation through horticulture missions",
+      "type": "manual_verification_note",
+      "description": {
+        "en": "Availability and requirements for the relevant horticulture component must be confirmed separately.",
+        "or": "ସମ୍ପୃକ୍ତ ଉଦ୍ୟାନ କୃଷି ଅଂଶର ଉପଲବ୍ଧତା ଏବଂ ସର୍ତ୍ତଗୁଡ଼ିକୁ ଅଲଗା ଭାବେ ଯାଞ୍ଚ କରିବାକୁ ପଡ଼ିବ।"
+      }
+    }
+  ]
+}

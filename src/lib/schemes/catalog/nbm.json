@@ -1,0 +1,78 @@
+{
+  "id": "nbm",
+  "name": "National Bamboo Mission (NBM)",
+  "scope": [
+    "India",
+    "24 States/UTs per source"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/nbm",
+  "intents_high": [
+    "bamboo_farming",
+    "bamboo_business",
+    "bamboo_processing"
+  ],
+  "intents_medium": [
+    "bamboo_nursery",
+    "bamboo_product_manufacturing",
+    "bamboo_market_linkage"
+  ],
+  "activities": [
+    "bamboo_plantation",
+    "bamboo_nursery",
+    "bamboo_processing",
+    "bamboo_product_manufacturing"
+  ],
+  "need_types": [
+    "subsidy",
+    "credit",
+    "entrepreneurship",
+    "skill_training"
+  ],
+  "keywords": [
+    "bamboo",
+    "bamboo farming",
+    "bamboo plantation",
+    "bamboo business",
+    "bamboo processing"
+  ],
+  "eligibility_facts": [
+    "all farmers in India stated as eligible",
+    "implementation in 24 States/UTs per source",
+    "entrepreneurs/private agencies/FPOs etc. also listed as beneficiaries"
+  ],
+  "hard_exclusions": [
+    "state/UT must be within implementation coverage"
+  ],
+  "questions": [
+    "Do you want to grow bamboo, set up a nursery, or build a bamboo processing/product business?",
+    "Which state are you in?"
+  ],
+  "application_route": "online_or_offline_state_bamboo_mission",
+  "temporal_note": "Source says NBM was merged with MIDH during 2022-23; treat this as a scheme component/portal mapping issue and verify current state implementation.",
+  "eligibilityCriteria": [
+    {
+      "source_text": "all farmers in India stated as eligible",
+      "source_text_aliases": [
+        "entrepreneurs/private agencies/FPOs etc. also listed as beneficiaries"
+      ],
+      "type": "boolean_required",
+      "field": "hasEligibleNbmBeneficiaryType",
+      "required": true,
+      "question": {
+        "en": "Are you a farmer, entrepreneur, private agency, FPO, or another beneficiary type listed by NBM?",
+        "or": "ଆପଣ ଚାଷୀ, ଉଦ୍ୟୋଗୀ, ବେସରକାରୀ ସଂସ୍ଥା, FPO କିମ୍ବା NBMରେ ତାଲିକାଭୁକ୍ତ ଅନ୍ୟ ଲାଭାର୍ଥୀ ଶ୍ରେଣୀର କି?"
+      }
+    },
+    {
+      "source_text": "implementation in 24 States/UTs per source",
+      "source_text_aliases": [
+        "[EXCLUSION] state/UT must be within implementation coverage"
+      ],
+      "type": "manual_verification_note",
+      "description": {
+        "en": "Implementation coverage for your State or Union Territory must be confirmed separately because the source does not list the covered jurisdictions here.",
+        "or": "ଉତ୍ସରେ ଏଠାରେ ଆବୃତ୍ତ ଅଞ୍ଚଳ ତାଲିକା ନଥିବାରୁ ଆପଣଙ୍କ ରାଜ୍ୟ କିମ୍ବା କେନ୍ଦ୍ରଶାସିତ ଅଞ୍ଚଳରେ କାର୍ଯ୍ୟାନ୍ୱୟନକୁ ଅଲଗା ଭାବେ ଯାଞ୍ଚ କରିବାକୁ ପଡ଼ିବ।"
+      }
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "id": "kcc",
+  "name": "Kisan Credit Card (KCC)",
+  "scope": [
+    "India"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/kcc",
+  "intents_high": [
+    "farm_financing",
+    "crop_financing",
+    "farm_working_capital",
+    "agricultural_investment"
+  ],
+  "intents_medium": [
+    "post_harvest_financing",
+    "produce_marketing_finance",
+    "allied_activity_financing"
+  ],
+  "activities": [
+    "crop_farming",
+    "agriculture",
+    "allied_agriculture"
+  ],
+  "need_types": [
+    "credit",
+    "loan",
+    "working_capital",
+    "investment"
+  ],
+  "keywords": [
+    "kcc",
+    "kisan credit card",
+    "farm loan",
+    "crop loan",
+    "chasa pain loan",
+    "kheti loan",
+    "farming loan"
+  ],
+  "eligibility_facts": [
+    "owner cultivator",
+    "tenant farmer",
+    "oral lessee",
+    "sharecropper",
+    "farmer SHG/JLG"
+  ],
+  "hard_exclusions": [
+    "not a farmer / no agricultural activity"
+  ],
+  "questions": [
+    "Are you farming yourself, and are you an owner, tenant, sharecropper, or part of a farmer SHG/JLG?"
+  ],
+  "application_route": "online_or_offline_bank",
+  "temporal_note": null,
+  "eligibilityCriteria": [
+    {
+      "source_text": "owner cultivator",
+      "source_text_aliases": [
+        "tenant farmer",
+        "oral lessee",
+        "sharecropper",
+        "farmer SHG/JLG",
+        "[EXCLUSION] not a farmer / no agricultural activity"
+      ],
+      "type": "boolean_required",
+      "field": "hasQualifyingFarmingRelationship",
+      "required": true,
+      "question": {
+        "en": "Are you an owner cultivator, tenant farmer, oral lessee, sharecropper, or member of a farmer SHG/JLG?",
+        "or": "ଆପଣ ମାଲିକ ଚାଷୀ, ଭଡ଼ାଟିଆ ଚାଷୀ, ମୌଖିକ ପଟ୍ଟାଧାରୀ, ଭାଗଚାଷୀ କିମ୍ବା ଚାଷୀ SHG/JLGର ସଦସ୍ୟ କି?"
+      }
+    }
+  ]
+}

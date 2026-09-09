@@ -1,0 +1,91 @@
+{
+  "id": "mcfnsfdc",
+  "name": "Micro Credit Finance (NSFDC)",
+  "scope": [
+    "India",
+    "Scheduled Caste applicants"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/mcfnsfdc",
+  "intents_high": [
+    "sc_business_loan",
+    "sc_microenterprise_finance"
+  ],
+  "intents_medium": [
+    "livelihood_business",
+    "small_business_finance"
+  ],
+  "activities": [
+    "small_business",
+    "goat_rearing",
+    "retail",
+    "repair",
+    "food_business",
+    "animal_rearing"
+  ],
+  "need_types": [
+    "loan",
+    "microfinance"
+  ],
+  "keywords": [
+    "SC business loan",
+    "SC loan",
+    "NSFDC loan",
+    "micro credit",
+    "goat rearing loan",
+    "small shop loan"
+  ],
+  "eligibility_facts": [
+    "Scheduled Caste applicant",
+    "annual family income < ₹3 lakh per source",
+    "partnership/cooperative conditions also specified"
+  ],
+  "hard_exclusions": [
+    "not SC",
+    "income at/above source threshold"
+  ],
+  "questions": [
+    "Do you belong to a Scheduled Caste community?",
+    "What is your annual family income?",
+    "What income-generating business do you want to finance?"
+  ],
+  "application_route": "offline_state_channelising_agency_or_channelizing_agency",
+  "temporal_note": null,
+  "eligibilityCriteria": [
+    {
+      "source_text": "Scheduled Caste applicant",
+      "source_text_aliases": [
+        "[EXCLUSION] not SC"
+      ],
+      "type": "boolean_required",
+      "field": "isScheduledCasteApplicant",
+      "required": true,
+      "question": {
+        "en": "Are you a Scheduled Caste applicant?",
+        "or": "ଆପଣ ଅନୁସୂଚିତ ଜାତିର ଆବେଦକ କି?"
+      }
+    },
+    {
+      "source_text": "annual family income < ₹3 lakh per source",
+      "source_text_aliases": [
+        "[EXCLUSION] income at/above source threshold"
+      ],
+      "type": "threshold",
+      "field": "income",
+      "max": 300000,
+      "max_inclusive": false,
+      "unit": "INR/year",
+      "question": {
+        "en": "What is your family's annual income in rupees?",
+        "or": "ଆପଣଙ୍କ ପରିବାରର ବାର୍ଷିକ ଆୟ କେତେ ଟଙ୍କା?"
+      }
+    },
+    {
+      "source_text": "partnership/cooperative conditions also specified",
+      "type": "manual_verification_note",
+      "description": {
+        "en": "For a partnership firm or cooperative society, every member's caste and income conditions must be verified separately.",
+        "or": "ଭାଗୀଦାରୀ ସଂସ୍ଥା କିମ୍ବା ସମବାୟ ସମିତି ପାଇଁ ପ୍ରତ୍ୟେକ ସଦସ୍ୟଙ୍କ ଜାତି ଏବଂ ଆୟ ସର୍ତ୍ତକୁ ଅଲଗା ଭାବେ ଯାଞ୍ଚ କରିବାକୁ ପଡ଼ିବ।"
+      }
+    }
+  ]
+}

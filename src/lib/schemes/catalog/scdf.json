@@ -1,0 +1,106 @@
+{
+  "id": "scdf",
+  "name": "Semi-Commercial Duck Farming",
+  "scope": [
+    "Odisha"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/scdf",
+  "intents_high": [
+    "start_duck_farming",
+    "duck_farm_subsidy"
+  ],
+  "intents_medium": [
+    "poultry_business",
+    "rural_livelihood",
+    "livestock_business"
+  ],
+  "activities": [
+    "duck_farming",
+    "duckery"
+  ],
+  "need_types": [
+    "subsidy",
+    "training",
+    "livestock_business"
+  ],
+  "keywords": [
+    "duck farm",
+    "duck farming",
+    "duckery",
+    "bataka chasa",
+    "bataka palan",
+    "duck unit"
+  ],
+  "eligibility_facts": [
+    "permanent Odisha resident",
+    "individual/farmer/entrepreneur",
+    "Aadhaar linked",
+    "1,000-duck semi-commercial unit per source"
+  ],
+  "hard_exclusions": [
+    "previous similar subsidy recipient excluded"
+  ],
+  "questions": [
+    "Do you want to start a semi-commercial duck farm?",
+    "Are you planning a unit of around 1,000 ducks?",
+    "Have you received a similar subsidy before?"
+  ],
+  "application_route": "online_or_offline_go_sugam",
+  "temporal_note": null,
+  "eligibilityCriteria": [
+    {
+      "source_text": "permanent Odisha resident",
+      "type": "enum",
+      "field": "state",
+      "allowed": [
+        "Odisha"
+      ],
+      "derived_from": "location.state"
+    },
+    {
+      "source_text": "individual/farmer/entrepreneur",
+      "type": "boolean_required",
+      "field": "isIndividualFarmerOrEntrepreneur",
+      "required": true,
+      "question": {
+        "en": "Are you applying as an individual, farmer, or entrepreneur?",
+        "or": "ଆପଣ ବ୍ୟକ୍ତି, ଚାଷୀ କିମ୍ବା ଉଦ୍ୟୋଗୀ ଭାବେ ଆବେଦନ କରୁଛନ୍ତି କି?"
+      }
+    },
+    {
+      "source_text": "Aadhaar linked",
+      "type": "boolean_required",
+      "field": "aadhaar",
+      "required": true,
+      "question": {
+        "en": "Is your Aadhaar linked for the scheme?",
+        "or": "ଯୋଜନା ପାଇଁ ଆପଣଙ୍କ ଆଧାର ଲିଙ୍କ୍ ହୋଇଛି କି?"
+      }
+    },
+    {
+      "source_text": "1,000-duck semi-commercial unit per source",
+      "type": "range",
+      "field": "projectSize",
+      "min": 1000,
+      "max": 1000,
+      "min_inclusive": true,
+      "max_inclusive": true,
+      "unit": "ducks",
+      "question": {
+        "en": "How many ducks are proposed for the semi-commercial unit?",
+        "or": "ଅର୍ଦ୍ଧ-ବାଣିଜ୍ୟିକ ୟୁନିଟ୍ ପାଇଁ କେତେଟି ବତକ ପ୍ରସ୍ତାବିତ?"
+      }
+    },
+    {
+      "source_text": "[EXCLUSION] previous similar subsidy recipient excluded",
+      "type": "exclusion",
+      "field": "priorSubsidy",
+      "operator": "equals",
+      "value": true,
+      "question": {
+        "en": "Have you previously received a subsidy under a similar scheme?",
+        "or": "ଆପଣ ପୂର୍ବରୁ ସମାନ ଯୋଜନାରେ ସବସିଡି ପାଇଛନ୍ତି କି?"
+      }
+    }
+  ]
+}

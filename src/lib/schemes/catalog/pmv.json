@@ -1,0 +1,126 @@
+{
+  "id": "pmv",
+  "name": "PM Vishwakarma",
+  "scope": [
+    "India"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/pmv",
+  "intents_high": [
+    "artisan_business",
+    "traditional_trade_support",
+    "artisan_credit"
+  ],
+  "intents_medium": [
+    "toolkit_support",
+    "artisan_training",
+    "digital_transaction_incentive",
+    "market_linkage"
+  ],
+  "activities": [
+    "traditional_artisan_trade"
+  ],
+  "need_types": [
+    "credit",
+    "training",
+    "toolkit",
+    "market_linkage"
+  ],
+  "keywords": [
+    "artisan",
+    "craftsman",
+    "traditional trade",
+    "tool kit",
+    "vishwakarma",
+    "artisan loan",
+    "hand tools"
+  ],
+  "eligibility_facts": [
+    "artisan/craftsperson working with hands/tools",
+    "unorganized self-employed sector",
+    "one of 18 family-based traditional trades",
+    "age >=18",
+    "engaged in trade at registration",
+    "one member per family"
+  ],
+  "hard_exclusions": [
+    "government employee and family members",
+    "specified similar government credit schemes within past 5 years"
+  ],
+  "questions": [
+    "What traditional trade do you work in?",
+    "Are you currently self-employed in that trade?",
+    "Have you taken a similar government business loan in the last five years?"
+  ],
+  "application_route": "online_via_csc",
+  "temporal_note": "Source says scheme initially implemented for five years up to 2027-28.",
+  "eligibilityCriteria": [
+    {
+      "source_text": "artisan/craftsperson working with hands/tools",
+      "source_text_aliases": [
+        "one of 18 family-based traditional trades",
+        "engaged in trade at registration"
+      ],
+      "type": "boolean_required",
+      "field": "engagedInQualifyingTraditionalTrade",
+      "required": true,
+      "question": {
+        "en": "At registration, will you be working with your hands or tools in one of the scheme's 18 family-based traditional trades?",
+        "or": "ପଞ୍ଜିକରଣ ସମୟରେ ଆପଣ ଯୋଜନାର ୧୮ଟି ପରିବାର-ଆଧାରିତ ପାରମ୍ପରିକ ବୃତ୍ତି ମଧ୍ୟରୁ ଗୋଟିଏରେ ହାତ କିମ୍ବା ଉପକରଣରେ କାମ କରୁଥିବେ କି?"
+      }
+    },
+    {
+      "source_text": "unorganized self-employed sector",
+      "type": "boolean_required",
+      "field": "isUnorganizedSelfEmployedWorker",
+      "required": true,
+      "question": {
+        "en": "Do you work on a self-employed basis in the unorganized sector?",
+        "or": "ଆପଣ ଅସଂଗଠିତ କ୍ଷେତ୍ରରେ ସ୍ୱନିଯୁକ୍ତ ଭାବେ କାମ କରନ୍ତି କି?"
+      }
+    },
+    {
+      "source_text": "age >=18",
+      "type": "range",
+      "field": "age",
+      "min": 18,
+      "max": null,
+      "min_inclusive": true,
+      "question": {
+        "en": "What is your age on the registration date?",
+        "or": "ପଞ୍ଜିକରଣ ତାରିଖରେ ଆପଣଙ୍କ ବୟସ କେତେ?"
+      }
+    },
+    {
+      "source_text": "one member per family",
+      "type": "boolean_required",
+      "field": "noOtherFamilyMemberRegisteredForPmv",
+      "required": true,
+      "question": {
+        "en": "Will you be the only member of your family registered under PM Vishwakarma?",
+        "or": "PM Vishwakarma ଅଧୀନରେ ପଞ୍ଜିକୃତ ଆପଣଙ୍କ ପରିବାରର ଏକମାତ୍ର ସଦସ୍ୟ ଆପଣ ହେବେ କି?"
+      }
+    },
+    {
+      "source_text": "[EXCLUSION] government employee and family members",
+      "type": "exclusion",
+      "field": "isGovernmentEmployeeOrFamilyMember",
+      "operator": "equals",
+      "value": true,
+      "question": {
+        "en": "Are you in government service, or are you a family member of a government employee?",
+        "or": "ଆପଣ ସରକାରୀ ଚାକିରିରେ ଅଛନ୍ତି କିମ୍ବା ସରକାରୀ କର୍ମଚାରୀଙ୍କ ପରିବାର ସଦସ୍ୟ କି?"
+      }
+    },
+    {
+      "source_text": "[EXCLUSION] specified similar government credit schemes within past 5 years",
+      "type": "exclusion",
+      "field": "usedSimilarGovernmentCreditSchemeWithin5Years",
+      "operator": "equals",
+      "value": true,
+      "question": {
+        "en": "During the past five years, have you taken a loan under a similar government credit scheme listed by PM Vishwakarma?",
+        "or": "ଗତ ପାଞ୍ଚ ବର୍ଷରେ ଆପଣ PM Vishwakarmaରେ ଉଲ୍ଲେଖିତ ସମାନ ସରକାରୀ ଋଣ ଯୋଜନାରୁ ଋଣ ନେଇଛନ୍ତି କି?"
+      }
+    }
+  ]
+}

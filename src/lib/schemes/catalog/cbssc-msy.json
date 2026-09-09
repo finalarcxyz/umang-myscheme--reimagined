@@ -1,0 +1,88 @@
+{
+  "id": "cbssc-msy",
+  "name": "Mahila Samriddhi Yojana (MSY)",
+  "scope": [
+    "India",
+    "targeted women"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/cbssc-msy",
+  "intents_high": [
+    "women_microfinance",
+    "women_business_loan",
+    "women_income_generation"
+  ],
+  "intents_medium": [
+    "women_shg_finance",
+    "craft_business"
+  ],
+  "activities": [
+    "small_business",
+    "craft_activity",
+    "income_generation"
+  ],
+  "need_types": [
+    "microfinance",
+    "training",
+    "loan"
+  ],
+  "keywords": [
+    "mahila samriddhi",
+    "women microfinance",
+    "women loan",
+    "SHG loan",
+    "women business"
+  ],
+  "eligibility_facts": [
+    "women 18-55",
+    "low-income families or SC/ST/OBC categories as notified",
+    "family income < ₹3 lakh per source"
+  ],
+  "hard_exclusions": [
+    "not a qualifying woman applicant"
+  ],
+  "questions": [
+    "Are you a woman aged 18-55?",
+    "What is your annual family income?",
+    "Are you SC/ST/OBC or otherwise in the target group?",
+    "What business/activity do you want to finance?"
+  ],
+  "application_route": "offline_state_channelising_agency_or_channel_partner",
+  "temporal_note": null,
+  "eligibilityCriteria": [
+    {
+      "source_text": "women 18-55",
+      "source_text_aliases": [
+        "[EXCLUSION] not a qualifying woman applicant"
+      ],
+      "type": "boolean_required",
+      "field": "isWomanAge18To55",
+      "required": true,
+      "question": {
+        "en": "Are you a woman between 18 and 55 years of age?",
+        "or": "ଆପଣ ୧୮ରୁ ୫୫ ବର୍ଷ ବୟସର ଜଣେ ମହିଳା କି?"
+      }
+    },
+    {
+      "source_text": "low-income families or SC/ST/OBC categories as notified",
+      "type": "boolean_required",
+      "field": "meetsMsyIncomeOrNotifiedCategoryRule",
+      "required": true,
+      "question": {
+        "en": "Are you from a low-income family or an SC, ST, or OBC category notified for this scheme?",
+        "or": "ଆପଣ କମ୍ ଆୟ ପରିବାରରୁ କିମ୍ବା ଏହି ଯୋଜନା ପାଇଁ ଅଧିସୂଚିତ SC, ST କିମ୍ବା OBC ଶ୍ରେଣୀର କି?"
+      }
+    },
+    {
+      "source_text": "family income < ₹3 lakh per source",
+      "type": "threshold",
+      "field": "income",
+      "max": 300000,
+      "max_inclusive": false,
+      "unit": "INR/year",
+      "question": {
+        "en": "What is your family's annual income in rupees?",
+        "or": "ଆପଣଙ୍କ ପରିବାରର ବାର୍ଷିକ ଆୟ କେତେ ଟଙ୍କା?"
+      }
+    }
+  ]
+}

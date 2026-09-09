@@ -1,0 +1,136 @@
+{
+  "id": "kalia",
+  "name": "Krushak Assistance for Livelihood and Income Augmentation (KALIA)",
+  "scope": [
+    "Odisha"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/kalia",
+  "intents_high": [
+    "livelihood_support",
+    "landless_agricultural_household_support",
+    "agri_allied_activity_support"
+  ],
+  "intents_medium": [
+    "goat_rearing",
+    "duckery",
+    "fishery",
+    "mushroom",
+    "beekeeping",
+    "farm_finance"
+  ],
+  "activities": [
+    "agriculture",
+    "horticulture",
+    "animal_husbandry",
+    "goat",
+    "duck",
+    "fishery",
+    "mushroom",
+    "beekeeping"
+  ],
+  "need_types": [
+    "financial_assistance",
+    "livelihood_support",
+    "insurance",
+    "loan"
+  ],
+  "keywords": [
+    "kalia",
+    "landless farmer",
+    "landless labourer",
+    "goat rearing",
+    "duckery",
+    "fishery kit",
+    "mushroom",
+    "beekeeping"
+  ],
+  "eligibility_facts": [
+    "permanent Odisha resident",
+    "engaged in agricultural activities",
+    "household categorized deprived/vulnerable per source",
+    "landowner/tenant/sharecropper",
+    "annual income < ₹2 lakh per source",
+    "Aadhaar-linked bank account"
+  ],
+  "hard_exclusions": [
+    "source includes criminal-record exclusion"
+  ],
+  "questions": [
+    "Are you a farmer, tenant/sharecropper, or landless agricultural household?",
+    "What livelihood activity do you need support for?"
+  ],
+  "application_route": "online_or_offline",
+  "temporal_note": "Treat source eligibility as source-derived; current KALIA status should be refreshed before production use.",
+  "eligibilityCriteria": [
+    {
+      "source_text": "permanent Odisha resident",
+      "type": "enum",
+      "field": "state",
+      "allowed": [
+        "Odisha"
+      ],
+      "derived_from": "location.state"
+    },
+    {
+      "source_text": "engaged in agricultural activities",
+      "type": "boolean_required",
+      "field": "engagedInAgriculturalActivity",
+      "required": true,
+      "question": {
+        "en": "Are you engaged in farming, cultivation, horticulture, animal husbandry, or another qualifying agricultural activity?",
+        "or": "ଆପଣ ଚାଷ, ଉଦ୍ୟାନ କୃଷି, ପଶୁପାଳନ କିମ୍ବା ଅନ୍ୟ ଯୋଗ୍ୟ କୃଷି କାର୍ଯ୍ୟରେ ନିୟୋଜିତ କି?"
+      }
+    },
+    {
+      "source_text": "household categorized deprived/vulnerable per source",
+      "type": "manual_verification_note",
+      "description": {
+        "en": "The household's deprived or vulnerable classification must be confirmed against the applicable government survey record.",
+        "or": "ପରିବାରର ବଞ୍ଚିତ କିମ୍ବା ଅସୁରକ୍ଷିତ ଶ୍ରେଣୀକରଣକୁ ଲାଗୁ ସରକାରୀ ସର୍ବେକ୍ଷଣ ରେକର୍ଡ ସହ ଯାଞ୍ଚ କରିବାକୁ ପଡ଼ିବ।"
+      }
+    },
+    {
+      "source_text": "landowner/tenant/sharecropper",
+      "type": "boolean_required",
+      "field": "hasQualifyingAgriculturalLandRelationship",
+      "required": true,
+      "question": {
+        "en": "Are you a landowner, tenant farmer, or sharecropper cultivating agricultural land?",
+        "or": "ଆପଣ କୃଷି ଜମି ଚାଷ କରୁଥିବା ଜମିମାଲିକ, ଭଡ଼ାଟିଆ ଚାଷୀ କିମ୍ବା ଭାଗଚାଷୀ କି?"
+      }
+    },
+    {
+      "source_text": "annual income < ₹2 lakh per source",
+      "type": "threshold",
+      "field": "income",
+      "max": 200000,
+      "max_inclusive": false,
+      "unit": "INR/year",
+      "question": {
+        "en": "What is your annual income in rupees?",
+        "or": "ଆପଣଙ୍କ ବାର୍ଷିକ ଆୟ କେତେ ଟଙ୍କା?"
+      }
+    },
+    {
+      "source_text": "Aadhaar-linked bank account",
+      "type": "boolean_required",
+      "field": "hasAadhaarLinkedBankAccount",
+      "required": true,
+      "question": {
+        "en": "Do you have a bank account in your name linked with Aadhaar?",
+        "or": "ଆପଣଙ୍କ ନାମରେ ଆଧାର ସହ ଲିଙ୍କ୍ ହୋଇଥିବା ବ୍ୟାଙ୍କ ଖାତା ଅଛି କି?"
+      }
+    },
+    {
+      "source_text": "[EXCLUSION] source includes criminal-record exclusion",
+      "type": "exclusion",
+      "field": "hasDisqualifyingCriminalRecord",
+      "operator": "equals",
+      "value": true,
+      "question": {
+        "en": "Do you have a criminal record or involvement in illegal activities covered by the scheme's exclusion?",
+        "or": "ଯୋଜନାର ବହିଷ୍କାର ନିୟମରେ ଆସୁଥିବା ଆପରାଧିକ ରେକର୍ଡ କିମ୍ବା ବେଆଇନ କାର୍ଯ୍ୟରେ ସଂପୃକ୍ତି ଆପଣଙ୍କ ଅଛି କି?"
+      }
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "id": "ae",
+  "name": "Agricultural Extension / Sub Mission on Agricultural Extension (SMAE)",
+  "scope": [
+    "India"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/ae",
+  "intents_high": [
+    "farming_advice",
+    "agriculture_training",
+    "farm_information"
+  ],
+  "intents_medium": [
+    "agri_entrepreneurship",
+    "rural_youth_skill_training",
+    "input_dealer_training"
+  ],
+  "activities": [
+    "agriculture",
+    "allied_agriculture"
+  ],
+  "need_types": [
+    "advice",
+    "training",
+    "information"
+  ],
+  "keywords": [
+    "farming advice",
+    "agriculture training",
+    "kisan call centre",
+    "farm information",
+    "chasa advice",
+    "krushi training"
+  ],
+  "eligibility_facts": [
+    "varies by component; source includes farmers, rural youth, farm women, extension functionaries, input dealers and agriculture graduates"
+  ],
+  "hard_exclusions": [],
+  "questions": [
+    "What kind of farming information or training do you need?"
+  ],
+  "application_route": "varies_by_component",
+  "temporal_note": "Umbrella/component scheme; do not treat every component as having identical eligibility.",
+  "eligibilityCriteria": [
+    {
+      "source_text": "varies by component; source includes farmers, rural youth, farm women, extension functionaries, input dealers and agriculture graduates",
+      "type": "manual_verification_note",
+      "description": {
+        "en": "Eligibility depends on the specific extension component and beneficiary category and must be confirmed separately.",
+        "or": "ଯୋଗ୍ୟତା ନିର୍ଦ୍ଦିଷ୍ଟ କୃଷି ସମ୍ପ୍ରସାରଣ ଅଂଶ ଏବଂ ଲାଭାର୍ଥୀ ଶ୍ରେଣୀ ଉପରେ ନିର୍ଭର କରେ; ଏହାକୁ ଅଲଗା ଭାବେ ଯାଞ୍ଚ କରିବାକୁ ପଡ଼ିବ।"
+      }
+    }
+  ]
+}

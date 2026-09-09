@@ -1,0 +1,107 @@
+{
+  "id": "nssw",
+  "name": "New Swarnima Scheme for Women",
+  "scope": [
+    "India",
+    "targeted backward-class women"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/nssw",
+  "intents_high": [
+    "women_business_loan",
+    "women_self_employment_finance"
+  ],
+  "intents_medium": [
+    "women_microenterprise",
+    "business_training"
+  ],
+  "activities": [
+    "small_business",
+    "self_employment"
+  ],
+  "need_types": [
+    "loan",
+    "business_finance"
+  ],
+  "keywords": [
+    "women business loan",
+    "swarnima",
+    "women entrepreneur",
+    "small business loan",
+    "mahila loan"
+  ],
+  "eligibility_facts": [
+    "female",
+    "age 18-55",
+    "entrepreneur",
+    "annual family income < ₹3 lakh per source"
+  ],
+  "hard_exclusions": [
+    "male applicants",
+    "age outside 18-55",
+    "income at/above source threshold"
+  ],
+  "questions": [
+    "Are you a woman?",
+    "What is your age?",
+    "What is your approximate annual family income?",
+    "What business do you want to start or expand?"
+  ],
+  "application_route": "offline_state_channelising_agency",
+  "temporal_note": null,
+  "eligibilityCriteria": [
+    {
+      "source_text": "female",
+      "source_text_aliases": [
+        "[EXCLUSION] male applicants"
+      ],
+      "type": "boolean_required",
+      "field": "isFemale",
+      "required": true,
+      "question": {
+        "en": "Are you a woman?",
+        "or": "ଆପଣ ଜଣେ ମହିଳା କି?"
+      }
+    },
+    {
+      "source_text": "age 18-55",
+      "source_text_aliases": [
+        "[EXCLUSION] age outside 18-55"
+      ],
+      "type": "range",
+      "field": "age",
+      "min": 18,
+      "max": 55,
+      "min_inclusive": true,
+      "max_inclusive": true,
+      "question": {
+        "en": "What is your age?",
+        "or": "ଆପଣଙ୍କ ବୟସ କେତେ?"
+      }
+    },
+    {
+      "source_text": "entrepreneur",
+      "type": "boolean_required",
+      "field": "isEntrepreneur",
+      "required": true,
+      "question": {
+        "en": "Are you an entrepreneur?",
+        "or": "ଆପଣ ଜଣେ ଉଦ୍ୟୋଗୀ କି?"
+      }
+    },
+    {
+      "source_text": "annual family income < ₹3 lakh per source",
+      "source_text_aliases": [
+        "[EXCLUSION] income at/above source threshold"
+      ],
+      "type": "threshold",
+      "field": "income",
+      "max": 300000,
+      "max_inclusive": false,
+      "unit": "INR/year",
+      "question": {
+        "en": "What is your family's total annual income in rupees?",
+        "or": "ଆପଣଙ୍କ ପରିବାରର ମୋଟ ବାର୍ଷିକ ଆୟ କେତେ ଟଙ୍କା?"
+      }
+    }
+  ]
+}

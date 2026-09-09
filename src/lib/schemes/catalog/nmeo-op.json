@@ -1,0 +1,56 @@
+{
+  "id": "nmeo-op",
+  "name": "National Mission on Edible Oils – Oil Palm (NMEO-OP)",
+  "scope": [
+    "India",
+    "participating states"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/nmeo-op",
+  "intents_high": [
+    "oil_palm_farming",
+    "oil_palm_plantation"
+  ],
+  "intents_medium": [
+    "drip_irrigation",
+    "planting_material",
+    "farm_mechanization",
+    "oil_palm_processing"
+  ],
+  "activities": [
+    "oil_palm",
+    "intercropping",
+    "oil_palm_processing"
+  ],
+  "need_types": [
+    "subsidy",
+    "planting_material",
+    "irrigation",
+    "farm_support"
+  ],
+  "keywords": [
+    "oil palm",
+    "palm plantation",
+    "edible oil farming",
+    "oil palm farming"
+  ],
+  "eligibility_facts": [
+    "source states anyone is eligible to apply; state implementation and area expansion determine actual access"
+  ],
+  "hard_exclusions": [],
+  "questions": [
+    "Are you planning to grow oil palm or work on an oil-palm-related processing/business activity?",
+    "Which state and district are you in?"
+  ],
+  "application_route": "offline_district_or_block_agriculture_office",
+  "temporal_note": "State-level implementation is material.",
+  "eligibilityCriteria": [
+    {
+      "source_text": "source states anyone is eligible to apply; state implementation and area expansion determine actual access",
+      "type": "manual_verification_note",
+      "description": {
+        "en": "Anyone may apply, but actual access depends on state implementation and the selected oil-palm expansion area and must be confirmed separately.",
+        "or": "ଯେକେହି ଆବେଦନ କରିପାରନ୍ତି, କିନ୍ତୁ ପ୍ରକୃତ ଲାଭ ରାଜ୍ୟ କାର୍ଯ୍ୟାନ୍ୱୟନ ଏବଂ ଚୟନିତ ତେଲତାଳ ବିସ୍ତାର ଅଞ୍ଚଳ ଉପରେ ନିର୍ଭର କରେ; ଏହାକୁ ଅଲଗା ଭାବେ ଯାଞ୍ଚ କରିବାକୁ ପଡ଼ିବ।"
+      }
+    }
+  ]
+}

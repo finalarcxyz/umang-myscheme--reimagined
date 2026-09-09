@@ -1,0 +1,94 @@
+{
+  "id": "pm-vikas",
+  "name": "Pradhan Mantri Virasat Ka Samvardhan (PM VIKAS)",
+  "scope": [
+    "India",
+    "six notified minority communities"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/pm-vikas",
+  "intents_high": [
+    "minority_skill_training",
+    "minority_education",
+    "minority_women_entrepreneurship"
+  ],
+  "intents_medium": [
+    "traditional_skill_training",
+    "school_dropout_education",
+    "market_linkage"
+  ],
+  "activities": [
+    "skill_training",
+    "education",
+    "traditional_crafts",
+    "women_entrepreneurship"
+  ],
+  "need_types": [
+    "training",
+    "education",
+    "entrepreneurship",
+    "stipend"
+  ],
+  "keywords": [
+    "minority skill training",
+    "minority scholarship",
+    "PM VIKAS",
+    "skill course",
+    "women entrepreneurship minority"
+  ],
+  "eligibility_facts": [
+    "six notified minority communities",
+    "age 14-45 for skilling/education",
+    "18-45 for women leadership/entrepreneurship",
+    "specific women/PwD allocations",
+    "EWS non-minority participation only within stated component limits"
+  ],
+  "hard_exclusions": [
+    "age outside component range",
+    "not meeting applicable community/component rules"
+  ],
+  "questions": [
+    "Which component do you need—skill training, education, or women’s entrepreneurship?",
+    "What is your age?",
+    "Do you belong to one of the six notified minority communities?"
+  ],
+  "application_route": "online_sidh_portal",
+  "temporal_note": null,
+  "eligibilityCriteria": [
+    {
+      "source_text": "six notified minority communities",
+      "source_text_aliases": [
+        "EWS non-minority participation only within stated component limits",
+        "[EXCLUSION] not meeting applicable community/component rules"
+      ],
+      "type": "boolean_required",
+      "field": "meetsPmVikasCommunityRule",
+      "required": true,
+      "question": {
+        "en": "Do you belong to one of the six notified minority communities, or qualify as an EWS non-minority candidate within the selected component's permitted limit?",
+        "or": "ଆପଣ ଛଅଟି ଅଧିସୂଚିତ ସଂଖ୍ୟାଲଘୁ ସମ୍ପ୍ରଦାୟ ମଧ୍ୟରୁ ଗୋଟିଏର ସଦସ୍ୟ କିମ୍ବା ଚୟନିତ ଅଂଶର ଅନୁମୋଦିତ ସୀମା ମଧ୍ୟରେ EWS ଅଣ-ସଂଖ୍ୟାଲଘୁ ପ୍ରାର୍ଥୀ ଭାବେ ଯୋଗ୍ୟ କି?"
+      }
+    },
+    {
+      "source_text": "age 14-45 for skilling/education",
+      "source_text_aliases": [
+        "18-45 for women leadership/entrepreneurship",
+        "[EXCLUSION] age outside component range"
+      ],
+      "type": "boolean_required",
+      "field": "meetsPmVikasComponentAgeRange",
+      "required": true,
+      "question": {
+        "en": "Does your age match your selected component: 14–45 for skilling or education, or 18–45 for women leadership or entrepreneurship?",
+        "or": "ଆପଣଙ୍କ ବୟସ ଚୟନିତ ଅଂଶ ସହ ମେଳ ଖାଉଛି କି—ଦକ୍ଷତା କିମ୍ବା ଶିକ୍ଷା ପାଇଁ ୧୪–୪୫, କିମ୍ବା ମହିଳା ନେତୃତ୍ୱ କିମ୍ବା ଉଦ୍ୟମିତା ପାଇଁ ୧୮–୪୫?"
+      }
+    },
+    {
+      "source_text": "specific women/PwD allocations",
+      "type": "info_only",
+      "description": {
+        "en": "The source reserves specified allocations for women and persons with disabilities; this is not a universal exclusion of other eligible applicants.",
+        "or": "ଉତ୍ସରେ ମହିଳା ଏବଂ ଦିବ୍ୟାଙ୍ଗ ବ୍ୟକ୍ତିଙ୍କ ପାଇଁ ନିର୍ଦ୍ଦିଷ୍ଟ ବରାଦ୍ଦ ରହିଛି; ଏହା ଅନ୍ୟ ଯୋଗ୍ୟ ଆବେଦକଙ୍କ ସାର୍ବଜନୀନ ବହିଷ୍କାର ନୁହେଁ।"
+      }
+    }
+  ]
+}

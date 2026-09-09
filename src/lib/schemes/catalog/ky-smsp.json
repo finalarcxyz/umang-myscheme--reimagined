@@ -1,0 +1,64 @@
+{
+  "id": "ky-smsp",
+  "name": "Sub Mission on Seed and Planting Material (SMSP)",
+  "scope": [
+    "India"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/ky-smsp",
+  "intents_high": [
+    "quality_seed",
+    "seed_production",
+    "seed_processing",
+    "seed_storage"
+  ],
+  "intents_medium": [
+    "seed_testing",
+    "seed_certification",
+    "seed_infrastructure"
+  ],
+  "activities": [
+    "seed_production",
+    "seed_processing",
+    "seed_storage",
+    "seed_testing",
+    "planting_material"
+  ],
+  "need_types": [
+    "subsidy",
+    "infrastructure",
+    "seed_support"
+  ],
+  "keywords": [
+    "seed",
+    "quality seed",
+    "certified seed",
+    "seed village",
+    "seed processing",
+    "seed storage",
+    "seed testing"
+  ],
+  "eligibility_facts": [
+    "source specifically states small or marginal farmer for the listed beneficiary section"
+  ],
+  "hard_exclusions": [
+    "do not assume every SMSP component is available to an individual farmer"
+  ],
+  "questions": [
+    "Are you seeking seed for your own farm, or do you want to start a seed-related business/infrastructure project?"
+  ],
+  "application_route": "offline_for_farmer_section",
+  "temporal_note": "The source combines multiple components with different beneficiary types; component-level eligibility must be checked.",
+  "eligibilityCriteria": [
+    {
+      "source_text": "source specifically states small or marginal farmer for the listed beneficiary section",
+      "source_text_aliases": [
+        "[EXCLUSION] do not assume every SMSP component is available to an individual farmer"
+      ],
+      "type": "manual_verification_note",
+      "description": {
+        "en": "The applicable SMSP component and its beneficiary category must be confirmed separately; individual access cannot be assumed for every component.",
+        "or": "ଲାଗୁ ହେଉଥିବା SMSP ଅଂଶ ଏବଂ ତାହାର ଲାଭାର୍ଥୀ ଶ୍ରେଣୀକୁ ଅଲଗା ଭାବେ ଯାଞ୍ଚ କରିବା ଦରକାର; ପ୍ରତ୍ୟେକ ଅଂଶରେ ବ୍ୟକ୍ତିଗତ ଲାଭ ମିଳିବ ବୋଲି ଧରାଯାଇପାରିବ ନାହିଁ।"
+      }
+    }
+  ]
+}

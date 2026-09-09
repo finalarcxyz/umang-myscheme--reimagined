@@ -1,0 +1,101 @@
+{
+  "id": "beds",
+  "name": "Buffalo Entrepreneurship Development Scheme",
+  "scope": [
+    "Odisha"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/beds",
+  "intents_high": [
+    "start_dairy",
+    "buffalo_farming",
+    "livestock_business"
+  ],
+  "intents_medium": [
+    "milk_income",
+    "livestock_subsidy"
+  ],
+  "activities": [
+    "dairy",
+    "buffalo_rearing",
+    "livestock"
+  ],
+  "need_types": [
+    "subsidy",
+    "livestock_business"
+  ],
+  "keywords": [
+    "buffalo",
+    "dairy farm",
+    "milk business",
+    "murrah buffalo",
+    "buffalo farming"
+  ],
+  "eligibility_facts": [
+    "Odisha farmer/entrepreneur/SHG member",
+    "qualifying category listed in source",
+    "purchase two graded Murrah she buffaloes",
+    "PwD disability >40% if applicable"
+  ],
+  "hard_exclusions": [
+    "family limited to one beneficiary",
+    "must meet buffalo purchase/yield conditions"
+  ],
+  "questions": [
+    "Do you want to start a dairy/buffalo unit?",
+    "Are you planning to purchase two graded Murrah she-buffaloes?"
+  ],
+  "application_route": "online_go_sugam",
+  "temporal_note": null,
+  "eligibilityCriteria": [
+    {
+      "source_text": "Odisha farmer/entrepreneur/SHG member",
+      "type": "boolean_required",
+      "field": "isOdishaFarmerEntrepreneurOrShgMember",
+      "required": true,
+      "question": {
+        "en": "Are you an Odisha farmer, entrepreneur, or SHG member?",
+        "or": "ଆପଣ ଓଡ଼ିଶାର ଚାଷୀ, ଉଦ୍ୟୋଗୀ କିମ୍ବା SHG ସଦସ୍ୟ କି?"
+      }
+    },
+    {
+      "source_text": "qualifying category listed in source",
+      "type": "info_only",
+      "description": {
+        "en": "The source lists General, SC, ST, SHG, PwD, women, and transgender applicants, with category-dependent support.",
+        "or": "ଉତ୍ସରେ ସାଧାରଣ, SC, ST, SHG, PwD, ମହିଳା ଏବଂ ଟ୍ରାନ୍ସଜେଣ୍ଡର ଆବେଦକଙ୍କୁ ତାଲିକାଭୁକ୍ତ କରାଯାଇଛି ଏବଂ ଶ୍ରେଣୀ ଅନୁସାରେ ସହାୟତା ଭିନ୍ନ।"
+      }
+    },
+    {
+      "source_text": "purchase two graded Murrah she buffaloes",
+      "source_text_aliases": [
+        "[EXCLUSION] must meet buffalo purchase/yield conditions"
+      ],
+      "type": "boolean_required",
+      "field": "canMeetBuffaloPurchaseAndYieldConditions",
+      "required": true,
+      "question": {
+        "en": "Can you purchase two graded Murrah female buffaloes meeting the scheme's lactation and milk-yield conditions?",
+        "or": "ଆପଣ ଯୋଜନାର ବିଆଣ ଏବଂ ଦୁଧ ଉତ୍ପାଦନ ସର୍ତ୍ତ ପୂରଣ କରୁଥିବା ଦୁଇଟି ଗ୍ରେଡେଡ୍ ମୁର୍ରା ମାଈ ମଇଁଷି କିଣିପାରିବେ କି?"
+      }
+    },
+    {
+      "source_text": "PwD disability >40% if applicable",
+      "type": "manual_verification_note",
+      "description": {
+        "en": "If applying under the PwD category, disability above 40% must be confirmed from the certificate.",
+        "or": "PwD ଶ୍ରେଣୀରେ ଆବେଦନ କଲେ, ପ୍ରମାଣପତ୍ରରୁ ୪୦% ଠାରୁ ଅଧିକ ଅକ୍ଷମତା ଯାଞ୍ଚ କରିବାକୁ ପଡ଼ିବ।"
+      }
+    },
+    {
+      "source_text": "[EXCLUSION] family limited to one beneficiary",
+      "type": "exclusion",
+      "field": "familyAlreadyReceivedBedsAssistance",
+      "operator": "equals",
+      "value": true,
+      "question": {
+        "en": "Has anyone in your family already received assistance under this scheme?",
+        "or": "ଆପଣଙ୍କ ପରିବାରର କେହି ପୂର୍ବରୁ ଏହି ଯୋଜନାରେ ସହାୟତା ପାଇଛନ୍ତି କି?"
+      }
+    }
+  ]
+}

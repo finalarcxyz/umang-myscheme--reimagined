@@ -1,0 +1,101 @@
+{
+  "id": "cpis",
+  "name": "Coconut Palm Insurance Scheme (CPIS)",
+  "scope": [
+    "India",
+    "selected coconut-growing districts"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/cpis",
+  "intents_high": [
+    "coconut_palm_insurance",
+    "protect_coconut_farm"
+  ],
+  "intents_medium": [
+    "coconut_farming_risk_management",
+    "replanting_risk"
+  ],
+  "activities": [
+    "coconut_farming"
+  ],
+  "need_types": [
+    "insurance",
+    "risk_protection"
+  ],
+  "keywords": [
+    "coconut insurance",
+    "coconut palm insurance",
+    "coconut tree insurance",
+    "narial gachha insurance"
+  ],
+  "eligibility_facts": [
+    "individual farmer/grower",
+    "minimum 5 healthy nut-bearing palms",
+    "specified palm age ranges",
+    "selected implementation districts"
+  ],
+  "hard_exclusions": [
+    "unhealthy/senile palms",
+    "partial insurance of contiguous plantation not allowed",
+    "less than 5 qualifying palms"
+  ],
+  "questions": [
+    "How many healthy, fruit-bearing coconut palms do you have?",
+    "Are they in a selected implementation area?"
+  ],
+  "application_route": "offline",
+  "temporal_note": "Coverage depends on selected districts and scheme implementation.",
+  "eligibilityCriteria": [
+    {
+      "source_text": "individual farmer/grower",
+      "type": "boolean_required",
+      "field": "isIndividualFarmerOrGrower",
+      "required": true,
+      "question": {
+        "en": "Are you an individual farmer or grower?",
+        "or": "ଆପଣ ଜଣେ ବ୍ୟକ୍ତିଗତ ଚାଷୀ କିମ୍ବା ଉତ୍ପାଦକ କି?"
+      }
+    },
+    {
+      "source_text": "minimum 5 healthy nut-bearing palms",
+      "source_text_aliases": [
+        "[EXCLUSION] unhealthy/senile palms",
+        "[EXCLUSION] less than 5 qualifying palms"
+      ],
+      "type": "threshold",
+      "field": "healthyNutBearingPalmCount",
+      "min": 5,
+      "min_inclusive": true,
+      "unit": "palms",
+      "question": {
+        "en": "How many healthy, nut-bearing coconut palms do you want to insure?",
+        "or": "ଆପଣ କେତେଟି ସୁସ୍ଥ ଏବଂ ଫଳଧାରୀ ନଡ଼ିଆ ଗଛର ବୀମା କରିବାକୁ ଚାହୁଁଛନ୍ତି?"
+      }
+    },
+    {
+      "source_text": "specified palm age ranges",
+      "type": "manual_verification_note",
+      "description": {
+        "en": "Each palm's age must be checked separately against the source range for its tall, dwarf, or hybrid variety.",
+        "or": "ପ୍ରତ୍ୟେକ ଗଛର ବୟସକୁ ତାହାର ଲମ୍ବା, ବାମନ କିମ୍ବା ହାଇବ୍ରିଡ୍ ପ୍ରଜାତି ପାଇଁ ଉତ୍ସରେ ଥିବା ବୟସ ସୀମା ସହ ଅଲଗା ଭାବେ ଯାଞ୍ଚ କରିବାକୁ ପଡ଼ିବ।"
+      }
+    },
+    {
+      "source_text": "selected implementation districts",
+      "type": "manual_verification_note",
+      "description": {
+        "en": "Implementation in the plantation's district must be confirmed separately.",
+        "or": "ବଗିଚା ଥିବା ଜିଲ୍ଲାରେ ଯୋଜନା କାର୍ଯ୍ୟକାରୀ କି ନାହିଁ, ତାହା ଅଲଗା ଭାବେ ଯାଞ୍ଚ କରିବାକୁ ପଡ଼ିବ।"
+      }
+    },
+    {
+      "source_text": "[EXCLUSION] partial insurance of contiguous plantation not allowed",
+      "type": "boolean_required",
+      "field": "willInsureEntireContiguousPlantation",
+      "required": true,
+      "question": {
+        "en": "Will you insure all qualifying palms in the contiguous plantation or plot?",
+        "or": "ଆପଣ ସଂଲଗ୍ନ ବଗିଚା କିମ୍ବା ପ୍ଲଟ୍‌ର ସମସ୍ତ ଯୋଗ୍ୟ ନଡ଼ିଆ ଗଛର ବୀମା କରିବେ କି?"
+      }
+    }
+  ]
+}

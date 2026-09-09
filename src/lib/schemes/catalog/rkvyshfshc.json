@@ -1,0 +1,55 @@
+{
+  "id": "rkvyshfshc",
+  "name": "Soil Health Card / Soil Health Management",
+  "scope": [
+    "India"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/rkvyshfshc",
+  "intents_high": [
+    "soil_testing",
+    "fertilizer_advice",
+    "soil_health"
+  ],
+  "intents_medium": [
+    "reduce_farm_input_costs",
+    "improve_farming"
+  ],
+  "activities": [
+    "crop_farming",
+    "agriculture"
+  ],
+  "need_types": [
+    "testing",
+    "advice",
+    "farm_support"
+  ],
+  "keywords": [
+    "soil test",
+    "soil health card",
+    "soil testing",
+    "fertilizer recommendation",
+    "mati test",
+    "soil report"
+  ],
+  "eligibility_facts": [
+    "all farmers in India"
+  ],
+  "hard_exclusions": [],
+  "questions": [
+    "Do you want a soil test/Soil Health Card for your farm?"
+  ],
+  "application_route": "offline_district_or_block_agriculture_office",
+  "temporal_note": null,
+  "eligibilityCriteria": [
+    {
+      "source_text": "all farmers in India",
+      "type": "boolean_required",
+      "field": "isFarmer",
+      "required": true,
+      "question": {
+        "en": "Are you a farmer?",
+        "or": "ଆପଣ ଜଣେ ଚାଷୀ କି?"
+      }
+    }
+  ]
+}

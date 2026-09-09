@@ -1,0 +1,86 @@
+{
+  "id": "rad",
+  "name": "Rainfed Area Development (RAD)",
+  "scope": [
+    "India",
+    "eligible rainfed clusters"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/rad",
+  "intents_high": [
+    "rainfed_farming",
+    "integrated_farming",
+    "climate_resilient_farming"
+  ],
+  "intents_medium": [
+    "livelihood_diversification",
+    "livestock_farming",
+    "horticulture",
+    "fisheries"
+  ],
+  "activities": [
+    "rainfed_agriculture",
+    "horticulture",
+    "livestock",
+    "fishery",
+    "agroforestry",
+    "beekeeping",
+    "mushroom"
+  ],
+  "need_types": [
+    "farm_support",
+    "climate_risk_management",
+    "integrated_farming"
+  ],
+  "keywords": [
+    "rainfed",
+    "integrated farming",
+    "drought farming",
+    "climate resilient farming",
+    "farm diversification"
+  ],
+  "eligibility_facts": [
+    "all farmers stated as eligible",
+    "implementation is cluster/project based",
+    "cluster generally 100 hectares or more"
+  ],
+  "hard_exclusions": [
+    "individual eligibility alone does not guarantee scheme rollout; village/cluster eligibility matters"
+  ],
+  "questions": [
+    "Is your farm in a rainfed area, and are you looking for an integrated farming setup?",
+    "Which village/block are you in?"
+  ],
+  "application_route": "offline_block_or_district_agriculture_office",
+  "temporal_note": "Cluster/project approval is material to access.",
+  "eligibilityCriteria": [
+    {
+      "source_text": "all farmers stated as eligible",
+      "type": "boolean_required",
+      "field": "isFarmer",
+      "required": true,
+      "question": {
+        "en": "Are you a farmer?",
+        "or": "ଆପଣ ଜଣେ ଚାଷୀ କି?"
+      }
+    },
+    {
+      "source_text": "implementation is cluster/project based",
+      "source_text_aliases": [
+        "[EXCLUSION] individual eligibility alone does not guarantee scheme rollout; village/cluster eligibility matters"
+      ],
+      "type": "manual_verification_note",
+      "description": {
+        "en": "Implementation depends on an approved village cluster or project and must be confirmed separately.",
+        "or": "କାର୍ଯ୍ୟାନ୍ୱୟନ ଅନୁମୋଦିତ ଗ୍ରାମ କ୍ଲଷ୍ଟର କିମ୍ବା ପ୍ରକଳ୍ପ ଉପରେ ନିର୍ଭର କରେ ଏବଂ ଅଲଗା ଭାବେ ଯାଞ୍ଚ ହେବା ଦରକାର।"
+      }
+    },
+    {
+      "source_text": "cluster generally 100 hectares or more",
+      "type": "info_only",
+      "description": {
+        "en": "The source generally describes clusters of 100 hectares or more; this is a project-level condition, not the citizen's land threshold.",
+        "or": "ଉତ୍ସରେ ସାଧାରଣତଃ ୧୦୦ ହେକ୍ଟର କିମ୍ବା ଅଧିକ କ୍ଲଷ୍ଟର ବର୍ଣ୍ଣିତ; ଏହା ପ୍ରକଳ୍ପ ସ୍ତରର ସର୍ତ୍ତ, ନାଗରିକଙ୍କ ଜମି ସୀମା ନୁହେଁ।"
+      }
+    }
+  ]
+}

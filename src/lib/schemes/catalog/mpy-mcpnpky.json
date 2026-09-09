@@ -1,0 +1,112 @@
+{
+  "id": "mpy-mcpnpky",
+  "name": "Machha Chasa Pain Nua Pokhari Khola Yojana (Matsya Pokhari Yojana)",
+  "scope": [
+    "Odisha"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/mpy-mcpnpky",
+  "intents_high": [
+    "build_fish_pond",
+    "start_freshwater_aquaculture",
+    "fish_pond_subsidy"
+  ],
+  "intents_medium": [
+    "fish_farming",
+    "aquaculture_income"
+  ],
+  "activities": [
+    "freshwater_fish_farming",
+    "pond_excavation",
+    "aquaculture"
+  ],
+  "need_types": [
+    "subsidy",
+    "pond_creation",
+    "aquaculture"
+  ],
+  "keywords": [
+    "fish pond",
+    "pond digging",
+    "machha chasa",
+    "fish farming",
+    "new pond",
+    "pokhari",
+    "matsya pokhari"
+  ],
+  "eligibility_facts": [
+    "permanent Odisha resident",
+    "bank account in own name in Odisha",
+    "land free from encumbrances",
+    "pond area 0.2-2.0 hectares",
+    "minimum water depth 6 feet"
+  ],
+  "hard_exclusions": [
+    "does not fit if user already has no land/site meeting requirements"
+  ],
+  "questions": [
+    "Do you already have a pond, or do you need to create a new pond?",
+    "How much land is available for the pond?"
+  ],
+  "application_route": "offline_district_or_assistant_fisheries_officer",
+  "temporal_note": null,
+  "eligibilityCriteria": [
+    {
+      "source_text": "permanent Odisha resident",
+      "type": "enum",
+      "field": "state",
+      "allowed": [
+        "Odisha"
+      ],
+      "derived_from": "location.state"
+    },
+    {
+      "source_text": "bank account in own name in Odisha",
+      "type": "boolean_required",
+      "field": "hasOwnBankAccountInOdisha",
+      "required": true,
+      "question": {
+        "en": "Do you have a bank account in your own name in Odisha?",
+        "or": "ଓଡ଼ିଶାରେ ଆପଣଙ୍କ ନିଜ ନାମରେ ବ୍ୟାଙ୍କ ଖାତା ଅଛି କି?"
+      }
+    },
+    {
+      "source_text": "land free from encumbrances",
+      "source_text_aliases": [
+        "[EXCLUSION] does not fit if user already has no land/site meeting requirements"
+      ],
+      "type": "boolean_required",
+      "field": "hasUnencumberedQualifyingLand",
+      "required": true,
+      "question": {
+        "en": "Do you have qualifying land that is free from encumbrances for the proposed pond?",
+        "or": "ପ୍ରସ୍ତାବିତ ପୋଖରୀ ପାଇଁ ଆପଣଙ୍କ ପାଖରେ ବୋଝମୁକ୍ତ ଯୋଗ୍ୟ ଜମି ଅଛି କି?"
+      }
+    },
+    {
+      "source_text": "pond area 0.2-2.0 hectares",
+      "type": "range",
+      "field": "pondArea",
+      "min": 0.2,
+      "max": 2,
+      "min_inclusive": true,
+      "max_inclusive": true,
+      "unit": "hectare",
+      "question": {
+        "en": "What will the pond area be, in hectares?",
+        "or": "ପୋଖରୀର କ୍ଷେତ୍ରଫଳ କେତେ ହେକ୍ଟର ହେବ?"
+      }
+    },
+    {
+      "source_text": "minimum water depth 6 feet",
+      "type": "threshold",
+      "field": "pondDepthFeet",
+      "min": 6,
+      "min_inclusive": true,
+      "unit": "feet",
+      "question": {
+        "en": "What will the pond's minimum water depth be, in feet?",
+        "or": "ପୋଖରୀର ସର୍ବନିମ୍ନ ପାଣି ଗଭୀରତା କେତେ ଫୁଟ୍ ହେବ?"
+      }
+    }
+  ]
+}

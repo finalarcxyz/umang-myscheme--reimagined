@@ -1,0 +1,108 @@
+{
+  "id": "pmfby",
+  "name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+  "scope": [
+    "India",
+    "notified areas/crops"
+  ],
+  "source_url": "https://web.umang.gov.in/web_new/home/scheme/detail/pmfby",
+  "intents_high": [
+    "crop_insurance",
+    "crop_loss_protection"
+  ],
+  "intents_medium": [
+    "farm_risk_management",
+    "post_harvest_loss_protection"
+  ],
+  "activities": [
+    "notified_crop_farming"
+  ],
+  "need_types": [
+    "insurance",
+    "risk_protection"
+  ],
+  "keywords": [
+    "crop insurance",
+    "fasal bima",
+    "crop loss",
+    "drought insurance",
+    "flood crop insurance",
+    "pest crop insurance"
+  ],
+  "eligibility_facts": [
+    "farmer including tenant/sharecropper growing notified crop in notified area",
+    "insurable interest",
+    "valid land ownership/tenure evidence",
+    "apply within prescribed timeframe"
+  ],
+  "hard_exclusions": [
+    "non-notified areas/crops",
+    "loss outside specified crop cycle",
+    "non-payment of required premium"
+  ],
+  "questions": [
+    "Which crop are you growing, and in which district?",
+    "Has the crop already been damaged, or do you want insurance before loss?"
+  ],
+  "application_route": "online_offline_or_csc",
+  "temporal_note": "Crop/area notification and enrolment windows are time-sensitive.",
+  "eligibilityCriteria": [
+    {
+      "source_text": "farmer including tenant/sharecropper growing notified crop in notified area",
+      "source_text_aliases": [
+        "[EXCLUSION] non-notified areas/crops"
+      ],
+      "type": "boolean_required",
+      "field": "growsNotifiedCropInNotifiedArea",
+      "required": true,
+      "question": {
+        "en": "Are you a farmer, tenant farmer, or sharecropper growing a notified crop in a notified area?",
+        "or": "ଆପଣ ଅଧିସୂଚିତ ଅଞ୍ଚଳରେ ଅଧିସୂଚିତ ଫସଲ ଚାଷ କରୁଥିବା ଚାଷୀ, ଭଡ଼ାଟିଆ ଚାଷୀ କିମ୍ବା ଭାଗଚାଷୀ କି?"
+      }
+    },
+    {
+      "source_text": "insurable interest",
+      "type": "manual_verification_note",
+      "description": {
+        "en": "Your insurable interest in the crop must be confirmed separately from cultivation and land-tenure records.",
+        "or": "ଫସଲ ଉପରେ ଆପଣଙ୍କ ବୀମାଯୋଗ୍ୟ ସ୍ୱାର୍ଥକୁ ଚାଷ ଏବଂ ଜମି ଅଧିକାର ରେକର୍ଡରୁ ଅଲଗା ଭାବେ ଯାଞ୍ଚ କରିବାକୁ ପଡ଼ିବ।"
+      }
+    },
+    {
+      "source_text": "valid land ownership/tenure evidence",
+      "type": "boolean_required",
+      "field": "hasValidLandOwnershipOrTenureEvidence",
+      "required": true,
+      "question": {
+        "en": "Do you have valid, authenticated land-ownership evidence or a valid land-tenure agreement?",
+        "or": "ଆପଣଙ୍କ ପାଖରେ ବୈଧ ଓ ପ୍ରମାଣିତ ଜମି ମାଲିକାନା ଦଲିଲ କିମ୍ବା ବୈଧ ଜମି ଅଧିକାର ଚୁକ୍ତି ଅଛି କି?"
+      }
+    },
+    {
+      "source_text": "apply within prescribed timeframe",
+      "type": "boolean_required",
+      "field": "canApplyWithinPrescribedTimeframe",
+      "required": true,
+      "question": {
+        "en": "Can you apply for insurance within the prescribed timeframe?",
+        "or": "ଆପଣ ନିର୍ଦ୍ଧାରିତ ସମୟସୀମା ମଧ୍ୟରେ ବୀମା ପାଇଁ ଆବେଦନ କରିପାରିବେ କି?"
+      }
+    },
+    {
+      "source_text": "[EXCLUSION] loss outside specified crop cycle",
+      "type": "info_only",
+      "description": {
+        "en": "Losses outside the specified crop cycle may not be covered; this is a claim-stage limitation.",
+        "or": "ନିର୍ଦ୍ଧାରିତ ଫସଲ ଚକ୍ର ବାହାରର କ୍ଷତି କଭର୍ ନ ହୋଇପାରେ; ଏହା ଦାବି ପର୍ଯ୍ୟାୟର ସୀମାବଦ୍ଧତା।"
+      }
+    },
+    {
+      "source_text": "[EXCLUSION] non-payment of required premium",
+      "type": "info_only",
+      "description": {
+        "en": "Coverage depends on payment of the required premium; non-payment can cancel the insurance.",
+        "or": "ଆବଶ୍ୟକ ପ୍ରିମିୟମ୍ ଦେବା ଉପରେ କଭରେଜ୍ ନିର୍ଭର କରେ; ପ୍ରିମିୟମ୍ ନ ଦେଲେ ବୀମା ବାତିଲ ହୋଇପାରେ।"
+      }
+    }
+  ]
+}

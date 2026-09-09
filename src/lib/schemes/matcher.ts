@@ -1,5 +1,5 @@
-import catalog from './scheme_catalog.json' with { type: 'json' };
-import eligibilityCatalog from './scheme_eligibility.json' with { type: 'json' };
+import { catalog, eligibilityCatalog } from './loader.ts';
+
 import schemeDetails from './scheme_details.json' with { type: 'json' };
 // @ts-expect-error Node's type-stripping test runner requires the explicit TypeScript extension.
 import { analyzeVocabulary, normalizeUserText, type VocabularyAnalysis } from './vocabulary.ts';

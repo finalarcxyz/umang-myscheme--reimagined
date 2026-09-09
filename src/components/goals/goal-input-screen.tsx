@@ -18,6 +18,7 @@ import {
   type QuestionSelectorContext,
 } from '@/lib/schemes/question-selector';
 import SchemeResults from '@/components/schemes/scheme-results';
+import type { IntentResolution } from '@/lib/intent/schema';
 
 interface IconProps {
   className?: string;
@@ -203,7 +204,56 @@ export default function GoalInputScreen({
   const [followUpAnswer, setFollowUpAnswer] = useState('');
   const [showOtherAnswer, setShowOtherAnswer] = useState(false);
   const [finalResult, setFinalResult] = useState<MatcherResult | null>(null);
+  const [resolvedIntent, setResolvedIntent] = useState<IntentResolution | null>(null);
+  const [isResolving, setIsResolving] = useState(false);
   const copy = goalInputTranslations[language];
+
+  useEffect(() => {
+    const text = goalText.trim();
+    if (!text) {
+      setResolvedIntent(null);
+      return;
+    }
+
+    // Optimistically clear previous intent when text changes significantly
+    setResolvedIntent(null);
+
+    const abortController = new AbortController();
+
+    const timer = window.setTimeout(async () => {
+      setIsResolving(true);
+      try {
+        const res = await fetch('/api/resolve-intent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text, locale: language }),
+          signal: abortController.signal,
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (!abortController.signal.aborted) {
+            setResolvedIntent(data);
+          }
+        } else {
+          if (!abortController.signal.aborted) setResolvedIntent(null);
+        }
+      } catch (error: any) {
+        if (error.name !== 'AbortError') {
+          console.error('Error resolving intent:', error);
+          if (!abortController.signal.aborted) setResolvedIntent(null);
+        }
+      } finally {
+        if (!abortController.signal.aborted) {
+          setIsResolving(false);
+        }
+      }
+    }, 350);
+
+    return () => {
+      window.clearTimeout(timer);
+      abortController.abort();
+    };
+  }, [goalText, language]);
 
   useEffect(() => {
     if (language !== 'en' || isPlaceholderRotationStopped) return;
@@ -231,7 +281,11 @@ export default function GoalInputScreen({
       district: context.district ?? location?.district,
       language: language === 'or' ? 'od' : 'en',
     };
-    const result = matchSchemes(toMatcherInput(text, nextContext));
+    const matcherInput = toMatcherInput(text, nextContext);
+    if (resolvedIntent) {
+      matcherInput.serverIntent = resolvedIntent;
+    }
+    const result = matchSchemes(matcherInput);
     const selection = selectNextQuestion(result, nextContext);
 
     setQuestionContext(nextContext);
@@ -353,10 +407,13 @@ export default function GoalInputScreen({
             />
           </div>
 
-          <div className="mx-auto mt-3 flex max-w-[900px] justify-end">
+          <div className="mx-auto mt-3 flex max-w-[900px] items-center justify-end gap-3">
+            {isResolving && (
+              <span className="text-sm text-[#536579] animate-pulse">Resolving...</span>
+            )}
             <button
               className="min-h-10 rounded-lg bg-[#0b438f] px-5 text-sm font-semibold text-white transition hover:bg-[#073975] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2458a6] disabled:cursor-not-allowed disabled:opacity-50"
-              disabled={!goalText.trim()}
+              disabled={!goalText.trim() || isResolving}
               onClick={submitGoal}
               type="button"
             >
